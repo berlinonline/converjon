@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+process.env.NODE_CONFIG_DIR = __dirname + '/config';
+
 var applyDefaults = require('./defaults');
 var args = require('argsparser').parse();
 args = applyDefaults(args);
@@ -14,13 +16,12 @@ if ("help" in args && args.help)
 }
 
 var connect = require('connect');
-var throttle = require('connect-throttle');
 
-var server = connect()
-    .use(throttle({
-        threshhold: 1000
-    }))
-    .use(connect.logger());
+var server = connect();
+//server.use(require('connect-throttle')());
+server.use(connect.logger());
+server.use(require('./lib/requestParser')());
+server.use(require('./lib/imageFetcher')());
 
 server.listen(args.port);
 

@@ -1,0 +1,12 @@
+{
+    "processPool": {
+        "workers": 10
+    },
+    "imageFetcher": {
+        "acceptedContentTypes": [
+            "image/jpeg",
+            "image/png",
+            "image/gif"
+        ]
+    }
+}
