@@ -1,0 +1,11 @@
+{
+    "imageFetcher": {
+        /*
+         * Remember to escape backslashes in RegExps as \\ in JSON files
+         * or else the config parser will fail.
+         */
+        "urlWhitelist": {
+            "flickr": "^.+\\.staticflickr\\.com\/.+"
+        }
+    }
+}

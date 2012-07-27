@@ -1,8 +1,10 @@
 {
     "processPool": {
-        "workers": 10
+        "maxWorkers": 10
     },
     "imageFetcher": {
+        "urlWhitelist": {
+        },
         "acceptedContentTypes": [
             "image/jpeg",
             "image/png",
