@@ -15,6 +15,8 @@ if ("help" in args && args.help)
     process.exit();
 }
 
+require('./lib/preparations');
+
 var connect = require('connect');
 
 var server = connect();
