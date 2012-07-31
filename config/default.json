@@ -1,4 +1,8 @@
 {
+    "throttle" : {
+        "threshhold": 10, //requests per second
+        "limit": 100 //requests before throttling kicks in
+    },
     "processPool": {
         "maxWorkers": 10
     },
@@ -13,12 +17,13 @@
         "defaultOutputMime": "image/jpeg",
         "cache": {
             "basePath": "./cache/",
-            "cacheTime": 20 //seconds
+            "cacheTime": 300 //seconds
         }
     },
     "demoPage": {
         "image": "http://farm9.staticflickr.com/8429/7528835604_361157057f_k.jpg",
         "conversions": [
+            {"width": 50},
             {"width": 100, "height":100},
             {"width": 200, "height":200},
             {"height":400},

@@ -20,7 +20,7 @@ require('./lib/preparations');
 var connect = require('connect');
 
 var server = connect();
-//server.use(require('connect-throttle')());
+server.use(require('connect-throttle')(require('config').throttle));
 server.use(connect.logger());
 server.use(require('./lib/demoPage')());
 server.use(require('./lib/requestParser')());
