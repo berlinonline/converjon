@@ -12,7 +12,7 @@
         ],
         "defaultOutputMime": "image/jpeg",
         "cache": {
-            "basePath": ".",
+            "basePath": "./cache/",
             "cacheTime": 20 //seconds
         }
     },
