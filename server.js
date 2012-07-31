@@ -20,6 +20,7 @@ var connect = require('connect');
 var server = connect();
 //server.use(require('connect-throttle')());
 server.use(connect.logger());
+server.use(require('./lib/demoPage')());
 server.use(require('./lib/requestParser')());
 server.use(require('./lib/urlChecker')());
 server.use(require('./lib/imageFetcher')());

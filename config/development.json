@@ -6,6 +6,9 @@
          */
         "urlWhitelist": {
             "flickr": "^.+\\.staticflickr\\.com\/.+"
+        },
+        "cache": {
+            "basePath": "/Users/lweidauer/Desktop/tmp/"
         }
     }
 }

@@ -9,6 +9,21 @@
             "image/jpeg",
             "image/png",
             "image/gif"
+        ],
+        "defaultOutputMime": "image/jpeg",
+        "cache": {
+            "basePath": ".",
+            "cacheTime": 20 //seconds
+        }
+    },
+    "demoPage": {
+        "image": "http://farm9.staticflickr.com/8429/7528835604_361157057f_k.jpg",
+        "conversions": [
+            {"width": 100, "height":100},
+            {"width": 200, "height":200},
+            {"height":400},
+            {"width": 600},
+            {"width": 800}
         ]
     }
 }
