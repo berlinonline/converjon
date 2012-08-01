@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "connect": ">=2.4.0",
-    "argsparser": ">=0.0.6",
     "config": ">=0.4.15",
     "connect-bouncer": "0.1.0"
   },
