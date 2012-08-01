@@ -9,13 +9,14 @@
     "url": "git://github.com/lnwdr/converjon.git"
   },
   "dependencies": {
-    "connect": ">=2.4.0",
-    "config": ">=0.4.15",
-    "connect-bouncer": "0.1.0"
+    "cli-color": "0.1.x",
+    "connect": "2.4.x",
+    "config": "0.4.x",
+    "connect-bouncer": "0.1.x"
   },
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
-    "node": "*"
+    "node": "0.8.x"
   }
 }
