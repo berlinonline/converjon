@@ -10,6 +10,9 @@
     "processPool": {
         "maxWorkers": 10
     },
+    "imageConverter": {
+    
+    },
     "imageFetcher": {
         "urlWhitelist": {
         },
