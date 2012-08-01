@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+var config = require('config');
+
 process.env.NODE_CONFIG_DIR = __dirname + '/config';
 
 var applyDefaults = require('./defaults');
@@ -21,7 +23,7 @@ var connect = require('connect');
 
 var server = connect();
 server.use(require('connect-bouncer')(require('config').bouncer));
-server.use(connect.logger());
+if (config.logging) server.use(connect.logger());
 server.use(require('./lib/demoPage')());
 server.use(require('./lib/requestParser')());
 server.use(require('./lib/urlChecker')());
