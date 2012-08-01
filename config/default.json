@@ -21,14 +21,16 @@
         }
     },
     "demoPage": {
-        "image": "http://farm9.staticflickr.com/8429/7528835604_361157057f_k.jpg",
+        "image": "http://farm9.staticflickr.com/8429/7528835604_81fd45d69a_o.jpg",
         "conversions": [
-            {"width": 50},
-            {"width": 100, "height":100},
-            {"width": 200, "height":200},
-            {"height":400},
-            {"width": 600},
-            {"width": 800}
+            {"width": 130, "height": 300},
+            {"width": 170, "height":300},
+            {"width": 215, "height":300},
+            {"width": 485, "height":300},
+
+            {"width": 400, "height": 370},
+            {"width": 600, "height": 370},
+            {"width": 1000}
         ]
     }
 }
