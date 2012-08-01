@@ -7,7 +7,7 @@ Dependencies (apart from node modules)
 -
   * ImageMagick
     * use the Q8 version to save memory
-    * homever, Q16 (the default one) is required to support PNG image output
+    * however, Q16 (the default one) is required to support PNG image output
   * node.js
   * NPM
 
