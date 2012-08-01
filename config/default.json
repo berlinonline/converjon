@@ -1,5 +1,5 @@
 {
-    "throttle" : {
+    "bouncer" : {
         "threshhold": 10, //requests per second
         "limit": 100 //requests before throttling kicks in
     },
