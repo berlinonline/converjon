@@ -24,13 +24,13 @@
     "demoPage": {
         "image": "http://farm9.staticflickr.com/8429/7528835604_81fd45d69a_o.jpg",
         "conversions": [
-            {"width": 130, "height": 300},
-            {"width": 170, "height":300},
-            {"width": 215, "height":300},
-            {"width": 485, "height":300},
+            {"width": 130, "height": 300, "quality": 5},
+            {"width": 170, "height": 300, "quality": 10},
+            {"width": 215, "height": 300, "quality": 20},
+            {"width": 485, "height": 300, "quality": 30},
 
-            {"width": 400, "height": 370},
-            {"width": 600, "height": 370},
+            {"width": 400, "height": 370, "quality": 70},
+            {"width": 600, "height": 370, "quality": 90},
             {"width": 1000}
         ]
     }
