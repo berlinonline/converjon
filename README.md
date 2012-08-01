@@ -15,4 +15,4 @@ Installation
   * download or clone the repository
   * change into the directory of the repository
   * `npm install -d`
-  * `node server.js`
+  * start with `node server.js` (preferrably with nodemon)
