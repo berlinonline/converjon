@@ -8,7 +8,12 @@
         "limit": 100 //requests before throttling kicks in
     },
     "processPool": {
-        "maxWorkers": 10
+        "convert": {
+            "maxWorkers": 10
+        },
+        "identify": {
+            "maxWorkers": 10
+        }
     },
     "imageConverter": {
     
