@@ -2,7 +2,7 @@
     "server": {
         "port": 8000
     },
-    "logging": true,
+    "logging": false,
     "imageFetcher": {
         /*
          * Remember to escape backslashes in RegExps as \\ in JSON files
