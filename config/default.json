@@ -36,7 +36,7 @@
         }
     },
     "demoPage": {
-        "image": "http://farm9.staticflickr.com/8429/7528835604_81fd45d69a_o.jpg",
+        "image": "http://farm9.staticflickr.com/8429/7528835604_81fd45d69a_o.jpg?foo=123",
         "conversions": [
             {"width": 130, "height": 300, "quality": 5},
             {"width": 170, "height": 300, "quality": 10},
