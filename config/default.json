@@ -42,6 +42,7 @@
             {"width": 485, "height": 300, "quality": 30},
 
             {"width": 1000, "height": 200, "quality": 70},
+            {"width": 1000, "height": 100, "quality": 70},
 
             {"width": 400, "height": 370},
             {"width": 600, "height": 370, "mime": "image/gif", "colors": 2},
