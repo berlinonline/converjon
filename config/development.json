@@ -13,5 +13,8 @@
         },
         "cache": {
         }
+    },
+    "imageConverter": {
+        "paddingColor": "#FFBBBB" //imagemagicks default shade of gray for borders
     }
 }

@@ -16,7 +16,8 @@
         }
     },
     "imageConverter": {
-        "aoiName": "midas_aoi"
+        "aoiName": "midas_aoi",
+        "paddingColor": "#DFDFDF" //imagemagicks default shade of gray for borders
     },
     "imageFetcher": {
         "urlWhitelist": {
