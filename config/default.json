@@ -29,7 +29,8 @@
         ],
         "defaultOutputMime": "image/jpeg",
         "cache": {
-            "basePath": "./cache/",
+            "sourceBasePath": "./cache/source/",
+            "targetBasePath": "./cache/target/",
             "sourceCacheTime": 3600, //seconds
             "outputCacheTime": 300 //seconds
         }
