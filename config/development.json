@@ -1,7 +1,4 @@
 {
-    "server": {
-        "port": 8000
-    },
     "logging": false,
     "imageFetcher": {
         /*
@@ -9,7 +6,9 @@
          * or else the config parser will fail.
          */
         "urlWhitelist": {
-            "flickr": "^.+\\.staticflickr\\.com\/.+"
+            "localhost": "^.+:\/\/localhost",
+            "127.0.0.1": "^.+:\/\/127.0.0.1",
+            "::1": "^.+:\/\/::1"
         },
         "cache": {
         }

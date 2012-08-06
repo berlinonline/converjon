@@ -1,8 +1,8 @@
 {
     "server": {
-        "port": 80
+        "port": 8000
     },
-    "logging": false,
+    "logging": true,
     "bouncer" : {
         "threshhold": 10, //requests per second
         "limit": 100 //requests before throttling kicks in
@@ -36,7 +36,7 @@
         }
     },
     "demoPage": {
-        "image": "http://farm9.staticflickr.com/8429/7528835604_81fd45d69a_o.jpg?foo=123",
+        "image": "http://localhost:9876/test_image_sparrow.jpg",
         "conversions": [
             {"width": 130, "height": 300, "quality": 5},
             {"width": 170, "height": 300, "quality": 10},
@@ -51,5 +51,8 @@
             {"width": 1000},
             {"width": 1000, "quality": 5}
         ]
+    },
+    "testServer": {
+        "port": 9876
     }
 }
