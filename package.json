@@ -12,11 +12,16 @@
     "cli-color": "0.1.x",
     "connect": "2.4.x",
     "config": "0.4.x",
-    "connect-bouncer": "0.1.x"
+    "connect-bouncer": "0.1.x",
+    "vows": "0.6.x"
   },
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
     "node": "0.8.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "./node_modules/vows/bin/vows ./test/*"
   }
 }

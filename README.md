@@ -9,12 +9,17 @@ Dependencies (apart from node modules)
     * use the Q8 version to save memory
     * however, Q16 (the default one) is required to support PNG image output
   * node.js
-  * NPM
+  * NPM (usually included in node.js)
 
 Installation
 -
 
   * download or clone the repository
   * change into the directory of the repository
-  * `npm install -d`
-  * start with `node server.js` (preferrably with nodemon)
+  * `npm install -d` to install the dependency libs
+  * start with `npm start`
+
+Testing
+-
+  * Execute tests with `npm test`
+
