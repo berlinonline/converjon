@@ -11,13 +11,16 @@
         "convert": {
             "maxWorkers": 10
         },
-        "identify": {
+        "analyze": {
             "maxWorkers": 10
         }
     },
     "imageConverter": {
         "aoiName": "midas_aoi",
         "paddingColor": "#DFDFDF" //imagemagicks default shade of gray for borders
+    },
+    "imageAnalyzer": {
+        "aoiName": "AOI"
     },
     "imageFetcher": {
         "urlWhitelist": {

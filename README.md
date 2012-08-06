@@ -8,6 +8,7 @@ Dependencies (apart from node modules)
   * ImageMagick
     * use the Q8 version to save memory
     * however, Q16 (the default one) is required to support PNG image output
+  * ExifTool
   * node.js
   * NPM (usually included in node.js)
 
