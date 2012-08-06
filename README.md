@@ -18,6 +18,7 @@ Installation
   * download or clone the repository
   * change into the directory of the repository
   * `npm install -d` to install the dependency libs
+  * set you environment (production/development/testing) via the NODE_ENV environment variable (defaults to "production)
   * start with `npm start`
 
 Testing
