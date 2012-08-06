@@ -23,3 +23,6 @@ Testing
 -
   * Execute tests with `npm test`
 
+Copyright notes
+-
+The "sparrow" testing image is © Leon Weidauer, permission to use it for testing is granted.
