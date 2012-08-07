@@ -2,7 +2,7 @@
 
 process.env.NODE_CONFIG_DIR = __dirname + '/config';
 if (!process.env.NODE_ENV) {
-    process.env.NODE_ENV = 'production';
+    process.env.NODE_ENV = 'development';
 }
 
 var config = require('config');
