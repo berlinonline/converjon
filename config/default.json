@@ -46,7 +46,7 @@
         }
     },
     "demoPage": {
-        "image": "http://localhost:9876/test_image_sparrow.jpg",
+        "image": "http://localhost:%%PORT%%/test_image_sparrow.jpg",
         "conversions": [
             {"width": 130, "height": 300, "quality": 5},
             {"width": 170, "height": 300, "quality": 10},
@@ -63,6 +63,6 @@
         ]
     },
     "testServer": {
-        "port": 9876
+        "port": 8001
     }
 }

@@ -1,3 +1,9 @@
 {
+    "server": {
+        "port": 8002
+    },
+    "testServer": {
+        "port": 8003
+    },
     "logging": false
 }
