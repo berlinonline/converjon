@@ -15,6 +15,8 @@ var server = connect();
 server.use(require('connect-bouncer')(require('config').bouncer));
 if (config.logging) server.use(connect.logger());
 
+server.use(require('./lib/statusPage')());
+
 //if not in production, also start the test source server and enable the demo page.
 if (process.env.NODE_ENV !== 'production') {
     server.use(require('./lib/demoPage')());
