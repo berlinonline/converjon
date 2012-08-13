@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+process.chdir(__dirname);
+
 process.env.NODE_CONFIG_DIR = __dirname + '/config';
 if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = 'development';
