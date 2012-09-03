@@ -51,6 +51,20 @@ vows.describe("Successful requests").addBatch({
         }
     }
 }).addBatch({
+    "when mime tyoe of the requested url is not invalid": {
+        topic: function() {
+            http.request({
+                hostname: 'localhost',
+                port: config.server.port,
+                path: '/?url=http://localhost:' + config.testServer.port + '/invalid_mime_type',
+                method: 'GET'
+            }, this.callback).end();
+        },
+        "the response code should be 422": function(res, err) {
+            assert.equal(res.statusCode, 422);
+        }
+    }
+}).addBatch({
     "when the metadata fo the source file is broken": {
         topic: function() {
             http.request({

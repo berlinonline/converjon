@@ -7,15 +7,23 @@ var connect = require('connect');
 
 var server = connect();
 server.use(function(req,res,next){
-    if (req.url.indexOf('url_with_wrong_mime_type') >= 0) {
+    if (req.url == '/url_with_wrong_mime_type') {
         res.setHeader('Content-Type', 'text/plain');
         res.end();
-    } else if (req.url.indexOf('broken_image') >= 0) {
+    } else if (req.url == '/broken_file.jpg') {
         res.on('header', function() {
             res.setHeader('Content-Type', 'image/jpeg');
         });
         next();
+    } else if (req.url == '/invalid_mime_type') {
+        res.on('header', function() {
+            res.setHeader('Content-Type', 'image/;');
+        });
+        next();
     } else {
+        res.on('header', function(){
+            res.setHeader('Content-Type', res._headers['content-type'] + '; charset=binary;');
+        });
         next();
     }
 });
