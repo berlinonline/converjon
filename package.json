@@ -2,7 +2,7 @@
   "author": "Leon Weidauer <leon.weidauer@gmail.com>",
   "name": "converjon",
   "description": "An on-the-fly image conversion service",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "main": "server.js",
   "repository": {
     "type": "git",
