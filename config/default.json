@@ -15,6 +15,9 @@
             "maxWorkers": 10
         }
     },
+    "worker": {
+        "maxRunTime": 20000 //this is actual process runtime, not waiting time.
+    },
     "imageConverter": {
         "aoiName": "midas_aoi",
         "paddingColor": "#DFDFDF" //imagemagicks default shade of gray for borders
