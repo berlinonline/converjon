@@ -25,7 +25,7 @@
     "imageAnalyzer": {
         "aoiName": "AOI"
     },
-    "imageFetcher": {
+    "urlChecker": {
         /*
          * Remember to escape backslashes in RegExps as \\ in JSON files
          * or else the config parser will fail.
@@ -34,19 +34,26 @@
             "localhost": "^.+:\/\/localhost",
             "127.0.0.1": "^.+:\/\/127.0.0.1",
             "::1": "^.+:\/\/::1"
-        },
+        }
+    },
+    "targetStore": {
+        "basePath": "./cache/target/",
+        "maxAge": 10
+    },
+    "sourceStore": {
+        "basePath": "./cache/source/",
+        "maxAge": 300
+    },
+    "downloader" : {
+        "tempPath" : "./cache/temp/",
         "acceptedContentTypes": [
             "image/jpeg",
             "image/png",
             "image/gif"
-        ],
-        "defaultOutputMime": "image/jpeg",
-        "cache": {
-            "sourceBasePath": "./cache/source/",
-            "targetBasePath": "./cache/target/",
-            "sourceCacheTime": 3600, //seconds
-            "outputCacheTime": 300 //seconds
-        }
+        ]
+    },
+    "imageFetcher": {
+        "defaultOutputMime": "image/jpeg"
     },
     "demoPage": {
         "image": "http://localhost:%%PORT%%/test_image_sparrow.jpg",

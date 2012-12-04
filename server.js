@@ -27,7 +27,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 server.use(require('./lib/requestParser')());
 server.use(require('./lib/urlChecker')());
-server.use(require('./lib/imageFetcher')());
+server.use(require('./lib/targetStore')());
 
 server.listen(config.server.port);
 

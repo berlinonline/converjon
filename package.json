@@ -13,7 +13,9 @@
     "connect": "2.4.x",
     "config": "0.4.x",
     "connect-bouncer": "0.1.x",
-    "vows": "0.6.x"
+    "vows": "0.6.x",
+    "send": "0.1.x",
+    "mv": "0.0.3"
   },
   "devDependencies": {},
   "optionalDependencies": {},

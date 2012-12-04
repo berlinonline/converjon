@@ -1,10 +1,15 @@
 {
-    "logging": false,
-    "imageFetcher": {
-        "cache": {
-        }
-    },
+    "logging": true,
     "imageConverter": {
         "paddingColor": "#FFBBBB" //imagemagicks default shade of gray for borders
+    },
+    "urlChecker": {
+        /*
+         * Remember to escape backslashes in RegExps as \\ in JSON files
+         * or else the config parser will fail.
+         */
+        "urlWhitelist": {
+            "all": ".*"
+        }
     }
 }
