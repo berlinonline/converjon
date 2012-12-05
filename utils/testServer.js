@@ -19,6 +19,7 @@ server.use(function(req,res,next){
         res.on('header', function() {
             res.setHeader('Content-Type', 'image/;');
         });
+        req.url = '/test_image_sparrow.jpg';
         next();
     } else {
         res.on('header', function(){

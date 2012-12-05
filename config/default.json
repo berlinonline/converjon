@@ -2,7 +2,11 @@
     "server": {
         "port": 8000
     },
-    "logging": true,
+    "logging": {
+        "access": true,
+        "debug": false,
+        "error": true
+    },
     "bouncer" : {
         "threshhold": 10, //requests per second
         "limit": 100 //requests before throttling kicks in

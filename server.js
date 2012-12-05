@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+var fs = require('fs');
 
 process.chdir(__dirname);
 
@@ -15,7 +16,20 @@ var connect = require('connect');
 
 var server = connect();
 //server.use(require('connect-bouncer')(require('config').bouncer));
-if (config.logging) server.use(connect.logger());
+if (config.logging.access) {
+    var loggerStream;
+    if ("accessLog" in config.logging) {
+        loggerStream = fs.createWriteStream(config.logging.accessLog, {
+            flags: 'a',
+            encoding: 'utf8',
+            mode: 0666
+        })
+    } else {
+        loggerStream = process.stdout;
+    }
+
+    server.use(connect.logger({stream: loggerStream}));
+}
 
 server.use(require('./lib/statusPage')());
 

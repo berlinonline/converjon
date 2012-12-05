@@ -51,7 +51,7 @@ vows.describe("Successful requests").addBatch({
         }
     }
 }).addBatch({
-    "when mime tyoe of the requested url is not invalid": {
+    "when mime tyoe of the requested url is invalid": {
         topic: function() {
             http.request({
                 hostname: 'localhost',
@@ -61,6 +61,9 @@ vows.describe("Successful requests").addBatch({
             }, this.callback).end();
         },
         "the response code should be 422": function(res, err) {
+            res.on('data', function(data) {
+                console.log(data.toString());
+            });
             assert.equal(res.statusCode, 422);
         }
     }

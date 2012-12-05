@@ -5,5 +5,9 @@
     "testServer": {
         "port": 8003
     },
-    "logging": false
+    "logging": {
+        "access": false,
+        "debug": false,
+        "error": false
+    }
 }

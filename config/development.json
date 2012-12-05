@@ -1,5 +1,9 @@
 {
-    "logging": false,
+    "logging": {
+        "access": false,
+        "debug": true,
+        "error": true
+    },
     "converter": {
         "paddingColor": "#FFBBBB" //imagemagicks default shade of gray for borders
     },
