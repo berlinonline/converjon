@@ -15,7 +15,8 @@
     "connect-bouncer": "0.1.x",
     "vows": "0.6.x",
     "send": "0.1.x",
-    "mv": "0.0.3"
+    "mv": "0.0.3",
+    "mime": "1.2.6"
   },
   "devDependencies": {},
   "optionalDependencies": {},
