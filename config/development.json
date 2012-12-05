@@ -1,6 +1,6 @@
 {
-    "logging": true,
-    "imageConverter": {
+    "logging": false,
+    "converter": {
         "paddingColor": "#FFBBBB" //imagemagicks default shade of gray for borders
     },
     "urlChecker": {

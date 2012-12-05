@@ -14,7 +14,7 @@ require('./lib/preparations');
 var connect = require('connect');
 
 var server = connect();
-server.use(require('connect-bouncer')(require('config').bouncer));
+//server.use(require('connect-bouncer')(require('config').bouncer));
 if (config.logging) server.use(connect.logger());
 
 server.use(require('./lib/statusPage')());
