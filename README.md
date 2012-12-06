@@ -21,6 +21,19 @@ Installation
   * set your environment (production/development/testing) via the `NODE_ENV` environment variable (defaults to "development")
   * start with `npm start`
 
+Configuration
+-
+
+###Server
+ * `port`: port for the server to listen on
+
+###Logging
+ * `errorLog`: Absolute path to error log file.
+ * `accessLog`: Absolute path to access log file.
+ * `error` (boolean): wether to log errors at all.
+ * `debug` (boolean): wether to log debug output (this may be A LOT)
+ * `access` (boolean): wether to log client requests (Apache style)
+
 Usage
 -
 
