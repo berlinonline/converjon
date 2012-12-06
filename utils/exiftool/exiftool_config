@@ -2,7 +2,7 @@
     'Image::ExifTool::IPTC::ApplicationRecord' => {
         240 => {
             Name => 'AOI',
-            Format => 'string[0,32]',
+            Format => 'string[0,128]',
         },
     },
 );
