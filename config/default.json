@@ -17,7 +17,9 @@
         "paddingColor": "#DFDFDF" //imagemagicks default shade of gray for borders
     },
     "process": {
-        "maxRunningProcesses": 20
+        "maxRunningProcesses": 20,
+        "maxBufferSize": 204800, // == 200KB
+        "timeout": 30000 //30 secs
     },
     "analyzer": {
         "aoiName": "AOI"
