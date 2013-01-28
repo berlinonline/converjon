@@ -62,7 +62,6 @@ vows.describe("Successful requests").addBatch({
         },
         "the response code should be 422": function(res, err) {
             res.on('data', function(data) {
-                console.log(data.toString());
             });
             assert.equal(res.statusCode, 422);
         }
