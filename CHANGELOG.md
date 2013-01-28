@@ -1,3 +1,7 @@
+1.5.0
+=
+ * added fetching images from HTTPS sources
+
 1.4.2
 =
  * fix incomplete/corrupt stdout data from exiftool that resulted in "Error during image analysis" failures.
