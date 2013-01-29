@@ -21,6 +21,8 @@ Installation
   * set your environment (production/development/testing) via the `NODE_ENV` environment variable (defaults to "development")
   * start with `npm start`
 
+  There are some optional OS specific start/stop scripts under `utils/os_helpers/` which you can also use.
+
 Configuration
 -
 
