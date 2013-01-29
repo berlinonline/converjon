@@ -16,7 +16,8 @@
     "vows": "0.7.x",
     "send": "0.1.x",
     "mv": "0.0.4",
-    "mime": "1.2.9"
+    "mime": "1.2.9",
+    "clone": "0.1.x"
   },
   "devDependencies": {},
   "optionalDependencies": {},
