@@ -1,6 +1,9 @@
 1.5.0
 =
  * added fetching images from HTTPS sources
+ * added configurable constraints
+ * added Etag support
+ * added stats to status page
 
 1.4.2
 =
