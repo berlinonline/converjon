@@ -1,11 +1,29 @@
 {
     "logging": {
         "access": false,
-        "debug": true,
+        "debug": false,
         "error": true
     },
     "converter": {
         "paddingColor": "#FFBBBB" //imagemagicks default shade of gray for borders
+    },
+    "constraints": {
+        "global": {
+            "quality": {
+                "jpeg_quality": {
+                    "min": 10,
+                    "max": 95
+                }
+            }
+        },
+        "url": {
+            "^.+:\/\/localhost": { //global constraint can eb overridden for individual URLs
+                "quality": {
+                    "max": 70,
+                    "min": 5
+                }
+            }
+        }
     },
     "urlChecker": {
         /*

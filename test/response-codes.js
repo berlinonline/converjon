@@ -94,5 +94,19 @@ vows.describe("Successful requests").addBatch({
             assert.equal(res.statusCode, 400);
         }
     }
+}).addBatch({
+    "when a query value exceeds the configured constraints": {
+        topic: function() {
+            http.request({
+                hostname: 'localhost',
+                port: config.server.port,
+                path: '/?url=http://localhost:' + config.testServer.port + '/test_image_sparrow.jpg&width=10000',
+                method: 'GET'
+            }, this.callback).end();
+        },
+        "the response code should be 400": function(res, err) {
+            assert.equal(res.statusCode, 400);
+        }
+    }
 }).export(module);
 

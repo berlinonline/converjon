@@ -7,7 +7,7 @@
         "debug": false,
         "error": true
     },
-    "bouncer" : {
+    "bouncer": {
         "threshhold": 10, //requests per second
         "limit": 100 //requests before throttling kicks in
     },
@@ -15,6 +15,34 @@
         "defaultMimeType": "image/jpeg",
         "aoiName": "midas_aoi",
         "paddingColor": "#DFDFDF" //imagemagicks default shade of gray for borders
+    },
+    "constraints": {
+        "global": {
+            "width": {
+                "min": 1,
+                "max": 2000
+            },
+            "height": {
+                "min": 1,
+                "max": 2000
+            },
+            "quality": {
+                "min": 1,
+                "max": 95
+            },
+            "colors": {
+                "min": 2,
+                "max": 256
+            }
+        },
+        "url": {
+            "^.+:\/\/localhost": {
+                "quality": {
+                    "max": 100,
+                    "min": 20
+                }
+            }
+        }
     },
     "process": {
         "maxRunningProcesses": 20,
