@@ -6,7 +6,7 @@
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/lnwdr/converjon.git"
+    "url": "git://github.com/berlinonline/converjon.git"
   },
   "dependencies": {
     "cli-color": "0.2.x",
