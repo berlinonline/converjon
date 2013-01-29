@@ -36,6 +36,56 @@ Configuration
  * `debug` (boolean): wether to log debug output (this may be A LOT)
  * `access` (boolean): wether to log client requests (Apache style)
 
+###Constraints
+
+Image requests can be constrained within configurable boundaries. This can be done globally and for regular expressions matching source URLs. If a request exceeds these limits, an HTTP 400 is returned with a notice, what went wrong.
+
+Currently there are 4 possible constraints:
+
+  * width
+  * height
+  * quality (meaning JPEG quality)
+  * color (meaning GIF color depth)
+
+Each of these values can have a `max` and a `min` property. Both are optional. You can also specify just one boundary.
+
+Example from `config/default.json`:
+
+    {
+    //...
+        "constraints": {
+            "global": {
+                "width": {
+                    "min": 1,
+                    "max": 2000
+                },
+                "height": {
+                    "min": 1,
+                    "max": 2000
+                },
+                "quality": {
+                    "min": 1,
+                    "max": 95
+                },
+                "colors": {
+                    "min": 2,
+                    "max": 256
+                }
+            },
+            "url": {
+                "^.+:\/\/localhost": {
+                    "quality": {
+                        "max": 100,
+                        "min": 20
+                    }
+                }
+            }
+        }
+    // ...
+    }
+
+This example includes some global contraints that apply to every request and some overridden contraints for request with aource URLs from localhost.
+
 Usage
 -
 
