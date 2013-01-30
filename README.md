@@ -15,13 +15,18 @@ Dependencies (apart from node modules)
 Installation
 -
 
+You can install Converjon from NPM with `npm install converjon` or you can:
+
   * download or clone the repository
   * change into the directory of the repository
   * `npm install -d` to install the dependency libs
+
+After installation, you may need to adjust some things:
+
   * set your environment (production/development/testing) via the `NODE_ENV` environment variable (defaults to "development")
   * start with `npm start`
 
-  There are some optional OS specific start/stop scripts under `utils/os_helpers/` which you can also use.
+There are some optional OS specific start/stop scripts under `utils/os_helpers/` which you can also use.
 
 Configuration
 -
