@@ -1,0 +1,43 @@
+/* colors */
+/* shadows */
+.edgeShadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.masthead {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4em;
+  width: 890px;
+  padding-left: 3em;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.masthead h1,
+.masthead nav {
+  float: left;
+  margin: 0.4em 0;
+  font-size: 2.5em;
+  line-height: 1em;
+  font-weight: 700;
+}
+.masthead nav ul {
+  padding: 0;
+  margin: 0;
+  margin-left: 1em;
+  list-style: none;
+}
+.masthead nav ul li {
+  float: left;
+  margin-left: 0.5em;
+}
+.masthead nav ul a,
+.masthead h1 a {
+  color: #ffffff;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
+}
+.masthead nav ul a:hover,
+.masthead h1 a:hover {
+  color: #444444;
+}

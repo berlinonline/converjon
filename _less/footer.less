@@ -1,0 +1,24 @@
+@import "variables.less";
+
+.page-footer {
+    clear: both;
+    font-size: 0.7em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+    text-align: right;
+
+    color: @dark;
+
+    .contact-link {
+        &:before {
+            content: " - ";
+        }
+    }
+
+    .creative-commons {
+        img {
+            transform: translate(0,0.4em);
+        }
+    }
+}

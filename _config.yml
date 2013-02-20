@@ -1,0 +1,42 @@
+title: Converjon
+baseurl: /
+url: http://berlinonline.github.com/converjon
+
+navigation:
+- link:
+  title: "Documentation"
+  url: "/docs/"
+
+author:
+  name: Leon Weidauer
+  url: http://github.com/lnwdr
+
+description: Converjon Image Service
+keywords:
+- images
+- image
+- conversion
+- imagemagick
+- nodejs
+- node
+- node.js
+- javascript
+- js
+
+license:
+  name: MIT
+  href: http://opensource.org/licenses/MIT
+
+paginate: 3
+
+source: "."
+destination: "./_site"
+
+future: false
+permalink: pretty
+markdown: rdiscount
+
+exclude:
+- README.md
+
+

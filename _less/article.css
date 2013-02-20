@@ -1,0 +1,19 @@
+/* colors */
+/* shadows */
+.edgeShadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.main article img {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border: 1em solid #ffffff;
+  box-sizing: border-box;
+}
+.main article footer {
+  margin-top: 2em;
+}
+.main article footer .FlattrButton {
+  margin-bottom: 2em;
+}

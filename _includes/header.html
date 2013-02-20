@@ -1,0 +1,18 @@
+<header class="masthead">
+<div class="title">
+    <h1>{{site.title}}</h1>
+</div>
+<nav>
+<ul class="nav">
+{% for p in site.navigation %}
+        {% if p.url == page.url %}
+            {% assign active = 'active' %}
+        {% else %}
+            {% assign active = '' %}
+        {% endif %}
+
+        <li class="{{ active }}"><a href="{{ p.url }}">{{ p.title }}</a></li>
+{% endfor %}
+</ul>
+</nav>
+</header>

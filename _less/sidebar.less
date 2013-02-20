@@ -1,0 +1,29 @@
+@import "variables.less";
+
+@leftPadding: 2em;
+
+.sidebar {
+    width: @sideBarWidth - @leftPadding;
+    float: left;
+
+    padding-top: 3em;
+
+    padding-left: @leftPadding;
+
+    nav {
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            color: @darker;
+
+            li {
+                line-height: 2em;
+
+                a {
+                    font-weight: @bold;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+@import "variables.less";
+
+.masthead {
+    position: relative;
+    height: @mastHeadHeight;
+    width: 100%;
+
+    background-color: @lightest;
+    .edgeShadow();
+    
+    .title, nav {
+        position: absolute;
+        top: 1em;
+        font-weight: 700;
+    }
+
+    h1, a {
+        font-size: 2.5em;
+        line-height: 1em;
+        color: @lightest;
+        text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+        margin:0;
+    }
+
+    .title {
+        left: 2em;
+    }
+
+    nav {
+        left: @sideBarWidth;
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            
+            li {
+                display: inline-block;
+                margin-right: 1em;
+
+                a {
+                    &:hover {
+                        color: @darker;
+                        text-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+}

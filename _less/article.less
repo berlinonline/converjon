@@ -1,0 +1,32 @@
+@import "variables.less";
+
+.main {
+    article {
+
+        &.teaser {
+            margin-top: 3em;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        img {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            .edgeShadow();
+            border: 1em solid @lightest;
+            box-sizing: border-box;
+        }
+
+        footer {
+            margin-top: 2em;
+
+            .FlattrButton {
+                margin-bottom: 2em;
+            }
+        }
+        
+    }
+}

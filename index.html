@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+{% for post in paginator.posts %}
+<article class="teaser">
+    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+    <p>{{ post.date|date: "%d.%m.%Y" }}</p>
+    {% if post.excerpt %}
+        {{ post.excerpt | markdownify }}
+        <p><a href="{{ post.url }}" class="more-link"><span class="readmore">Weiterlesen</span></a></p>
+    {% else %}
+        {{ post.content | mark_excerpt }}
+    {% endif %}
+</article>
+{% endfor %}
+
+
+<!-- Pagination links -->
+<footer class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{% if paginator.previous_page == 1 %}/{%else%}/page{{paginator.previous_page}}{%endif%}" class="previous">Neuere Artikel</a>
+  {% endif %}
+  <span class="page_number ">Seite: {{paginator.page}} von {{paginator.total_pages}}</span>
+  {% if paginator.next_page %}
+    <a href="/page{{paginator.next_page}}" class="next ">Ältere Artikel</a>
+  {% endif %}
+</footer>

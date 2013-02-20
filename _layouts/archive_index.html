@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+{% for post in paginator.posts %}
+  {% include post.html %}
+{% endfor %}
+
+<p class="navigation">
+  {% if paginator.next_page %}
+    <span class="alignleft"><a href="/archives/{{ page.year}}/{{ page.month }}/page/{{ paginator.next_page }}/">« Previous Entries</a></span>
+  {% endif %}
+
+  {% if paginator.previous_page %}
+    {% if paginator.previous_page > 1 %}
+      <span class="alignright"><a href="/archives/{{ page.year}}/{{ page.month }}/page/{{ paginator.previous_page }}/">Next Entries »</a></span>
+    {% else %}
+      <span class="alignright"><a href="/archives/{{ page.year}}/{{ page.month }}/">Next Entries »</a></span>
+    {% endif %}
+  {% endif %}
+</p>

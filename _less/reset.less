@@ -1,0 +1,22 @@
+@import "variables.less";
+
+html {
+    font-size: @baseFontSize;
+    line-height: 1.5em;
+}
+
+a {
+    color: @linkColor;
+    text-decoration: none;
+
+    transition: color 0.1s linear;
+
+    &:visited {
+        color: @linkColor;
+    }
+
+    &:hover {
+        color: @dark;
+    }
+}
+

@@ -1,0 +1,14 @@
+/* colors */
+/* shadows */
+.edgeShadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.pagination {
+  margin-top: 3em;
+}
+.pagination .next:before {
+  content: " - ";
+}
+.pagination .previous:after {
+  content: " - ";
+}

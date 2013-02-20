@@ -1,0 +1,27 @@
+/* colors */
+/* shadows */
+.edgeShadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.sidebar {
+  position: absolute;
+  width: 12em;
+  top: 4em;
+  left: 0;
+  padding-top: 4em;
+}
+.sidebar > * {
+  margin-left: 4em;
+}
+.sidebar nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  color: #444444;
+}
+.sidebar nav ul li {
+  line-height: 1.5em;
+}
+.sidebar nav ul li a {
+  font-weight: 700;
+}
