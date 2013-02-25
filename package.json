@@ -1,7 +1,7 @@
 {
   "name": "converjon",
   "description": "An on-the-fly image conversion service",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "maintainers": [
     {
         "name": "Leon Weidauer",

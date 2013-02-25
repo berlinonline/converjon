@@ -1,3 +1,8 @@
+1.5.1
+=
+ * Fixed a bug that caused subsequent requests to once failed downloads to timeout
+ * some code cleanup
+
 1.5.0
 =
  * added fetching images from HTTPS sources
