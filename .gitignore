@@ -16,3 +16,4 @@ npm-debug.log
 .DS_Store
 
 cache
+status.json
