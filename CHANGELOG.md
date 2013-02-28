@@ -1,4 +1,5 @@
 1.7.0
+=
  * added hostname to status info
 
 1.6.1
