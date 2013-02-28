@@ -171,7 +171,7 @@ The URL /status leads to a summary of Converjons current state. Example output:
       "uptime": 19
     }
 
-The `alive` value will be `false`, if there are processes waiting and the last process finished more than `config.process.maxWaitingTime` seconds ago.
+The `alive` value will be `false`, if there are processes waiting and the last process finished more than `config.process.maxWaitingTime` milliseconds ago.
 
 Testing
 -
