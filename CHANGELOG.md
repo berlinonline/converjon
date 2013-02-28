@@ -1,3 +1,6 @@
+1.7.0
+ * added hostname to status info
+
 1.6.1
 =
  * added no-cache header to /status page
