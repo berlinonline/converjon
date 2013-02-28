@@ -137,6 +137,42 @@ This parameter is ignored, if the requested mime type is not `image/jpeg`.
 
 The `colors` parameter sets the number of colors for GIF compression. It ranges from 2 to 256 (integer).
 
+Status Page
+-
+
+The URL /status leads to a summary of Converjons current state. Example output:
+
+    {
+      "alive": true,
+      "version": "1.6.0",
+      "stats": {
+        "requests": {
+          "successful": 0,
+          "failed": 0
+        },
+        "downloads": {
+          "successful": 0,
+          "failed": 0
+        },
+        "analyzers": {
+          "successful": 0,
+          "failed": 0
+        },
+        "converters": {
+          "successful": 0,
+          "failed": 0
+        },
+        "processes": {
+          "waiting": 0,
+          "running": 0,
+          "lastEnd": null
+        }
+      },
+      "uptime": 19
+    }
+
+The `alive` value will be `false`, if there are processes waiting and the last process finished more than `config.process.maxWaitingTime` seconds ago.
+
 Testing
 -
   * Execute tests with `npm test`
