@@ -45,7 +45,7 @@
         }
     },
     "process": {
-        "maxRunningProcesses": 2,
+        "maxRunningProcesses": 20,
         "maxBufferSize": 204800, // == 200KB
         "timeout": 10000, //10 secs
         "maxWaitingTime": 30000 //30 secs, if there are processes waiting and the last process ended more that X seconds ago, the "ready" URL will report that the server is not available (with an HTTP 50X)
@@ -101,6 +101,10 @@
             ]
         }
 
+    },
+    "statusPage": {
+        "visible": true,
+        "localFile": "./status.json"
     },
     "testServer": {
         "port": 8001
