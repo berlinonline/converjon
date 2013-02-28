@@ -1,3 +1,7 @@
+1.6.1
+=
+ * added no-cache header to /status page
+
 1.6.0
 =
  * Fixed a bug that caused the process waiting counter to be incremented too soon which prevented processes from being started.
