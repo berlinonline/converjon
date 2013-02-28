@@ -1,3 +1,10 @@
+1.6.0
+=
+ * Fixed a bug that caused the process waiting counter to be incremented too soon which prevented processes from being started.
+ * added process stats to status page
+ * added actual "alive" value to status page (see README.md)
+ * status page will now return HTTP 503 if alive value is not true
+
 1.5.1
 =
  * Fixed a bug that caused subsequent requests to once failed downloads to timeout
