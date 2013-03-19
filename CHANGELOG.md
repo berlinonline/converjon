@@ -1,3 +1,8 @@
+1.6.2
+=
+ * fixed some missing error handlers
+ * added node 0.10.x to "engine" dependency
+
 1.6.1
 =
  * added no-cache header to /status page
