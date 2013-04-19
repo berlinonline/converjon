@@ -39,6 +39,6 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "./node_modules/vows/bin/vows ./test/*"
+    "test": "./node_modules/vows/bin/vows -v ./test/*"
   }
 }
