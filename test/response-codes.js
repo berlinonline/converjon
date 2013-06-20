@@ -8,6 +8,8 @@ var config = require('config');
 
 require("../server"); //start the server
 
+http.globalAgent.maxSockets = 100;
+
 vows.describe("Successful requests").addBatch({
     "when the requested URL is whitelisted": {
         topic: function() {
