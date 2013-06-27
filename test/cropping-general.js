@@ -4,7 +4,7 @@ var assert = require("assert");
 var Cropping = require("../lib/cropping");
 
 vows.describe("General cropping calculations").addBatch({
-    "when the aspect ration does not fit": {
+    "when the aspect ratio does not fit": {
         topic: function() {
             var cropping = new Cropping.CenteredCropping(1000, 500, 100, 100);
             return cropping.isNeeded();
@@ -22,5 +22,4 @@ vows.describe("General cropping calculations").addBatch({
             assert.equal(topic, false);
         }
     }
-
 }).export(module);

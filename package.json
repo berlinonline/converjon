@@ -35,10 +35,10 @@
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
-    "node": "0.8.x"
+    "node": ">=0.8.0 <0.11.0"
   },
   "scripts": {
     "start": "node server.js",
-    "test": "./node_modules/vows/bin/vows ./test/*"
+    "test": "./node_modules/vows/bin/vows -v ./test/*"
   }
 }

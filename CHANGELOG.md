@@ -2,6 +2,17 @@
 =
  * added hostname to status info
 
+1.6.3
+=
+ * fixes an issue where "NaN" values could be passed as the cropping reactsgnle for imagemagick. #27
+ * fixes download events accumulating in the central event emitter. #32
+ * fixed a problem where node.js' http client connection limit would prevent some tests from running.
+
+1.6.2
+=
+ * fixed some missing error handlers
+ * added node 0.10.x to "engine" dependency
+
 1.6.1
 =
  * added no-cache header to /status page
