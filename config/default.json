@@ -81,7 +81,8 @@
             "image/pjpeg",
             "image/png",
             "image/gif"
-        ]
+        ],
+        "timeout": 10000
     },
     "demoPage": {
         "images": {
