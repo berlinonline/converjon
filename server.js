@@ -5,7 +5,17 @@ process.chdir(__dirname);
 
 process.env.NODE_CONFIG_DIR = __dirname + '/config';
 if (!process.env.NODE_ENV) {
-    process.env.NODE_ENV = 'development';
+    try {
+        var env_file_content = fs.readFileSync(__dirname + '/environment', {encoding: 'utf-8'});
+        if (env_file_content.length) {
+            console.log(env_file_content);
+            process.env.NODE_ENV = env_file_content.replace(/^\s+|\s+$/g, '');
+        } else {
+            throw {};
+        }
+    } catch (e) {
+        process.env.NODE_ENV = 'development';
+    }
 }
 
 var config = require('config');
@@ -23,7 +33,7 @@ if (config.logging.access) {
             flags: 'a',
             encoding: 'utf8',
             mode: 0666
-        })
+        });
     } else {
         loggerStream = process.stdout;
     }

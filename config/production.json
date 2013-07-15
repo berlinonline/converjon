@@ -5,5 +5,5 @@
     "statusPage": {
         "visible": false,
         "localFile": "./status.json"
-    },
+    }
 }
