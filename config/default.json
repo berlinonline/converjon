@@ -6,7 +6,8 @@
         "access": true,
         "debug": false,
         "error": true,
-        "tailLength": 20
+        "tailLength": 20,
+        "logWithTimeStamp": false
     },
     "bouncer": {
         "threshhold": 10, //requests per second

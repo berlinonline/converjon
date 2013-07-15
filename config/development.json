@@ -1,8 +1,9 @@
 {
     "logging": {
         "access": false,
-        "debug": false,
-        "error": true
+        "debug": true,
+        "error": true,
+        "logWithTimeStamp": true
     },
     "converter": {
         "paddingColor": "#FFBBBB" //imagemagicks default shade of gray for borders
