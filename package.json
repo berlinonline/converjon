@@ -30,7 +30,8 @@
     "send": "0.1.x",
     "mv": "0.0.4",
     "mime": "1.2.9",
-    "clone": "0.1.x"
+    "clone": "0.1.x",
+    "moniker": "0.1.x"
   },
   "devDependencies": {},
   "optionalDependencies": {},
