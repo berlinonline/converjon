@@ -1,6 +1,7 @@
 {
     "server": {
-        "port": 8000
+        "port": 8000,
+        "instance_name": ""
     },
     "logging": {
         "access": true,
