@@ -1,7 +1,7 @@
 {
     "logging": {
         "access": false,
-        "debug": true,
+        "debug": false,
         "error": true,
         "logWithTimeStamp": true
     },
@@ -39,5 +39,17 @@
         "maxRunningProcesses": 2,
         "timeout": 5000, //10 secs
         "maxWaitingTime": 10000 //30 secs, if there are processes waiting and the last process ended more that X seconds ago, the "ready" URL will report that the server is not available (with an HTTP 50X)
+    },
+    "downloader": {
+        "authentication": {
+            "global": {
+            },
+            "url": {
+                "\\/authenticated_url$": {
+                    "username": "testuser",
+                    "password": "testpass"
+                }
+            }
+        }
     }
 }

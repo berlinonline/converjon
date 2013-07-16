@@ -84,6 +84,10 @@
             "image/png",
             "image/gif"
         ],
+        "authentication": {
+            "global": {},
+            "url": {}
+        },
         "maxSockets": 20,
         "timeout": 10000
     },

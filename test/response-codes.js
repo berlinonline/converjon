@@ -110,5 +110,19 @@ vows.describe("Successful requests").addBatch({
             assert.equal(res.statusCode, 400);
         }
     }
-}).export(module);
+}).addBatch({
+    "when the source needs authentication and the credentials are known": {
+        topic: function() {
+            http.request({
+                hostname: 'localhost',
+                port: config.server.port,
+                path: '/?url=http://localhost:' + config.testServer.port + '/authenticated_url',
+                method: 'GET'
+            }, this.callback).end();
+        },
+        "the response code should be 200": function(res, err) {
+            assert.equal(res.statusCode, 200);
+        }
+    }
+})['export'](module);
 
