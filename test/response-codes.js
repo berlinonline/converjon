@@ -39,7 +39,7 @@ vows.describe("Successful requests").addBatch({
         }
     }
 }).addBatch({
-    "when mime tyoe of the requested url is not supported": {
+    "when mime type of the requested url is not supported": {
         topic: function() {
             http.request({
                 hostname: 'localhost',
