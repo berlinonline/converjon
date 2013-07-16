@@ -1,6 +1,13 @@
 1.7.0
 =
- * added hostname to status info
+ * added hostname to status info. #26
+ * added random/configurable intance name to status info. #33
+ * environment can now be set via textfile. #35
+ * fixed a memory leak cause by unfinished download requests. #36
+ * configurable HTTP basic auth for source URLs. #37
+ * improved debug logging to enable easier tracing of requests. #39
+ * better test coverage
+ * fixed various typos
 
 1.6.4
 =
