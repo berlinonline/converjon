@@ -2,6 +2,10 @@
 =
  * added hostname to status info
 
+1.6.4
+=
+ * fixes a critical bug that caused the server to become unresponsive. #34
+
 1.6.3
 =
  * fixes an issue where "NaN" values could be passed as the cropping reactsgnle for imagemagick. #27
