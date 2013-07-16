@@ -84,6 +84,7 @@
             "image/png",
             "image/gif"
         ],
+        "maxSockets": 20,
         "timeout": 10000
     },
     "demoPage": {
