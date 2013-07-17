@@ -16,7 +16,6 @@
     },
     "converter": {
         "defaultMimeType": "image/jpeg",
-        "aoiName": "midas_aoi",
         "paddingColor": "#DFDFDF" //imagemagicks default shade of gray for borders
     },
     "constraints": {
