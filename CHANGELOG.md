@@ -15,7 +15,7 @@
 
 1.6.3
 =
- * fixes an issue where "NaN" values could be passed as the cropping reactsgnle for imagemagick. #27
+ * fixes an issue where "NaN" values could be passed as the cropping reactagnle for imagemagick. #27
  * fixes download events accumulating in the central event emitter. #32
  * fixed a problem where node.js' http client connection limit would prevent some tests from running.
 
