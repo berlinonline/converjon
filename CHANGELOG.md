@@ -1,3 +1,7 @@
+1.7.1
+=
+ * Filled in missing documentation
+
 1.7.0
 =
  * added hostname to status info. #26
