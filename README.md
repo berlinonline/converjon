@@ -85,6 +85,9 @@ The `downloader` config sets options for handling the downloads from source URLs
 
 * `tempPath`: Directory for temp files
 * `acceptedContentTypes`: content types that are accepted from source servers
+* `rejectUnauthorized`: SSL hosts with unauthorized certificates will be rejected. defaults to `true`
+
+    Set this to false, if you have to use SSL certs from CAs that are not accepted by node.js
 
 You can configure HTTP basic auth credentials  globally or for certain URLs with `downloader.authentication`.
 The URLs are specified via regular expressions.
@@ -112,7 +115,8 @@ Merged example from [testing.json](config/testing.json) and [default.json](confi
                     "password": "example_pass"
                 }
             }
-        }
+        },
+        "rejectUnauthorized": true
     }
 
 ###Processes

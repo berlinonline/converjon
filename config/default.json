@@ -88,7 +88,8 @@
             "url": {}
         },
         "maxSockets": 20,
-        "timeout": 10000
+        "timeout": 10000,
+        "rejectUnauthorized": true
     },
     "demoPage": {
         "images": {

@@ -1,3 +1,7 @@
+1.8.0
+=
+* Added config `downloader.rejectUnauthorized` #41
+
 1.7.1
 =
  * Filled in missing documentation
