@@ -1,8 +1,0 @@
-%Image::ExifTool::UserDefined = (
-    'Image::ExifTool::IPTC::ApplicationRecord' => {
-        240 => {
-            Name => 'AOI',
-            Format => 'string[0,128]',
-        },
-    },
-);
