@@ -22,7 +22,11 @@
     "url": "git://github.com/berlinonline/converjon.git"
   },
   "dependencies": {
+    "cjson": "^0.3.0",
+    "js-yaml": "^3.0.2",
+    "merge": "^1.1.3",
     "mime": "1.2.x",
+    "minimatch": "0.3.x",
     "mkdirp": "0.5.x",
     "moniker": "0.1.x",
     "nodeunit": "^0.9.0",

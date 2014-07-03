@@ -3,7 +3,7 @@
 /* global module */
 "use strict";
 
-var paths = require("../lib/paths");
+var pathutils = require("../lib/pathutils");
 var path_sep = require("path").sep;
 
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
             "a506dd3e"
         ].join(path_sep);
 
-        test.strictEqual(paths.getHashPath(url), expected);
+        test.strictEqual(pathutils.getHashPath(url), expected);
         test.done();
     },
 
@@ -48,8 +48,8 @@ module.exports = {
             "width_100"
         ].join(path_sep);
 
-        test.strictEqual(paths.getOptionsPath(options1), expected);
-        test.strictEqual(paths.getOptionsPath(options2), expected);
+        test.strictEqual(pathutils.getOptionsPath(options1), expected);
+        test.strictEqual(pathutils.getOptionsPath(options2), expected);
 
         test.done();
     }
