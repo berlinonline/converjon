@@ -20,11 +20,10 @@ module.exports = {
         test.expect(3);
 
         var cfg = config.get("http://localhost:8001/foobar" );
-        console.log(cfg);
 
         test.strictEqual(cfg.server.port, 8000);
         test.strictEqual(cfg.urls[0], "http://localhost:8001*");
-        test.strictEqual(cfg.cache.base_path, "./cache");
+        test.strictEqual(cfg.cache.base_path, "cache");
 
         test.done();
     }

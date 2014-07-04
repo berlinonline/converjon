@@ -13,14 +13,9 @@ module.exports = {
         var url = "http://example.org";
 
         var expected = [
-            "971a565c",
-            "8ac770ff",
-            "0b288d98",
-            "a507bb83",
-            "2b800221",
-            "4411ed82",
-            "44d0b981",
-            "a506dd3e"
+            "aHR0cDov",
+            "L2V4YW1w",
+            "bGUub3Jn"
         ].join(path_sep);
 
         test.strictEqual(pathutils.getHashPath(url), expected);

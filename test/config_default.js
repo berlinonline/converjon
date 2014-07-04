@@ -13,12 +13,11 @@ module.exports = {
     },
 
     testDefaultConfig: function (test) {
-        test.expect(2);
+        test.expect(1);
 
         var cfg = config.get();
 
         test.strictEqual(cfg.server.port, 80);
-        test.strictEqual(cfg.urls[0], "http://localhost*");
 
         test.done();
     }
