@@ -11,7 +11,7 @@ module.exports = {
 
     setUp: function(cb) {
         config.load([
-            pathutils.join([__dirname, "resources", "test_config.yml"])
+            pathutils.join([__dirname, "resources", "merge_test_config.yml"])
         ]);
         cb();
     },

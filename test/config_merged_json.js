@@ -11,8 +11,10 @@ module.exports = {
 
     setUp: function(cb) {
         config.load([
-            pathutils.join([__dirname, "resources", "test_config.json"])
+            pathutils.join([__dirname, "resources", "merge_test_config.json"])
         ]);
+
+
         cb();
     },
 
@@ -28,5 +30,4 @@ module.exports = {
         test.done();
     }
 };
-
 
