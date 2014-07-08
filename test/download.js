@@ -37,43 +37,84 @@ module.exports = {
     },
 
     testSingleDownload: function(test) {
-        test.expect(1);
+        test.expect(2);
 
         var url1 = "http://localhost:10000/test_image_sparrow.jpg";
         download(url1).then(function(dir_path) {
-            var path = pathutils.join([dir_path, "source"]);
-            fs.open(path, "r", function(err, file) {
-                test.strictEqual(err, null);
-                test.done();
+            return new Promise(function(resolve, reject){
+                var path = pathutils.join([dir_path, "source"]);
+                fs.open(path, "r", function(err, file) {
+                    test.strictEqual(err, null);
+                    resolve(dir_path);
+                });
             });
+        }).then(function(dir_path){
+            return new Promise(function(resolve, reject){
+                var path = pathutils.join([dir_path, "meta"]);
+                fs.open(path, "r", function(err, file) {
+                    test.strictEqual(err, null);
+                    resolve(dir_path);
+                });
+            });
+        }).then(function(){
+            test.done();
         });
     },
 
     testParallelDownloads: function(test) {
-        test.expect(2);
+        test.expect(4);
 
         var url1 = "http://localhost:10000/test_image_sparrow.jpg";
         var d1 = new Promise(function(resolve, reject) {
             download(url1).then(function(dir_path) {
-                var path = pathutils.join([dir_path, "source"]);
-                fs.open(path, "r", function(err, file) {
-                    test.strictEqual(err, null);
-                    resolve();
+                return new Promise(function(resolve, reject){
+                    //does the source image file exist?
+                    var path = pathutils.join([dir_path, "source"]);
+                    fs.open(path, "r", function(err, file) {
+                        test.strictEqual(err, null);
+                        resolve(dir_path);
+                    });
                 });
+            }).then(function(dir_path){
+                return new Promise(function(resolve, reject){
+                    //does the metadata file exist?
+                    var path = pathutils.join([dir_path, "meta"]);
+                    fs.open(path, "r", function(err, file) {
+                        test.strictEqual(err, null);
+                        resolve(dir_path);
+                    });
+                });
+            }).then(function(){
+                resolve();
             });
         });
 
         var url2 = "http://localhost:10000/test_image_sparrow_2.jpg";
         var d2 = new Promise(function(resolve, reject) {
-                download(url2).then(function(dir_path) {
-                var path = pathutils.join([dir_path, "source"]);
-                fs.open(path, "r", function(err, file) {
-                    test.strictEqual(err, null);
-                    resolve();
+            download(url2).then(function(dir_path) {
+                return new Promise(function(resolve, reject){
+                    //does the source image file exist?
+                    var path = pathutils.join([dir_path, "source"]);
+                    fs.open(path, "r", function(err, file) {
+                        test.strictEqual(err, null);
+                        resolve(dir_path);
+                    });
                 });
+            }).then(function(dir_path){
+                return new Promise(function(resolve, reject){
+                    //does the metadata file exist?
+                    var path = pathutils.join([dir_path, "meta"]);
+                    fs.open(path, "r", function(err, file) {
+                        test.strictEqual(err, null);
+                        resolve(dir_path);
+                    });
+                });
+            }).then(function(){
+                resolve();
             });
         });
 
+        //wait for the two test promises to resolve, then wrap it up.
         rsvp.all([d1, d2]).then(function(){
             test.done();
         });
@@ -89,6 +130,21 @@ module.exports = {
             },
             function(err) {
                 test.strictEqual(err.message, "HTTP 404");
+                test.done();
+            }
+        );
+    },
+
+    testRequestError: function(test) {
+        test.expect(1);
+
+        var url1 = "http://foobar/";
+        download(url1).then(
+            function(foo) {
+                test.equal("this should not happen", "ever!");
+            },
+            function(err) {
+                test.strictEqual(err.message, "getaddrinfo ENOTFOUND");
                 test.done();
             }
         );
