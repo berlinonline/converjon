@@ -9,3 +9,5 @@ server:
 cache:
   base_path: "cache"
 
+process:
+  limit: 5
