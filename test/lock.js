@@ -8,7 +8,7 @@ var lock = require("../lib/lock");
 module.exports = {
 
     testLockRelease: function (test) {
-        test.expect(1);
+        test.expect(2);
 
         var releases = [];
 
@@ -21,6 +21,7 @@ module.exports = {
 
             // ensure the correct order of lock releases
             test.strictEqual(releases.join(":"), "l1:l2:l3");
+            test.strictEqual(free.key, "foo");
             test.done();
         });
 
