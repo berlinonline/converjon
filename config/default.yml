@@ -9,5 +9,8 @@ server:
 cache:
   base_path: "cache"
 
+analysis:
+  aoi_name: "AOI"
+
 process:
   limit: 5
