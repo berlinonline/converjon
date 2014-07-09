@@ -40,7 +40,8 @@ module.exports = {
         test.expect(2);
 
         var url1 = "http://localhost:10000/test_image_sparrow.jpg";
-        get_source(url1).then(function(dir_path) {
+        var conf1 = config.get(url1);
+        get_source(url1, conf1).then(function(dir_path) {
             return new Promise(function(resolve, reject){
                 var path = pathutils.join([dir_path, "source"]);
                 fs.open(path, "r", function(err, file) {
@@ -65,8 +66,9 @@ module.exports = {
         test.expect(4);
 
         var url1 = "http://localhost:10000/test_image_sparrow.jpg";
+        var conf1 = config.get(url1);
         var d1 = new Promise(function(resolve, reject) {
-            get_source(url1).then(function(dir_path) {
+            get_source(url1, conf1).then(function(dir_path) {
                 return new Promise(function(resolve, reject){
                     //does the source image file exist?
                     var path = pathutils.join([dir_path, "source"]);
@@ -90,8 +92,9 @@ module.exports = {
         });
 
         var url2 = "http://localhost:10000/test_image_sparrow_2.jpg";
+        var conf2 = config.get(url2);
         var d2 = new Promise(function(resolve, reject) {
-            get_source(url2).then(function(dir_path) {
+            get_source(url2, conf2).then(function(dir_path) {
                 return new Promise(function(resolve, reject){
                     //does the source image file exist?
                     var path = pathutils.join([dir_path, "source"]);
@@ -124,7 +127,8 @@ module.exports = {
         test.expect(1);
 
         var url1 = "http://localhost:10000/non_existing.jpg";
-        get_source(url1).then(
+        var conf1 = config.get(url1);
+        get_source(url1, conf1).then(
             function() {
                 test.equal("this should not happen", "ever!");
             },
@@ -139,7 +143,8 @@ module.exports = {
         test.expect(1);
 
         var url1 = "http://foobar/";
-        get_source(url1).then(
+        var conf1 = config.get(url1);
+        get_source(url1, conf1).then(
             function(foo) {
                 test.equal("this should not happen", "ever!");
             },
