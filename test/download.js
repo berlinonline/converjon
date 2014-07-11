@@ -10,8 +10,12 @@ var url = require("url");
 var rsvp = require("rsvp");
 var Promise = rsvp.Promise;
 
-var config = require("../lib/config");
 var pathutils = require("../lib/pathutils");
+var config = require("../lib/config");
+config.load([
+    pathutils.join([__dirname, "resources", "test_config.yml"])
+]);
+
 var get_source = require("../lib/source");
 
 var static_image_server;
@@ -19,9 +23,6 @@ var static_image_server;
 module.exports = {
 
     setUp: function(cb) {
-        config.load([
-            pathutils.join([__dirname, "resources", "test_config.yml"])
-        ]);
 
         var download_root = pathutils.join([
             __dirname,
