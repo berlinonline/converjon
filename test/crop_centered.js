@@ -3,7 +3,7 @@
 /* global module */
 "use strict";
 
-var crop = require("../lib/cropping").crop_centered;
+var crop = require("../lib/cropping");
 
 module.exports = {
     testPortrait: function(test) {
@@ -14,6 +14,7 @@ module.exports = {
                 w: 1000,
                 h: 500
             },
+            mode: crop.centered,
             target: {
                 w: 100,
                 h: 100
@@ -38,6 +39,7 @@ module.exports = {
                 w: 1000,
                 h: 500
             },
+            mode: crop.centered,
             target: {
                 w: 400,
                 h: 100
