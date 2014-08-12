@@ -5,4 +5,4 @@ server:
   port: 8000
 
 cache:
-  base_path: "/tmp/converjon/cache"
+  base_path: "/tmp/converjon/test"
