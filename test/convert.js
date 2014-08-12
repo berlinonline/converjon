@@ -72,7 +72,7 @@ module.exports = {
             height: 600,
             crop_rect: [2300,500,1000,800],
             quality: 10,
-            mime: "image/jpeg"
+            format: "jpeg"
         };
         convert(source_lock, target_lock1, options, conf).then(function(target_path){
             test.done();
@@ -86,7 +86,7 @@ module.exports = {
             height: 600,
             crop_rect: [2300,500,1000,800],
             quality: 10,
-            mime: "image/jpeg"
+            format: "jpeg"
         };
         convert(source_lock_broken, target_lock2, options, conf).catch(function(err){
             test.done();
