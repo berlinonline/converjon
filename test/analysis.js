@@ -37,7 +37,7 @@ module.exports = {
     },
 
     testAnalysisSuccess: function(test) {
-        test.expect(6);
+        test.expect(7);
 
         var conf = config.get();
         analyze(file_lock, conf).then(function(analysis){
@@ -47,6 +47,7 @@ module.exports = {
             test.strictEqual(analysis.aoi.y, 365);
             test.strictEqual(analysis.aoi.w, 1100);
             test.strictEqual(analysis.aoi.h, 850);
+            test.strictEqual(analysis.format, "jpeg");
             file_lock();
             test.done();
         });
