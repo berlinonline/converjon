@@ -1,0 +1,1 @@
+node bin/converjon-cli.js test/resources/images/test_image_sparrow.jpg derp -w 1300 -h 1300 --crop aoi_emphasis --aoi 0,0,4126,2551
