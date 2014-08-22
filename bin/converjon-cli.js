@@ -68,7 +68,7 @@ if (args._.length < 2) {
 }
 
 if (args.config) {
-    config_files.push(args.config);
+    config_files.concat(args.config);
 }
 
 config.load(config_files);
@@ -103,6 +103,6 @@ rsvp.hash({
 }).then(function(){
     process.exit(0);
 }, function(err){
-    console.error(err);
+    console.error(err.message);
     process.exit(1);
 });
