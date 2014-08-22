@@ -6,6 +6,9 @@ server:
   port: 80
   instance_name: null
 
+test_server:
+  enabled: false
+
 cache:
   base_path: "cache"
 

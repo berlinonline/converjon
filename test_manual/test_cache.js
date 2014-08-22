@@ -41,8 +41,8 @@ var options = {
 };
 
 cache(url1, options).
-then(function(target_path) {
-    console.log("target path", target_path);
+then(function(item) {
+    console.log("target path", item.locks.target.key);
     static_image_server.close(function(){});
 }, function(err) {
     console.log("error", err, err.stack);

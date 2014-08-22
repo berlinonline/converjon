@@ -68,7 +68,7 @@ if (args._.length < 2) {
 }
 
 if (args.config) {
-    config_files.concat(args.config);
+    config_files = config_files.concat(args.config);
 }
 
 config.load(config_files);
@@ -102,7 +102,7 @@ rsvp.hash({
     return processing.create_target_file(item);
 }).then(function(){
     process.exit(0);
-}, function(err){
-    console.error(err.message);
+}, function(item){
+    console.error(item.error.message);
     process.exit(1);
 });
