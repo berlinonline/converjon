@@ -12,6 +12,11 @@ test_server:
 cache:
   base_path: "cache"
 
+download:
+  url_whitelist:
+    - "http://localhost*"
+  timeout: 10000
+
 process:
   limit: 5
 
