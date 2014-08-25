@@ -47,6 +47,7 @@ var valid_file_paths = [
 function deliver(req,res) {
     var pathname = url_parse(req.url).pathname;
     if (valid_file_paths.indexOf(pathname) >= 0) {
+        res.setHeader("Cache-Control", "max-age=30");
         res.setHeader('Content-Type', "image/jpeg" + '; charset=binary;');
         fs.createReadStream(download_root + pathname).pipe(res);
     } else {
