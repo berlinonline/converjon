@@ -4,3 +4,7 @@ server:
 test_server:
   enabled: true
   port: 8002
+
+authentication:
+  username: "testuser"
+  password: "testpass"

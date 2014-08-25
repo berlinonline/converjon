@@ -19,23 +19,14 @@ config.load([
 ]);
 
 var get_source = require("../lib/source");
-
+var start_test_server = require("./utils/test_server");
 var static_image_server;
 
 module.exports = {
 
     setUp: function(cb) {
 
-        var download_root = pathutils.join([
-            __dirname,
-            "resources",
-            "images"
-        ]);
-
-        static_image_server = http.createServer(function(req, res){
-            send(req, download_root + url.parse(req.url).pathname).pipe(res);
-        }).listen(10000);
-
+        static_image_server = start_test_server(10000);
         cb();
     },
 
@@ -76,6 +67,45 @@ module.exports = {
             test.done();
         });
     },
+
+    testAuthenticatedDownload: function(test) {
+        test.expect(2);
+
+        var url1 = "http://localhost:10000/authenticated_url";
+        var conf1 = config.get(url1);
+
+        var dir_path = conf1.cache.base_path;
+
+        fsutils.mkdirp(dir_path).then(function() {
+            return rsvp.hash({
+                meta: lock(pathutils.join([dir_path, "meta"])),
+                source: lock(pathutils.join([dir_path, "source"]))
+            });
+        }).then(function(locks){
+            return get_source(url1, locks, conf1);
+        }).then(function(result) {
+            result.locks.meta();
+            result.locks.source();
+            return new Promise(function(resolve, reject){
+                var path = pathutils.join([dir_path, "source"]);
+                fs.open(path, "r", function(err, file) {
+                    test.strictEqual(err, null);
+                    resolve(dir_path);
+                });
+            });
+        }).then(function(dir_path){
+            return new Promise(function(resolve, reject){
+                var path = pathutils.join([dir_path, "meta"]);
+                fs.open(path, "r", function(err, file) {
+                    test.strictEqual(err, null);
+                    resolve(dir_path);
+                });
+            });
+        }).then(function(){
+            test.done();
+        });
+    },
+
 
     testParallelDownloads: function(test) {
         test.expect(4);

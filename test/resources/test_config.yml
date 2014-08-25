@@ -6,3 +6,7 @@ server:
 
 cache:
   base_path: "/tmp/converjon/test"
+
+authentication:
+  username: "testuser"
+  password: "testpass"
