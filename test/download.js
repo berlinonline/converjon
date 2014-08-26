@@ -182,33 +182,34 @@ module.exports = {
 
         var url1 = "http://localhost:10000/non_existing.jpg";
         var conf1 = config.get(url1);
+        var locks;
 
         rsvp.hash({
-            meta: lock("meta"),
-            source: lock("source"),
+            meta: lock("404_meta"),
+            source: lock("404_source"),
         }).then(function(locks) {
+            locks = locks;
             return get_source(url1, locks, conf1);
         }).then(
             function() {
                 test.equal("this should not happen", "ever!");
+
             },
             function(fail) {
-                test.strictEqual(fail.error.message, "HTTP 404");
-                fail.locks.meta();
-                fail.locks.source();
+                test.strictEqual(fail.name, "SourceHttpError");
                 test.done();
             }
         );
     },
 
-    testRequestError: function(test) {
+    testWhitelistError: function(test) {
         test.expect(1);
 
         var url1 = "http://foobar/";
         var conf1 = config.get(url1);
         rsvp.hash({
-            meta: lock("meta"),
-            source: lock("source"),
+            meta: lock("whitelist_meta"),
+            source: lock("whitelist_source"),
         }).then(function(locks) {
             return get_source(url1, locks, conf1);
         }).then(
@@ -216,9 +217,7 @@ module.exports = {
                 test.equal("this should not happen", "ever!");
             },
             function(fail) {
-                fail.locks.meta();
-                fail.locks.source();
-                test.strictEqual(fail.error.message, "getaddrinfo ENOTFOUND");
+                test.strictEqual(fail.name, "UrlWhitelistError");
                 test.done();
             }
         );
