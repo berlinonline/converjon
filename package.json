@@ -33,8 +33,8 @@
     "request": "2.36.x",
     "rsvp": "3.0.x",
     "send": "^0.1.4",
-    "winston": "0.7.x",
-    "minimist": "1.1.x"
+    "minimist": "1.1.x",
+    "cli-color": "0.3.x"
   },
   "devDependencies": {},
   "optionalDependencies": {},
@@ -42,7 +42,10 @@
     "node": ">=0.10.7 <0.11.0"
   },
   "scripts": {
-    "start": "node server.js",
     "test": "./node_modules/.bin/nodeunit ./test/*"
+  },
+  "bin": {
+    "converjon": "./bin/converjon.js",
+    "converjon-cli": "./bin/converjon-cli.js"
   }
 }

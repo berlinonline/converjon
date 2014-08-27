@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /* jshint globalstrict: true */
 /* global require */
 /* global module */
