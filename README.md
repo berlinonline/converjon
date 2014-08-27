@@ -4,14 +4,11 @@ An on-the-fly image conversion service
 
 ## Dependencies (apart from node modules)
 
-  * ImageMagick
-    * use the Q8 version to save memory
-    * however, Q16 (the default one) is required to support PNG image output
-  * ExifTool (at least version 9)
-  * node.js and NPM
+  * [ImageMagick](http://www.imagemagick.org/script/binary-releases.php)
+  * [ExifTool](http://www.sno.phy.queensu.ca/%7Ephil/exiftool/install.html) (at least version 9)
+  * [node.js and NPM](http://nodejs.org/download/)
 
 ## Installation
-
 
 Use NPM: `npm install converjon`
 
@@ -37,11 +34,11 @@ If you supply both values, the image will be cropped to the new aspect ratio, if
 
 ###Area of Interest
 
-By default images are cropped from the center of the original. You can specify an "area of interest" with the `aoi` parameter. The AOI is a rectangle in the folling format:
+By default images are cropped from the center of the original. You can specify an "area of interest" with the `aoi` parameter. The AOI is a rectangle in the following format:
     
     offsetX,offsetY,width,height
 
-The AOI can also be embedded in the original images metadata via EXIF or IPTC. The name of this metadata field can be configured and defaults to `aoi`. The request parameter overrides the AOI value from the image's metadata.
+The AOI can also be embedded in the original image's metadata via EXIF or IPTC. The name of this metadata field can be configured and defaults to `aoi`. The request parameter overrides the AOI value from the image's metadata.
 
 ###Cropping mode
 
@@ -54,7 +51,7 @@ The `crop` parameter sets the cropping mode. Available modes are:
 
 Details about the cropping modes can be found [here in the wiki](https://github.com/berlinonline/converjon/wiki/Cropping-Modes).
 
-If an AOI is set, croppping will ensure, that the area is always preserved.
+If an AOI is set, cropping will ensure, that the area is always preserved.
 
 ###Image Format
 
@@ -82,13 +79,13 @@ The URL `/status` leads to a summary of Converjon's current state and some stati
 ## Configuration
 
 When launching converjon, you can specify one or more configuration files with the `--config` option which can be set
-musltiple times to load multiple config files.
+multiple times to load multiple config files.
 
 You can use the [default.yml](https://github.com/berlinonline/converjon/blob/master/config/default.yml) or [development.yml](https://github.com/berlinonline/converjon/blob/master/config/development.yml) file as an example for writing your own.
 
 The default configuration format is YAML but you can also use JSON files.
 
-Every configuration file can be matched only to certain  imag source URLs. If a config file contains a `urls` setting, that configuration will only apply to URLs that match at least one of the patterns from that list:
+Every configuration file can be matched only to certain  image source URLs. If a config file contains a `urls` setting, that configuration will only apply to URLs that match at least one of the patterns from that list:
 
 ```YAML
 # this config will only apply to source URLs from localhost or flickr
@@ -110,6 +107,8 @@ This way you can define different setting depending on the source of the request
 ###Downloads
 **URL whitelists**
 `download.url_whitelist` sets list of URL patterns that allowed to be requested as image sources.
+
+For example, if you host your source images on `http://myimages.com/images/..." you should set the whitelist pattern to `http://myimages.com/images/` to make sure, other sources are not allowed.
 
 ```YAML
 # this will only allow requests for images from URLs that match these patterns
@@ -145,7 +144,7 @@ cache:
 
 ###Contraints
 
-Contraints can be used to limit the possible request paramters, like width and height of images. Every contraint has a `min` and a `max` value:
+Constraints can be used to limit the possible request parameters, like width and height of images. Every constraint has a `min` and a `max` value:
 
 ```YAML
 constraints:
@@ -164,7 +163,7 @@ constraints:
 ```
 
 ###Logging
-There are three logging levels: "access", "error" and "debug". Each of them can be directed to either STDOUT, STDERR or into a logfile.
+There are three logging levels: "access", "error" and "debug". Each of them can be directed to either STDOUT, STDERR or into a log file.
 
 ```YAML
 logging:
