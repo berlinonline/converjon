@@ -14,7 +14,7 @@ cache:
 
 download:
   url_whitelist:
-    - "http://localhost*"
+    - "http://localhost/*"
   timeout: 10000
 
 process:

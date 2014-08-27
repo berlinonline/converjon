@@ -4,6 +4,10 @@ urls:
 server:
   port: 8000
 
+download:
+  url_whitelist:
+    - "http://localhost:10000/*"
+
 cache:
   base_path: "/tmp/converjon/test"
 

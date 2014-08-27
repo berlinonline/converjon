@@ -1,6 +1,10 @@
 server:
   port: 8001
 
+download:
+  url_whitelist:
+    - "http://localhost:8002/*"
+
 test_server:
   enabled: true
   port: 8002
