@@ -43,3 +43,8 @@ constraints:
   height:
     min: 1
     max: 10000
+
+logging:
+  error: "stderr"
+  debug: "stderr"
+  access: "stdout"

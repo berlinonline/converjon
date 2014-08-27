@@ -74,6 +74,7 @@ if (args.config) {
 config.load(config_files);
 var processing = require("../lib/processing");
 
+var logging = require("../lib/logging");
 var lock = require("../lib/lock");
 var analyze = require("../lib/analyze");
 
@@ -103,6 +104,6 @@ rsvp.hash({
 }).then(function(){
     process.exit(0);
 }, function(item){
-    console.error(item.error.message);
+    logging.error(item.error.message);
     process.exit(1);
 });

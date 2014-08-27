@@ -8,3 +8,8 @@ test_server:
 authentication:
   username: "testuser"
   password: "testpass"
+
+logging:
+  error: "stderr"
+  debug: "stderr"
+  access: "stdout"
