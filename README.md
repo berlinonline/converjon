@@ -180,4 +180,6 @@ Execute tests with `npm test`
 
 # Copyright notes
 
+Converjon is [licensed under the MIT license](https://github.com/berlinonline/converjon/blob/master/LICENSE).
+
 The "sparrow" testing image is © Leon Weidauer, permission to use it for testing is granted.
