@@ -25,7 +25,6 @@ analysis:
 
 converter:
   padding_color: "#fefe00"
-  default_mime_type: "image/jpeg"
 
 cropping:
   default_mode: "aoi_coverage"
