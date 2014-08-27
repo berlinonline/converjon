@@ -12,6 +12,19 @@ body {
     line-height: 1.6em;
 }
 
+@media (max-width: 800px) {
+    body {
+        margin-top: 1em;
+    }
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+h2 {
+    font-size: 1.3em;
+}
 
 table {
     width: 100%;
