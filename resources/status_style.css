@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 1em;
+
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6em;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tbody > tr > th,
+tbody > tr > td {
+    padding: 0 0.5em;
+}
+
+tbody > tr > th:first-child {
+    text-align: left;
+}
+
+tbody > tr > td {
+    text-align: right;
+}
+
+tbody > tr:nth-child(odd) > td,
+tbody > tr:nth-child(odd) > th
+{
+    background-color: #F9E6AE;
+}
+
+footer {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+}
