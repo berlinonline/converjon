@@ -20,6 +20,7 @@ An advanced image conversion server and command line tool.
 	* [Processes](#processes)
 	* [Converter](#converter)
 	* [Cropping](#cropping)
+	* [Constraints](#constraints)
 	* [Logging](#logging)
 * [Testing](#testing)
 * [Copyright Notes](#copyright-notes)
