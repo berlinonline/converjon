@@ -32,7 +32,7 @@ An advanced image conversion server and command line tool.
 * adaptive image quality
 * no need to pre-generate different image sizes or versions
 
-## Dependencies (apart from node modules)
+## Dependencies
 
   * [ImageMagick](http://www.imagemagick.org/script/binary-releases.php)
   * [ExifTool](http://www.sno.phy.queensu.ca/%7Ephil/exiftool/install.html) (at least version 9)
