@@ -1,6 +1,15 @@
 # Converjon
 
-An on-the-fly image conversion service
+An advanced image conversion server and command line tool.
+
+## Features
+
+* thumbnail generation
+* responsive images
+* intelligent cropping
+* art direction use cases
+* adaptive image quality
+* no need to pre-generate different image sizes or versions
 
 ## Dependencies (apart from node modules)
 
@@ -10,13 +19,13 @@ An on-the-fly image conversion service
 
 ## Installation
 
-Use NPM: `npm install converjon`
+Use NPM: `npm install [-g] converjon`
 
 ## Usage
 
 Start the server with `converjon [--config your_config_file]` or use the command line utility `converjon-cli` to work
 on local files.
-Example image URL: http://example.org/image.jpg
+Let's say you have an image at `http://example.org/image.jpg`
 
 To get the image through Converjon, put the original URL into the request as a URL encoded parameter:
 
@@ -28,11 +37,13 @@ Several examples are available on the `/demo` page which is enabled when startin
 
 ###Changing size
 
-You can either supply a `width`, `height` or both. If you only supply one dimension, the other one will be derived from the original images aspect ratio.
+You can either supply a `width`, `height` or both. If you only specify one dimension, the other one will be derived from the original image's aspect ratio.
 
-If you supply both values, the image will be cropped to the new aspect ratio, if necessary, and is then resized to the requested pixel dimensions.
+If you set both values, the image may be cropped to the new aspect ratio and  then resized to the requested pixel dimensions.
 
 ###Area of Interest
+
+[Wiki: Area of Interest](https://github.com/berlinonline/converjon/wiki/Area-of-Interest)
 
 By default images are cropped from the center of the original. You can specify an "area of interest" with the `aoi` parameter. The AOI is a rectangle in the following format:
     
@@ -44,10 +55,10 @@ The AOI can also be embedded in the original image's metadata via EXIF or IPTC. 
 
 The `crop` parameter sets the cropping mode. Available modes are:
 
-* "centered"
-* "aoi_coverage"
-* "aoi_emphasis"
-* "aoi_auto"
+* `centered`
+* `aoi_coverage`
+* `aoi_emphasis`
+* `aoi_auto`
 
 Details about the cropping modes can be found [here in the wiki](https://github.com/berlinonline/converjon/wiki/Cropping-Modes).
 
@@ -56,9 +67,10 @@ If an AOI is set, cropping will ensure, that the area is always preserved.
 ###Image Format
 
 With the `format` parameter you can change the format of the image. Supported formats are:
-  * "jpg" or "jpeg"
-  * "png"
-  * "gif"
+
+  * `jpg` or `jpeg`
+  * `png`
+  * `gif`
  
  If no specific format is requested, the format of the source image will be used.
 
@@ -108,7 +120,7 @@ This way you can define different setting depending on the source of the request
 **URL whitelists**
 `download.url_whitelist` sets list of URL patterns that allowed to be requested as image sources.
 
-For example, if you host your source images on `http://myimages.com/images/..." you should set the whitelist pattern to `http://myimages.com/images/` to make sure, other sources are not allowed.
+For example, if you host your source images on `http://myimages.com/images/...` you should set the whitelist pattern to `http://myimages.com/images/` to make sure other sources are not allowed.
 
 ```YAML
 # this will only allow requests for images from URLs that match these patterns
@@ -117,6 +129,7 @@ download:
     - "http://localhost*"
     - "http://example.org/*
 ```
+[Calmcard](https://github.com/lnwdr/calmcard) patterns are used for matching.
 
 **Timeout**
 `download.timeout` sets a timeout after which requests are cancelled, if the source server doesn't respond in time.
@@ -130,6 +143,8 @@ cache:
   base_path: "/tmp/converjon/cache"
 ```
 
+The cache directory is not automatically cleaned up and may grow over time.
+
 ###Processes
 
 `process.limit` sets the maximum number of child processes that converjon will spawn for converting and analyzing images.
@@ -140,7 +155,9 @@ cache:
 
 ###Cropping
 
-`cropping.default_mode` sets the default mode for cropping images. Possible options are: "centered", "aoi_coverage", "aoi_emphasis" and "aoi_auto".
+`cropping.default_mode` sets the default mode for cropping images. Possible options are: `centered`, `aoi_coverage`, `aoi_emphasis` and `aoi_auto.
+
+[Wiki: Cropping Modes](https://github.com/berlinonline/converjon/wiki/Cropping-Modes)
 
 ###Contraints
 
@@ -163,7 +180,7 @@ constraints:
 ```
 
 ###Logging
-There are three logging levels: "access", "error" and "debug". Each of them can be directed to either STDOUT, STDERR or into a log file.
+There are three logging levels: `access`, `error` and `debug`. Each of them can be directed to either STDOUT, STDERR or into a log file.
 
 ```YAML
 logging:
@@ -173,6 +190,8 @@ logging:
 ```
 
 To disable a log level, set it to `false`.
+
+Logs are not automatically rotated. Use of a tool like `logrotate` is recommended.
 
 # Testing
 
