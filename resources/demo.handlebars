@@ -1,10 +1,106 @@
 <!doctype html>
 <html>
     <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=600px">
+        <style type="text/css">
+            {{{style}}}
+        </style>
     </head>
     <body>
-        {{# each images }}
-        <img src="{{this}}" alt="" />
-        {{/ each }}
+        <h1>Converjon – Demo</h1>
+        <p>
+            <em>Note: Most images on this page are displayed at half size to accomodate high resolution diplays</em>
+        </p>
+
+        <ul class="toc">
+            <li><a href="#resize">Simple Resizing</a></li>
+            <li><a href="#quality">Adjusting Quality</a></li>
+            <li><a href="#dpi">Low and High DPI versions</a></li>
+            <li><a href="#colors">GIF Colors</a></li>
+            <li><a href="#center_cropping">Center Cropping</a></li>
+            <li><a href="#coverage_cropping">AOI Coverage Cropping</a></li>
+            <li><a href="#emphasis_cropping">AOI Emphasis Cropping</a></li>
+            <li><a href="#auto_cropping">AOI Automatic Cropping</a></li>
+        </ul>
+
+        <section>
+            <h2 id="resize">Simple Resizing</h2>
+            <div class="image"><div>
+                <img width="100" src="{{base}}{{url3}}&width=200" alt="200px"/>
+            </div></div>
+            <div class="image"><div>
+                <img width="200" src="{{base}}{{url3}}&width=400" alt="400px"/>
+            </div></div>
+            <div class="image"><div>
+                <img width="300" src="{{base}}{{url3}}&width=600" alt="600px"/>
+            </div></div>
+
+            <h2 id="quality">Adjusting Quality</h2>
+            <div class="image"><div>
+                <img width="400" src="{{base}}{{url3}}&width=800&quality=10" alt="low quality"/>
+            </div></div>
+            <div class="image"><div>
+                <img width="400" src="{{base}}{{url3}}&width=800&quality=80" alt="high quality"/>
+            </div></div>
+
+            <h2 id="dpi">Low and High DPI versions</h2>
+            <div class="image"><div>
+                <img width="400" src="{{base}}{{url3}}&width=400" alt="low dpi"/>
+            </div></div>
+            <div class="image"><div>
+                <img width="400" src="{{base}}{{url3}}&width=800" alt="high dpi"/>
+            </div></div>
+
+            <h2 id="colors">GIF Colors</h2>
+            <div class="image"><div>
+                <img width="400" src="{{base}}{{url3}}&width=800&format=gif" alt="high colors"/>
+            </div></div>
+            <div class="image"><div>
+                <img width="400" src="{{base}}{{url3}}&width=800&format=gif&colors=15" alt="low colors"/>
+            </div></div>
+        </section><!--
+
+        --><section>
+            <h2 id="center_cropping">Center Cropping</h2>
+            <div class="image"><div>
+                <img width="400" src="{{base}}{{url3}}&width=800&height=300&crop=center" alt="center crop 1"/>
+            </div></div>
+            <div class="image"><div>
+                <img width="100" src="{{base}}{{url3}}&width=200&height=400&crop=center" alt="center crop 2"/>
+            </div></div>
+
+            <h2 id="coverage_cropping">AOI Coverage Cropping</h2>
+            <div class="image"><div>
+                <img width="400" src="{{base}}{{url3}}&width=800&height=300&crop=aoi_coverage" alt="aoi coverage crop 1"/>
+            </div></div>
+            <div class="image"><div>
+                <img width="150" src="{{base}}{{url3}}&width=300&height=400&crop=aoi_coverage" alt="aoi coverage crop 2"/>
+            </div></div>
+
+            <h2 id="emphasis_cropping">AOI Emphasis Cropping</h2>
+            <div class="image"><div>
+                <img width="400" src="{{base}}{{url3}}&width=800&height=300&crop=aoi_emphasis" alt="aoi emphasis crop 1"/>
+            </div></div>
+            <div class="image"><div>
+                <img width="150" src="{{base}}{{url3}}&width=300&height=400&crop=aoi_emphasis" alt="aoi emphasis crop 2"/>
+            </div></div>
+
+            <h2 id="auto_cropping">AOI Automatic Cropping</h2>
+            <div class="image"><div>
+                <img width="400" src="{{base}}{{url1}}&width=2000&height=1500&crop=aoi_auto" alt="aoi auto crop 1"/>
+            </div></div>
+            <div class="image"><div>
+                <img width="400" src="{{base}}{{url1}}&width=1400&height=1000&crop=aoi_auto" alt="aoi auto crop 2"/>
+            </div></div>
+            <div class="image"><div>
+                <img width="400" src="{{base}}{{url1}}&width=800&height=500&crop=aoi_auto" alt="aoi auto crop 2"/>
+            </div></div>
+
+        </section>
+
+        <footer>
+            <a href="https://github.com/berlinonline/converjon">Converjon on Github</a>
+        </footer>
     </body>
 </html>

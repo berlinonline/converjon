@@ -41,6 +41,7 @@ var checkAuth = function(req) {
 var valid_file_paths = [
     "/test_image_sparrow.jpg",
     "/test_image_sparrow_2.jpg",
+    "/test_image_sparrow_smaller.jpg",
     "/broken_file.jpg"
 ];
 
