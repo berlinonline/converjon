@@ -4,6 +4,7 @@ An advanced image conversion server and command line tool.
 
 * [Features](#features)
 * [Dependencies](#dependencies)
+* [Installation](#installation)
 * [Usage](#usage)
 	* [Changing Size](#changing-size)
 	* [Area of Interest](#area-of-interest)
