@@ -1,5 +1,18 @@
 {{name}} - {{version}}
 
-Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur.
+Usage: converjon-cli [options ...] infile [options ...] outfile [options ...]
 
-Donec sed odio dui. Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur.
+OPTIONS:
+
+    --help              Display this help
+
+    -w, --width         Width of the output image
+
+    -h, --height        Height of the output image
+
+    -f, --format        Output format, jpg/png/gif
+
+    -q, --quality       JPEG quality, only applies to jpg output format
+
+    -c, --colors        GIF color limit, only applies to gif output format
+

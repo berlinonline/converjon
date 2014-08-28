@@ -1,4 +1,11 @@
 {{name}} - {{version}}
 
-{{}}
+Starts the Converjon image server.
+
+OPTIONS:
+
+    --config        Path to a configuration file.
+                    Can be set multiple times to load more than one file.
+
+    --help          Display this help.
 
