@@ -13,7 +13,7 @@ An advanced image conversion server and command line tool.
 	* [Quality](#quality)
 	* [Color Palette](#color-palette)
 	* [Status Page](#status-page)
-* [Configuration](#configiration)
+* [Configuration](#configuration)
 	* [Server](#server)
 	* [Download](#download)
 	* [Cache](#cache)
