@@ -15,7 +15,7 @@ An advanced image conversion server and command line tool.
 	* [Status Page](#status-page)
 * [Configuration](#configuration)
 	* [Server](#server)
-	* [Download](#download)
+	* [Downloads](#downloads)
 	* [Cache](#cache)
 	* [Processes](#processes)
 	* [Converter](#converter)
