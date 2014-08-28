@@ -2,12 +2,33 @@
 
 An advanced image conversion server and command line tool.
 
+* [Features](#features)
+* [Dependencies](#dependencies)
+* [Usage](#usage)
+	* [Changing Size](#changing-size)
+	* [Area of Interest](#area-of-interest)
+	* [Cropping Mode](#cropping-mode)
+	* [Image format](#image-format)
+	* [Quality](#quality)
+	* [Color Palette](#color-palette)
+	* [Status Page](#status-page)
+* [Configuration](#configiration)
+	* [Server](#server)
+	* [Download](#download)
+	* [Cache](#cache)
+	* [Processes](#processes)
+	* [Converter](#converter)
+	* [Cropping](#cropping)
+	* [Logging](#logging)
+* [Testing](#testing)
+* [Copyright Notes](#copyright-notes)
+
 ## Features
 
 * thumbnail generation
-* responsive images
+* [responsive images](http://dev.opera.com/articles/responsive-images/)
 * intelligent cropping
-* art direction use cases
+* [art direction use cases](http://usecases.responsiveimages.org/#art-direction)
 * adaptive image quality
 * no need to pre-generate different image sizes or versions
 
@@ -34,6 +55,8 @@ To get the image through Converjon, put the original URL into the request as a U
 More options are available as GET parameters. All parameters need to be URL encoded.
 
 Several examples are available on the `/demo` page which is enabled when starting Converjon with the [development config file](https://github.com/berlinonline/converjon/blob/master/config/development.yml).
+
+It's recommended to set the server port to `80` in [configuration](#server) and to run Converjon on a separate subdomain of your site or behind a reverse proxy like Nginx or Varnish.
 
 ###Changing size
 
