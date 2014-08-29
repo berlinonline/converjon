@@ -17,7 +17,7 @@ module.exports = {
 
         var cfg = config.get();
 
-        test.strictEqual(cfg.server.port, 80);
+        test.strictEqual(cfg.server.port, 8000);
 
         test.done();
     }
