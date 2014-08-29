@@ -137,7 +137,8 @@ This way you can define different setting depending on the source of the request
 
 ###Server
  * `server.port`: port for the server to listen on
- * `server.instance_name`: the name of this server that will be displayed on the status page.
+ * `server.instance_name`: the name of this server that will be displayed on the status page
+ * `server.timout`: global timeout for incoming requests
     
     If not set, a random name will be generated.
 
