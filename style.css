@@ -3,6 +3,7 @@
 }
 
 body {
+    position: relative;
     width: 500px;
     margin: 50px auto;
     padding: 1em;
@@ -16,6 +17,20 @@ body {
     body {
         margin-top: 1em;
     }
+}
+
+a.github {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    font-size: 0.7em;
+    text-decoration: none;
+}
+
+a.github::before {
+    content: "→ ";
+
 }
 
 
@@ -63,6 +78,7 @@ pre {
     border-radius: 0 0 4em 4em;
 
     transform: translateY(-1px);
+    -webkit-transform: translateY(-1px);
 }
 
 .devices .laptop .screen {
