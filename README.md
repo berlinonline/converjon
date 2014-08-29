@@ -27,7 +27,7 @@ An advanced image conversion server and command line tool.
 	* [Converter](#converter)
 	* [Cropping](#cropping)
 	* [Constraints](#constraints)
-	* [Logging](#logging*)
+	* [Logging](#logging)
 * [Testing](#testing)
 * [Copyright Notes](#copyright-notes)
 
@@ -91,7 +91,7 @@ The `crop` parameter sets the cropping mode. Available modes are:
 * `aoi_emphasis`
 * `aoi_auto`
 
-Details about the cropping modes can be found [here in the wiki](https://github.com/berlinonline/converjon/wiki/Cropping-Modes).
+Details about the cropping modes can be found [here in the wiki](https://github.com/berlinonline/converjon/wiki/Cropping-Modes). For examples, see the [demo page](http://berlinonline.github.io/converjon/demo/demo.html)
 
 If an AOI is set, cropping will ensure, that the area is always preserved.
 
@@ -187,11 +187,11 @@ The cache directory is not automatically cleaned up and may grow over time.
 
 ###Cropping
 
-`cropping.default_mode` sets the default mode for cropping images. Possible options are: `centered`, `aoi_coverage`, `aoi_emphasis` and `aoi_auto.
+`cropping.default_mode` sets the default mode for cropping images. Possible options are: `centered`, `aoi_coverage`, `aoi_emphasis` and `aoi_auto`.
 
 [Wiki: Cropping Modes](https://github.com/berlinonline/converjon/wiki/Cropping-Modes)
 
-###Contraints
+###Constraints
 
 Constraints can be used to limit the possible request parameters, like width and height of images. Every constraint has a `min` and a `max` value:
 
