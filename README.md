@@ -91,7 +91,7 @@ The `crop` parameter sets the cropping mode. Available modes are:
 * `aoi_emphasis`
 * `aoi_auto`
 
-Details about the cropping modes can be found [here in the wiki](https://github.com/berlinonline/converjon/wiki/Cropping-Modes). For examples, see the [demo page](http://berlinonline.github.io/converjon/demo/demo.html)
+Details about the cropping modes can be found [here in the wiki](https://github.com/berlinonline/converjon/wiki/Cropping-Modes). For examples, see the [demo page](http://berlinonline.github.io/converjon/demo/demo.html).
 
 If an AOI is set, cropping will ensure, that the area is always preserved.
 
