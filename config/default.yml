@@ -3,7 +3,7 @@
 #  - "http://www.lnwdr.de*"
 
 server:
-  port: 80
+  port: 8000
   instance_name: null
   timeout: 20000
 
