@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 500px;
+    margin: 50px auto;
+    padding: 1em;
+
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6em;
+}
+
+@media (max-width: 768px) {
+    body {
+        margin-top: 1em;
+    }
+}
+
+
+pre {
+    background-color: #eee;
+    padding: 1em;
+}
+
+.devices {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 430px;
+    height: 350px;
+    font-size: 10px;
+}
+
+.devices div,
+.devices img {
+    position: absolute;
+}
+
+.devices img {
+    border: 1px solid black;
+}
+
+.devices .laptop {
+    top: 0;
+    left: 3em;
+
+    width: 40em;
+    height: 30em;
+}
+
+.devices .laptop .body {
+    top: 23em;
+    left: 0;
+
+    width: 40em;
+    height: 3em;
+
+    border: 1px solid black;
+    background-color: white;
+
+    border-radius: 0 0 4em 4em;
+
+    transform: translateY(-1px);
+}
+
+.devices .laptop .screen {
+    top: 0;
+    left: 2.5em;
+
+    width: 35em;
+    height: 23em;
+
+    border: 1px solid black;
+    background-color: white;
+
+    border-radius: 2em 2em 0 0;
+}
+
+.devices .laptop .screen::after {
+    content: "";
+    position: absolute;
+
+    top: 1em;
+    left: 50%;
+
+    width: 0.5em;
+    height: 0.5em;
+
+    margin-left: -0.25em;
+
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.devices .laptop .screen img {
+    top: 3em;
+    left: 2em;
+
+    width: 31em;
+    height: 19em;
+}
+
+
+
+.devices .tablet {
+    top: 17em;
+    left: 0;
+
+    width: 25em;
+    height: 18em;
+
+    border: 1px solid black;
+    background-color: white;
+
+    border-radius: 1.5em;
+}
+
+.devices .tablet::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0.6em;
+
+    width: 1.4em;
+    height: 1.4em;
+
+    margin-top: -0.7em;
+
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.devices .tablet img {
+    top: 1.5em;
+    left: 2em;
+
+    width: 20em;
+    height: 15em;
+}
+
+
+
+
+.devices .phone {
+    top: 15em;
+    left: 28em;
+
+    width: 10em;
+    height: 18em;
+
+    border: 1px solid black;
+    background-color: white;
+
+    border-radius: 1em;
+}
+
+.devices .phone::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0.6em;
+
+    width: 1.4em;
+    height: 1.4em;
+
+    margin-left: -0.7em;
+
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.devices .phone img {
+    top: 2em;
+    left: 0.5em;
+
+    width: 9em;
+    height: 13em;
+}

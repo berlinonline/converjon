@@ -1,7 +1,52 @@
 <!doctype html>
 <html>
     <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=600px">
+        <link rel="stylesheet" href="style.css" type="text/css" />
     </head>
     <body>
+        <h1>Converjon</h1>
+        <p>An advanced image conversion server and command line tool.</p>
+
+        <pre># install
+npm install -g converjon
+
+# launch with the dev config to enable demo
+converjon --dev
+
+# visit http://localhost:8001/demo</pre>
+
+        <p>Converjon is a tool for on-demand image processing to suit various needs in typical modern web applications
+        that have a large varienty of image content or target a wide range of devices.</p>
+
+        <p>There's no need to crop images manually to fit all your thumbnail sizes, gallery formats, etc. With
+        Converjon you can define what part of your images are important, maybe your products, faces or other details,
+        and always get cropping of your pictures that still show the parts that matter.</p>
+
+        <div class="devices">
+            <div class="laptop">
+                <div class="screen">
+                    <img src="images/laptop.jpg" alt="laptop image" />
+                </div>
+                <div class="body">
+                </div>
+            </div>
+            <div class="tablet">
+                <img src="images/tablet.jpg" alt="tablet image" />
+            </div>
+
+            <div class="phone">
+                <img src="images/phone.jpg" alt="tablet image" />
+            </div>
+        </div>
+
+        <p>Converjon removes the need to pre-generate all image sizes and resolutions that you might need. Instead, you
+        can focus on your application, about your next layout or about supporting more target devices and screen
+        sizes. You only need one version of your images. Converjon will do the rest.</p>
+
+        <p>Have a look at the <a href="demo/demo.html">demo page</a> or learn more about Converjon at <a
+            href="https://github.com/berlinonline/converjon">github.com/berlinonline/converjon</a>.</p>
+
     </body>
 </html>
