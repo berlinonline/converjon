@@ -1,5 +1,8 @@
 # Converjon
 
+**This is the README for Converjon 2.0.0 which will soon be released. For Documentation on the previous Converjon 1.8.0
+release [see here](https://github.com/berlinonline/converjon/tree/148ab8a6c01c6ffae6e2f40d25ec35d8c0cfb57d).**
+
 An advanced image conversion server and command line tool.
 
 * [Features](#features)
