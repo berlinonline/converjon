@@ -40,6 +40,15 @@ if (args.help) {
     process.exit();
 }
 
+if (args.dev) {
+    config_files.push(pathutils.join([
+        __dirname,
+        "..",
+        "config",
+        "development.yml"
+    ]));
+}
+
 if (args.config) {
     config_files = config_files.concat(args.config);
 }
