@@ -19,8 +19,6 @@ var config_files = [
 var args = require("../lib/cli/args")({
 });
 
-var get_info = require("../lib/info");
-var info = get_info();
 
 function help() {
     var template_path = fs.realpathSync(pathutils.join([
@@ -33,11 +31,6 @@ function help() {
     var template = Handlebars.compile(source);
 
     return template(info);
-}
-
-if (args.help) {
-    process.stdout.write(help());
-    process.exit();
 }
 
 if (args.dev) {
@@ -54,5 +47,13 @@ if (args.config) {
 }
 
 config.load(config_files);
+
+var get_info = require("../lib/info");
+var info = get_info();
+
+if (args.help) {
+    process.stdout.write(help());
+    process.exit();
+}
 
 require("../lib/server");
