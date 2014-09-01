@@ -10,7 +10,7 @@
 var fs = require("fs");
 var config = require("../lib/config");
 var pathutils = require("../lib/pathutils");
-var Handlebars = require("Handlebars");
+var Handlebars = require("handlebars");
 
 var config_files = [
     pathutils.join([__dirname, "..", "config", "default.yml"])
