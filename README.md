@@ -161,7 +161,10 @@ download:
     - "http://localhost*"
     - "http://example.org/*
 ```
-[Calmcard](https://github.com/lnwdr/calmcard) patterns are used for matching.
+[Calmcard](https://github.com/lnwdr/calmcard) patterns are used for matching by default.
+
+You can also prefix the pattern with `~ ` (like `~ ^http://(foo|bar)\.example.org\/.*`) to use regular expressions. For
+most cases, this should not be necessary and is discouraged.
 
 **Timeout**
 `download.timeout` sets a timeout after which requests are cancelled, if the source server doesn't respond in time.
