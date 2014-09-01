@@ -147,6 +147,9 @@ This way you can define different setting depending on the source of the request
  * `server.timout`: global timeout for incoming requests
     
     If not set, a random name will be generated.
+ * `server.access_log_format`: the formatting of access logs:
+    * `combined`: Apache Combined Log Format (the default)
+    * `short`: leaves out the date/time information. Use this, if you use other software for log handling that adds timestamps.
 
 ###Downloads
 **URL whitelists**
