@@ -52,11 +52,9 @@ Use NPM: `npm install [-g] converjon`
 
 ## Usage
 
-Start the server with `converjon [--config your_config_file]` or use the command line utility `converjon-cli` to work
-on local files.
-Let's say you have an image at `http://example.org/image.jpg`
+Start the server with `converjon [--config your_config_file]` or use the command line utility `converjon-cli` to work on local files.
 
-To get the image through Converjon, put the original URL into the request as a URL encoded parameter:
+Let's say you have an image at `http://example.org/image.jpg`. To get the image through Converjon, put the original URL into the request as a URL encoded parameter:
 
     http://localhost/?url=%20http%3A%2F%2Fexample.org%2Fimage.jpg
 
@@ -66,13 +64,13 @@ Several examples are available on the `/demo` page which is enabled when startin
 
 It's recommended to set the server port to `80` in [configuration](#server) and to run Converjon on a separate subdomain of your site or behind a reverse proxy like Nginx or Varnish.
 
-###Changing size
+### Changing size
 
 You can either supply a `width`, `height` or both. If you only specify one dimension, the other one will be derived from the original image's aspect ratio.
 
 If you set both values, the image may be cropped to the new aspect ratio and  then resized to the requested pixel dimensions.
 
-###Area of Interest
+### Area of Interest
 
 [Wiki: Area of Interest](https://github.com/berlinonline/converjon/wiki/Area-of-Interest)
 
@@ -82,7 +80,7 @@ By default images are cropped from the center of the original. You can specify a
 
 The AOI can also be embedded in the original image's metadata via EXIF or IPTC. The name of this metadata field can be configured and defaults to `aoi`. The request parameter overrides the AOI value from the image's metadata.
 
-###Cropping mode
+### Cropping mode
 
 The `crop` parameter sets the cropping mode. Available modes are:
 
@@ -95,23 +93,23 @@ Details about the cropping modes can be found [here in the wiki](https://github.
 
 If an AOI is set, cropping will ensure, that the area is always preserved.
 
-###Image Format
+### Image Format
 
 With the `format` parameter you can change the format of the image. Supported formats are:
 
   * `jpg` or `jpeg`
   * `png`
   * `gif`
- 
- If no specific format is requested, the format of the source image will be used.
 
-###Quality
+If no specific format is requested, the format of the source image will be used.
+
+### Quality
 
 The `quality` parameter sets the JPEG quality value. It ranges from 1 to 100.
 
 This parameter is ignored, if the requested format is not JPG.
 
-###Color Palette
+### Color Palette
 
 The `colors` parameter sets the number of colors for GIF compression. It ranges from 2 to 256 (integer).
 
@@ -141,7 +139,8 @@ Converjon uses [calmcard](https://github.com/lnwdr/calmcard) for string pattern 
 
 This way you can define different setting depending on the source of the requested images.
 
-###Server
+### Server
+
  * `server.port`: port for the server to listen on
  * `server.instance_name`: the name of this server that will be displayed on the status page
  * `server.timout`: global timeout for incoming requests
@@ -151,7 +150,8 @@ This way you can define different setting depending on the source of the request
     * `combined`: Apache Combined Log Format (the default)
     * `short`: leaves out the date/time information. Use this, if you use other software for log handling that adds timestamps.
 
-###Downloads
+### Downloads
+
 **URL whitelists**
 `download.url_whitelist` sets list of URL patterns that allowed to be requested as image sources.
 
@@ -172,7 +172,7 @@ most cases, this should not be necessary and is discouraged.
 **Timeout**
 `download.timeout` sets a timeout after which requests are cancelled, if the source server doesn't respond in time.
 
-###Cache
+### Cache
 
 ` cache.basepath` sets the base directory for the local file cache.
 
@@ -183,21 +183,21 @@ cache:
 
 The cache directory is not automatically cleaned up and may grow over time.
 
-###Processes
+### Processes
 
 `process.limit` sets the maximum number of child processes that converjon will spawn for converting and analyzing images.
 
-###Converter
+### Converter
 
 `converter.padding_color` sets the background color that is used, if an image needs padding to fit the requested aspect ratio.
 
-###Cropping
+### Cropping
 
 `cropping.default_mode` sets the default mode for cropping images. Possible options are: `centered`, `aoi_coverage`, `aoi_emphasis` and `aoi_auto`.
 
 [Wiki: Cropping Modes](https://github.com/berlinonline/converjon/wiki/Cropping-Modes)
 
-###Constraints
+### Constraints
 
 Constraints can be used to limit the possible request parameters, like width and height of images. Every constraint has a `min` and a `max` value:
 
@@ -217,7 +217,7 @@ constraints:
     max: 10000
 ```
 
-###Logging
+### Logging
 There are three logging levels: `access`, `error` and `debug`. Each of them can be directed to either STDOUT, STDERR or into a log file.
 
 ```YAML
