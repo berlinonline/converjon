@@ -1,12 +1,11 @@
 # Converjon
 
-**This is the README for Converjon 2.0.0 which will soon be released. For Documentation on the previous Converjon 1.8.0
-release [see here](https://github.com/berlinonline/converjon/tree/148ab8a6c01c6ffae6e2f40d25ec35d8c0cfb57d).**
-
-*Converjon 2.0.0 is not yet released but can be downloaded for testing.  
-Clone this repository and run `npm install -g <path_to_repository>` to install it since it is not yet published to npmjs.org*
+<http://berlinonline.github.io/converjon>
 
 An advanced image conversion server and command line tool.
+
+**IMPORTANT: Converjon 2.0.0 has been released. For documentation for the previous Converjon 1.8.x see
+[here](https://github.com/berlinonline/converjon/tree/148ab8a6c01c6ffae6e2f40d25ec35d8c0cfb57d).**
 
 * [Features](#features)
 * [Dependencies](#dependencies)

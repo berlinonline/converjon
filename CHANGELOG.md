@@ -1,11 +1,12 @@
 # 2.0.0
 
 **Braking changes:**
-* installation only via NPM
+* installation via NPM
 * no more environment configuration
 * config format has changed
 * `mime` parameter is replaced by `format`
 * status page no longer delivers JSON data
+* HTTP response codes for errors have changed
 
 **Features/Bugfixes**
 * major rewrite and refactoring
