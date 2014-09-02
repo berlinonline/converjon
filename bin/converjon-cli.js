@@ -15,8 +15,6 @@ var Handlebars = require("handlebars");
 var rsvp = require("rsvp");
 var Promise = rsvp.Promise;
 
-var get_info = require("../lib/info");
-var info = get_info();
 
 function help() {
     var template_path = fs.realpathSync(pathutils.join([
@@ -59,6 +57,16 @@ var args = require("../lib/cli/args")({
     }
 });
 
+
+if (args.config) {
+    config_files = config_files.concat(args.config);
+}
+
+config.load(config_files);
+var processing = require("../lib/processing");
+var get_info = require("../lib/info");
+var info = get_info();
+
 if (args.help) {
     process.stdout.write(help());
     process.exit();
@@ -68,13 +76,6 @@ if (args._.length < 2) {
     process.stdout.write(usage());
     process.exit(1);
 }
-
-if (args.config) {
-    config_files = config_files.concat(args.config);
-}
-
-config.load(config_files);
-var processing = require("../lib/processing");
 
 var logging = require("../lib/logging");
 var lock = require("../lib/lock");
