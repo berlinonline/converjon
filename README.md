@@ -4,7 +4,7 @@
 
 An advanced image conversion server and command line tool.
 
-**IMPORTANT: Converjon 2.0.0 has been released. For documentation for the previous Converjon 1.8.x see
+**IMPORTANT: Converjon 2.0.0 has been released. For documentation on the previous version 1.8.x see
 [here](https://github.com/berlinonline/converjon/tree/148ab8a6c01c6ffae6e2f40d25ec35d8c0cfb57d).**
 
 * [Features](#features)
