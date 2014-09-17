@@ -1,3 +1,8 @@
+# 2.0.1
+
+* Updated dependecies to fix security issues #61
+* Updated package.json description
+
 # 2.0.0
 
 **Braking changes:**
