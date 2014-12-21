@@ -17,6 +17,7 @@ An advanced image conversion server and command line tool.
 	* [Image format](#image-format)
 	* [Quality](#quality)
 	* [Color Palette](#color-palette)
+	* [Interlaced Images](#interlaced-images)
 	* [Status Page](#status-page)
 * [Configuration](#configuration)
 	* [Server](#server)
@@ -28,6 +29,8 @@ An advanced image conversion server and command line tool.
 	* [Constraints](#constraints)
 	* [Logging](#logging)
 * [Testing](#testing)
+* [Contributing](#contributing)
+* [Changelog](#changelog)
 * [Copyright Notes](#copyright-notes)
 
 ## Features
@@ -59,7 +62,7 @@ Let's say you have an image at `http://example.org/image.jpg`. To get the image 
 
 More options are available as GET parameters. All parameters need to be URL encoded.
 
-Several examples are available on the `/demo` page which is enabled when starting Converjon with the [development config file](https://github.com/berlinonline/converjon/blob/master/config/development.yml).
+Several examples are available on the `/demo` page which is enabled when starting Converjon with the [development config file](https://github.com/berlinonline/converjon/blob/master/config/development.yml) via ```converjon --dev```.
 
 It's recommended to set the server port to `80` in [configuration](#server) and to run Converjon on a separate subdomain of your site or behind a reverse proxy like Nginx or Varnish.
 
@@ -67,14 +70,14 @@ It's recommended to set the server port to `80` in [configuration](#server) and 
 
 You can either supply a `width`, `height` or both. If you only specify one dimension, the other one will be derived from the original image's aspect ratio.
 
-If you set both values, the image may be cropped to the new aspect ratio and  then resized to the requested pixel dimensions.
+If you set both values, the image may be cropped to the new aspect ratio and then resized to the requested pixel dimensions.
 
 ### Area of Interest
 
 [Wiki: Area of Interest](https://github.com/berlinonline/converjon/wiki/Area-of-Interest)
 
 By default images are cropped from the center of the original. You can specify an "area of interest" with the `aoi` parameter. The AOI is a rectangle in the following format:
-    
+
     offsetX,offsetY,width,height
 
 The AOI can also be embedded in the original image's metadata via EXIF or IPTC. The name of this metadata field can be configured and defaults to `aoi`. The request parameter overrides the AOI value from the image's metadata.
@@ -96,15 +99,15 @@ If an AOI is set, cropping will ensure, that the area is always preserved.
 
 With the `format` parameter you can change the format of the image. Supported formats are:
 
-  * `jpg` or `jpeg`
-  * `png`
-  * `gif`
+* `jpg` or `jpeg`
+* `png`
+* `gif`
 
 If no specific format is requested, the format of the source image will be used.
 
 ### Quality
 
-The `quality` parameter sets the JPEG quality value. It ranges from 1 to 100.
+The `quality` parameter sets the JPEG quality value. It ranges from `1` to `100`.
 
 This parameter is ignored, if the requested format is not JPG.
 
@@ -112,9 +115,21 @@ This parameter is ignored, if the requested format is not JPG.
 
 The `colors` parameter sets the number of colors for GIF compression. It ranges from 2 to 256 (integer).
 
+### Interlaced Images
+
+The `interlace` parameter allows the creation of interlaced images. Supported types of interlacing scheme are:
+
+* `plane`(try this for JPEGs)
+* `line`
+* `none`
+
+A well-known example of interlaced images are progressive JPEGs. You can use this option with PNGs and GIFs as well.
+
 ### Status Page
 
 The URL `/status` leads to a summary of Converjon's current state and some statistics.
+
+The status page is available as content type `application/json` via `/status.json`.
 
 ## Configuration
 
@@ -165,8 +180,7 @@ download:
 ```
 [Calmcard](https://github.com/lnwdr/calmcard) patterns are used for matching by default.
 
-You can also prefix the pattern with `~ ` (like `~ ^http://(foo|bar)\.example.org\/.*`) to use regular expressions. For
-most cases, this should not be necessary and is discouraged.
+You can also prefix the pattern with ``~ `` (like ``~ ^http://(foo|bar)\.example.org\/.*``) to use regular expressions. For most cases, this should not be necessary and is discouraged.
 
 **Timeout**
 `download.timeout` sets a timeout after which requests are cancelled, if the source server doesn't respond in time.
@@ -217,6 +231,7 @@ constraints:
 ```
 
 ### Logging
+
 There are three logging levels: `access`, `error` and `debug`. Each of them can be directed to either STDOUT, STDERR or into a log file.
 
 ```YAML
@@ -232,10 +247,18 @@ Logs are not automatically rotated. Use of a tool like `logrotate` is recommende
 
 # Testing
 
-Execute tests with `npm test`
+Execute tests with `npm test`. Please note, that you need to have all [dependencies](#dependencies) installed and must have run `npm install` first.
 
-# Copyright notes
+# Contributing
 
-Converjon is [licensed under the MIT license](https://github.com/berlinonline/converjon/blob/master/LICENSE).
+Please contribute by [forking](http://help.github.com/forking/) and sending a [pull request](http://help.github.com/pull-requests/). More information can be found in the [`CONTRIBUTING.md`](CONTRIBUTING.md) file.
+
+# Changelog
+
+See [`CHANGELOG.md`](CHANGELOG.md) for more information about changes.
+
+# Copyright Notes
+
+Converjon is [licensed under the MIT license](LICENSE).
 
 The "sparrow" testing image is © Leon Weidauer, permission to use it for testing is granted.

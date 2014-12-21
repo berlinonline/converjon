@@ -1,3 +1,9 @@
+# Development configuration file.
+#
+# Start a server with this configuration merged over default.yml via:
+#
+# converjon --dev
+#
 server:
   port: 8001
 
@@ -5,6 +11,7 @@ download:
   url_whitelist:
     - "http://localhost:8002/*"
 
+# start a test server to automatically deliver test images
 test_server:
   enabled: true
   port: 8002

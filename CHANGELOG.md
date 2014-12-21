@@ -1,6 +1,15 @@
+# 2.1.0 (2015.xx.xx)
+
+* Added support for interlaced images via `interlace` parameter (think progressive JPGs, #65)
+* Added support for status page as `application/json` via `/status.json` (#64)
+* Added [CONTRIBUTING.md](CONTRIBUTING.md) with hints on how to help this project (#66)
+* Modified help messages for server and CLI (#58, #59)
+* Fixed typo in error message (#60)
+* Made scripts in `bin/` executable and modified README a bit for #65 and #66)
+
 # 2.0.1
 
-* Updated dependecies to fix security issues #61
+* Updated dependencies to fix security issues #61
 * Updated package.json description
 
 # 2.0.0

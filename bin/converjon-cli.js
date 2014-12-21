@@ -54,7 +54,13 @@ var args = require("../lib/cli/args")({
         m: "mime",
         q: "quality",
         c: "colors"
-    }
+    },
+    string: [
+        "aoi",
+        "crop",
+        "format",
+        "interlace"
+    ]
 });
 
 

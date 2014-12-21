@@ -4,8 +4,10 @@ Starts the Converjon image server.
 
 OPTIONS:
 
+    --help          Display this help.
+
     --config        Path to a configuration file.
                     Can be set multiple times to load more than one file.
 
-    --help          Display this help.
-
+    --dev           Development mode. Starts converjon with the example
+                    development.yml config merged over the default.yml.
