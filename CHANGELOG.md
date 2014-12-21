@@ -2,6 +2,7 @@
 
 * Added support for interlaced images via `interlace` parameter (think progressive JPGs, #65)
 * Added support for status page as `application/json` via `/status.json` (#64)
+* Added error message when port is already in use on server startup (#68)
 * Added [CONTRIBUTING.md](CONTRIBUTING.md) with hints on how to help this project (#66)
 * Modified help messages for server and CLI (#58, #59)
 * Fixed typo in error message (#60)

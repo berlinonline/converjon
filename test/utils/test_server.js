@@ -87,6 +87,16 @@ function start_test_server(port) {
         }
     });
 
+    server.on("error", function(error) {
+        if (error.code === "EADDRINUSE") {
+            process.stderr.write("[ERROR] Couldn't start test server as port is already in use: " + port + "\n");
+            process.exit(1);
+        }
+    });
+    server.on("listening", function(ev) {
+        console.log("Test server now listens on port " + port);
+    });
+
     server.listen(port);
 
     return server;
