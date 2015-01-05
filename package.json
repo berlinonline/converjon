@@ -1,7 +1,7 @@
 {
   "name": "converjon",
   "description": "An advanced image conversion server and command line tool.",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "maintainers": [
     {
       "name": "Leon Weidauer",

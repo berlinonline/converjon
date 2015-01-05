@@ -1,4 +1,4 @@
-# 2.1.0 (2015.xx.xx)
+# 2.1.0 (2015-01-05)
 
 * Added support for interlaced images via `interlace` parameter (think progressive JPGs, #65)
 * Added support for status page as `application/json` via `/status.json` (#64)
