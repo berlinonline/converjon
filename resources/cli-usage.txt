@@ -1,0 +1,3 @@
+Usage: converjon-cli [options ...] infile outfile
+
+Invoke --help for more options and descriptions.

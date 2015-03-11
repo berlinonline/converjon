@@ -1,3 +1,42 @@
+# 2.1.0 (2015-01-05)
+
+* Added support for interlaced images via `interlace` parameter (think progressive JPGs, #65)
+* Added support for status page as `application/json` via `/status.json` (#64)
+* Added error message when port is already in use on server startup (#68)
+* Added [CONTRIBUTING.md](CONTRIBUTING.md) with hints on how to help this project (#66)
+* Modified help messages for server and CLI (#58, #59)
+* Fixed typo in error message (#60)
+* Made scripts in `bin/` executable and modified README a bit for #65 and #66)
+
+# 2.0.1
+
+* Updated dependencies to fix security issues #61
+* Updated package.json description
+
+# 2.0.0
+
+**Braking changes:**
+* installation via NPM
+* no more environment configuration
+* config format has changed
+* `mime` parameter is replaced by `format`
+* status page no longer delivers JSON data
+* HTTP response codes for errors have changed
+
+**Features/Bugfixes**
+* major rewrite and refactoring
+* new cache system #44
+* custom configurations per URL #48
+* new cropping modes #30
+* improved cache header handling #29
+* installable via NPM #47
+* source URL in response headers #46
+* GIF size bug fixed #42
+* removed connect.js dependency #45
+* new unit tests
+* improved reponse code handling #43
+* new status page #51
+
 1.8.0
 =
 * Added config `downloader.rejectUnauthorized` #41

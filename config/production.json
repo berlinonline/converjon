@@ -1,9 +1,0 @@
-{
-    "server": {
-        "port": 80
-    },
-    "statusPage": {
-        "visible": false,
-        "localFile": "./status.json"
-    }
-}
