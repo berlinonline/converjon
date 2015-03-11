@@ -1,45 +1,55 @@
 {
   "name": "converjon",
-  "description": "An on-the-fly image conversion service",
-  "version": "1.8.0",
+  "description": "An advanced image conversion server and command line tool.",
+  "version": "2.1.0",
   "maintainers": [
     {
-        "name": "Leon Weidauer",
-        "email": "leon@lnwdr.de",
-        "web": "http://lnwdr.de"
+      "name": "Leon Weidauer",
+      "email": "leon@lnwdr.de",
+      "web": "http://lnwdr.de"
     }
   ],
   "contributors": [
     {
-        "name": "Leon Weidauer",
-        "email": "leon@lnwdr.de",
-        "web": "http://lnwdr.de"
+      "name": "Leon Weidauer",
+      "email": "leon@lnwdr.de",
+      "web": "http://lnwdr.de"
+    },
+    {
+      "name": "Steffen Gransow",
+      "email": "converjon@mivesto.de",
+      "web": "https://github.com/graste"
     }
   ],
-  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/berlinonline/converjon.git"
   },
   "dependencies": {
-    "cli-color": "0.2.x",
-    "connect": "2.7.x",
-    "config": "0.4.x",
-    "connect-bouncer": "0.1.x",
-    "vows": "0.7.x",
-    "send": "0.1.x",
-    "mv": "0.0.4",
-    "mime": "1.2.9",
-    "clone": "0.1.x",
-    "moniker": "0.1.x"
+    "calmcard": "^0.1.1",
+    "cjson": "^0.3.0",
+    "js-yaml": "^3.0.2",
+    "handlebars": "^2.0.0",
+    "clone": "^0.1.18",
+    "mkdirp": "^0.5.0",
+    "moniker": "^0.1.2",
+    "nodeunit": "^0.9.0",
+    "request": "^2.42.0",
+    "rsvp": "^3.0.13",
+    "send": "^0.9.2",
+    "minimist": "^1.1.0",
+    "cli-color": "^0.3.0"
   },
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
-    "node": ">=0.8.0 <0.11.0"
+    "node": ">=0.10.7 <0.11.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "test": "./node_modules/vows/bin/vows ./test/*"
+    "test": "./node_modules/.bin/nodeunit ./test/*"
+  },
+  "bin": {
+    "converjon": "./bin/converjon.js",
+    "converjon-cli": "./bin/converjon-cli.js"
   }
 }

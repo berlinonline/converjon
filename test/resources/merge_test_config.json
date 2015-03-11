@@ -1,0 +1,8 @@
+{
+    "urls": [
+        "http://localhost:8001*"
+    ],
+    "server": {
+        "port": 8000
+    }
+}

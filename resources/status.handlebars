@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        {{{style}}}
+    </style>
+</head>
+<body>
+<h1>Converjon – Status</h1>
+<h2>Server info</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>Instance name</th>
+            <td>{{info.instance_name}}</td>
+        </tr>
+        <tr>
+            <th>Server version</th>
+            <td>{{info.version}}</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Statistics</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>Requests served</th>
+            <td>{{stats.requests.successful}}</td>
+        </tr>
+        <tr>
+            <th>Requests failed</th>
+            <td>{{stats.requests.failed}}</td>
+        </tr>
+        <tr>
+            <th>Source images downloaded</th>
+            <td>{{stats.downloads.successful}}</td>
+        </tr>
+        <tr>
+            <th>Downloads failed</th>
+            <td>{{stats.downloads.failed}}</td>
+        </tr>
+        <tr>
+            <th>Images converted</th>
+            <td>{{stats.conversions.successful}}</td>
+        </tr>
+        <tr>
+            <th>Conversions failed</th>
+            <td>{{stats.conversions.failed}}</td>
+        </tr>
+        <tr>
+            <th>Active locks</th>
+            <td>{{stats.locks}}</td>
+        </tr>
+    </tbody>
+</table>
+<footer>
+    <a href="https://github.com/berlinonline/converjon">Converjon on Github</a>
+</footer>
+</body>
+</html>

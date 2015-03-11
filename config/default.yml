@@ -1,0 +1,52 @@
+#urls:
+#  - "http://localhost*" #this will match URLs on localhost, this is the dev/testing default
+#  - "http://www.lnwdr.de*"
+
+server:
+  port: 8000
+  instance_name: null
+  timeout: 20000
+  access_log_format: "combined"
+
+test_server:
+  enabled: false
+
+cache:
+  base_path: "cache"
+
+download:
+  url_whitelist:
+    - "http://localhost/*"
+  timeout: 5000
+
+process:
+  limit: 5
+  timeout: 5000
+
+analysis:
+  aoi_name: "AOI"
+
+converter:
+  padding_color: "#fefe00"
+
+cropping:
+  default_mode: "aoi_coverage"
+
+constraints:
+  quality:
+    min: 1
+    max: 100
+  colors:
+    min: 1
+    max: 256
+  width:
+    min: 1
+    max: 10000
+  height:
+    min: 1
+    max: 10000
+
+logging:
+  error: "stderr"
+  debug: "stderr"
+  access: "stdout"

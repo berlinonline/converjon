@@ -1,0 +1,44 @@
+{{name}} - {{version}}
+
+Usage: converjon-cli [options ...] infile [options ...] outfile [options ...]
+
+Options may be specified at any position.
+
+OPTIONS:
+
+    --help              Display this help.
+
+    -w, --width         Width of the output image.
+
+    -h, --height        Height of the output image.
+
+    -f, --format        Output format. Use "jpg", "png" or "gif".
+
+    -q, --quality       JPEG quality, only applies to jpg output format.
+
+    -c, --colors        GIF color limit, only applies to gif output format.
+
+    --interlace         Create an interlaced (progressive) output image.
+                        Supported types are: "plane", "line" and "none".
+
+    --crop              Crops the input image according to the given mode.
+                        Supported crop modes are: "centered", "aoi_coverage",
+                        "aoi_emphasis" and "aoi_auto". Defaults to "centered".
+
+    --aoi               Specifies a rectangular area of interest that is used
+                        to crop the image when the --crop argument was given.
+                        If an AOI is set, the cropping will ensure that the
+                        given area is always preserved in the output image.
+                        The value format is: offsetX,offsetY,width,height
+
+Examples:
+
+    bin/converjon-cli.js --aoi 2500,2500,300,600 --crop aoi_coverage \
+        -w 200 -h 200 -f jpg --interlace plane \
+        test/resources/images/test_image_sparrow.jpg output.jpg
+
+    bin/converjon-cli.js test/resources/images/test_image_sparrow.jpg derp \
+        -w 1300 -h 1300 --crop aoi_emphasis --aoi 0,0,4126,2551
+
+    converjon-cli -w 200 -h 200 input.jpg output.jpg
+

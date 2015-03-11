@@ -1,350 +1,264 @@
-Converjon
-=========
-
-An on-the-fly image conversion service
-
-Dependencies (apart from node modules)
--
-  * ImageMagick
-    * use the Q8 version to save memory
-    * however, Q16 (the default one) is required to support PNG image output
-  * ExifTool (at least version 9)
-  * node.js
-  * NPM (usually included in node.js)
-
-Installation
--
-
-You can install Converjon from NPM with `npm install converjon` or you can:
-
-  * download or clone the repository
-  * change into the directory of the repository
-  * `npm install -d` to install the dependency libs
-
-After installation, you may need to adjust some things:
-
-  * set your environment (production/development/testing) via the `NODE_ENV` environment variable (defaults to "development")
-  * start with `npm start`
-
-There are some optional OS specific start/stop scripts under `utils/os_helpers/` which you can also use.
-
-Configuration
--
-
-###Environment
-
-The configuration file are read and merged in this order:
-
-1. default.json
-1. [environment].json
-1. runtime.json
-
-[environment] is a string that can be set with the environment variable `NODE_ENV` or by placing a plain text file called
-"environment" in the root directory of the application. This file has to contain one single line (no line breaks). The
-contents of this line will be used as the environment string.
-
-The environment variable always takes precedence over the text file.
-
-###Server
- * `port`: port for the server to listen on
-
-###URL whitelisting
-
-URLs from which images are allowed to be donwloaded must be whitelisted in the `urlChecker.urlWhitelist` config
-property.
-
-Example from [default.json](config/default.json):
-
-    "urlChecker": {
-        "urlWhitelist": {
-            "localhost": "^.+:\/\/localhost",
-            "127.0.0.1": "^.+:\/\/127.0.0.1",
-            "::1": "^.+:\/\/::1"
-        }
-    }
-
-###Bouncer
-
-Converjon uses [connect-bouncer](https://github.com/lnwdr/connect-bouncer) for basic protection against DoS.
-It can be configured with the `bouncer` config property.
-
-* `threshhold`: Requests per second that are allowed from a single host
-* `limit`: Number of requests from a single host that are allowed before the bouncer starts checking for the
-  `threshhold`
-
-Example from [default.json](config/default.json):
-
-    "bouncer": {
-        "threshhold": 10,
-        "limit": 100
-    }
-
-###Downloader
-
-The `downloader` config sets options for handling the downloads from source URLs.
-
-* `tempPath`: Directory for temp files
-* `acceptedContentTypes`: content types that are accepted from source servers
-* `rejectUnauthorized`: SSL hosts with unauthorized certificates will be rejected. defaults to `true`
-
-    Set this to false, if you have to use SSL certs from CAs that are not accepted by node.js
-
-You can configure HTTP basic auth credentials  globally or for certain URLs with `downloader.authentication`.
-The URLs are specified via regular expressions.
-
-Merged example from [testing.json](config/testing.json) and [default.json](config/default.json):
-
-    "downloader": {
-        "tempPath" : "./cache/temp/",
-        "acceptedContentTypes": [
-            "image/jpeg",
-            "image/pjpeg",
-            "image/png",
-            "image/gif"
-        ],
-        "authentication": {
-            "global": {
-            },
-            "url": {
-                "\\/authenticated_url$": {
-                    "username": "testuser",
-                    "password": "testpass"
-                },
-                "http:\\/\\/example\\.org": {
-                    "username": "example_user",
-                    "password": "example_pass"
-                }
-            }
-        },
-        "rejectUnauthorized": true
-    }
-
-###Processes
-
-The `process` config property defines how many external processes (imagemagick/exiftool) can be spawned simultaneously
-and how long they are allowed to run.
-
-* `maxRunningProcesses`: Maximum number of simultaneously running processes
-* `timeout`: time in milliseconds before a process is killed if it doesn't finish running before.
-* `maxWaitingTime`: time in milliseconds that processes can wait until the `alive` flag in the /status page will change
-  to `false`and the /status page will no longer return an HTTP 200 code but 503 instead.
-
-Example from [development.json](config/development.json):
-
-     "process": {
-            "maxRunningProcesses": 2,
-            "timeout": 5000,
-            "maxWaitingTime": 10000
-      }
-
-###Storage
-
-Storage is configured with the `targetStore` and `sourceStore` properties.
-
-* `basePath`: Path to the directory to use for storing files
-* `maxAge`: time in seconds after which an image will be treated as stale nad will be refreshed.
-* `clientRequestTimeout`: (only for targetStore) Timeout after which the client HTTP request will be canceled,
-  regardless of how the processing went.
-
-Example from [default.json](config/default.json):
-
-    "targetStore": {
-        "basePath": "./cache/target/",
-        "maxAge": 10,
-        "clientRequestTimeout": 10000
-    },
-    "sourceStore": {
-        "basePath": "./cache/source/",
-        "maxAge": 300
-    }
-
-###Logging
-
-The `logging` property lets you configure the logging behaviour:
-
- * `errorLog`: Absolute path to error log file.
- * `accessLog`: Absolute path to access log file.
- * `error` (boolean): wether to log errors at all.
- * `debug` (boolean): wether to log debug output (this may be A LOT)
- * `access` (boolean): wether to log client requests (Apache style)
- * `logWithTimeStamp`: wether or not to include timestamps in log messages
-
-Example from [default.json](config/default.json):
-
-    "logging": {
-        "access": true,
-        "debug": false,
-        "error": true,
-        "tailLength": 20,
-        "logWithTimeStamp": false
-    }
-
-###Converter Options
-
-The `converter` config allows some basic setting for image conversion.
-
-* `defaultMimeType`: The type to which images will be converted if the request doesn't specify any.
-* `paddingColor`: HEX RGB color value that is used for padding areas, if cropping requires any.
-
-Example from [default.json](config/default.json):
-
-    "converter": {
-        "defaultMimeType": "image/jpeg",
-        "paddingColor": "#DFDFDF"
-    }
-
-###Analyzer Options
-
-The `analyzer` config contains basic setting for image analysis.
-
-* `aoiName`: The name of the AOI metadata field
-
-Example from [default.json](config/default.json):
-
-    "analyzer": {
-        "aoiName": "aoi"
-    }
-
-###Constraints
-
-Image requests can be constrained within configurable boundaries. This can be done globally and for regular expressions matching source URLs. If a request exceeds these limits, an HTTP 400 is returned with a notice, what went wrong.
-
-Currently there are 4 possible constraints:
-
-  * width
-  * height
-  * quality (meaning JPEG quality)
-  * color (meaning GIF color depth)
-
-Each of these values can have a `max` and a `min` property. Both are optional. You can also specify just one boundary.
-
-Example from [default.json](config/default.json):
-
-    {
-    //...
-        "constraints": {
-            "global": {
-                "width": {
-                    "min": 1,
-                    "max": 2000
-                },
-                "height": {
-                    "min": 1,
-                    "max": 2000
-                },
-                "quality": {
-                    "min": 1,
-                    "max": 95
-                },
-                "colors": {
-                    "min": 2,
-                    "max": 256
-                }
-            },
-            "url": {
-                "^.+:\/\/localhost": {
-                    "quality": {
-                        "max": 100,
-                        "min": 20
-                    }
-                }
-            }
-        }
-    // ...
-    }
-
-This example includes some global contraints that apply to every request and some overridden contraints for request with aource URLs from localhost.
-
-Usage
--
-
-Example image URL: http://example.org/image.jpg
-
-To get the image through Converjon, put the original URL into the request as a URL encoded parameter:
+# Converjon
+
+<http://berlinonline.github.io/converjon>
+
+An advanced image conversion server and command line tool.
+
+**IMPORTANT: Converjon 2.0.0 has been released. For documentation on the previous version 1.8.x see
+[here](https://github.com/berlinonline/converjon/tree/148ab8a6c01c6ffae6e2f40d25ec35d8c0cfb57d).**
+
+* [Features](#features)
+* [Dependencies](#dependencies)
+* [Installation](#installation)
+* [Usage](#usage)
+	* [Changing Size](#changing-size)
+	* [Area of Interest](#area-of-interest)
+	* [Cropping Mode](#cropping-mode)
+	* [Image format](#image-format)
+	* [Quality](#quality)
+	* [Color Palette](#color-palette)
+	* [Interlaced Images](#interlaced-images)
+	* [Status Page](#status-page)
+* [Configuration](#configuration)
+	* [Server](#server)
+	* [Downloads](#downloads)
+	* [Cache](#cache)
+	* [Processes](#processes)
+	* [Converter](#converter)
+	* [Cropping](#cropping)
+	* [Constraints](#constraints)
+	* [Logging](#logging)
+* [Testing](#testing)
+* [Contributing](#contributing)
+* [Changelog](#changelog)
+* [Copyright Notes](#copyright-notes)
+
+## Features
+
+* thumbnail generation
+* [responsive images](http://dev.opera.com/articles/responsive-images/)
+* intelligent cropping
+* [art direction use cases](http://usecases.responsiveimages.org/#art-direction)
+* adaptive image quality
+* no need to pre-generate different image sizes or versions
+
+## Dependencies
+
+  * [ImageMagick](http://www.imagemagick.org/script/binary-releases.php)
+  * [ExifTool](http://www.sno.phy.queensu.ca/%7Ephil/exiftool/install.html) (at least version 9)
+  * [node.js and NPM](http://nodejs.org/download/)
+
+## Installation
+
+Use NPM: `npm install [-g] converjon`
+
+## Usage
+
+Start the server with `converjon [--config your_config_file]` or use the command line utility `converjon-cli` to work on local files.
+
+Let's say you have an image at `http://example.org/image.jpg`. To get the image through Converjon, put the original URL into the request as a URL encoded parameter:
 
     http://localhost/?url=%20http%3A%2F%2Fexample.org%2Fimage.jpg
 
 More options are available as GET parameters. All parameters need to be URL encoded.
 
-Several example are available on the `/demo` page which is enabled in "testing" and "development" environments.
+Several examples are available on the `/demo` page which is enabled when starting Converjon with the [development config file](https://github.com/berlinonline/converjon/blob/master/config/development.yml) via ```converjon --dev```.
 
-###Changing size
+It's recommended to set the server port to `80` in [configuration](#server) and to run Converjon on a separate subdomain of your site or behind a reverse proxy like Nginx or Varnish.
 
-You can either supply a `width`, `height` or both. If you only supply one dimension, the other one will be derived from the original images aspect ratio.
+### Changing size
 
-If you supply both values, the image will be cropped to the new aspect ratio, if necessary, and is then resized to the requested pixel dimensions.
+You can either supply a `width`, `height` or both. If you only specify one dimension, the other one will be derived from the original image's aspect ratio.
 
-###Area of Interest
+If you set both values, the image may be cropped to the new aspect ratio and then resized to the requested pixel dimensions.
 
-By default images are cropped from the center of the original. You can specify an "area of interest" with the `aoi` parameter. The AOI is a rectangle in the folling format:
-    
+### Area of Interest
+
+[Wiki: Area of Interest](https://github.com/berlinonline/converjon/wiki/Area-of-Interest)
+
+By default images are cropped from the center of the original. You can specify an "area of interest" with the `aoi` parameter. The AOI is a rectangle in the following format:
+
     offsetX,offsetY,width,height
 
-The AOI can also be embedded in the original images metadata via EXIF or IPTC. The name of this metadata field can be configured and defaults to `aoi`. If the images metadata specifies an AOI, it is preferre over the AOI in the GET parameter.
+The AOI can also be embedded in the original image's metadata via EXIF or IPTC. The name of this metadata field can be configured and defaults to `aoi`. The request parameter overrides the AOI value from the image's metadata.
 
-If an AOI is set, croppping will ensure, that the area is always preserved.
+### Cropping mode
 
-###Image Format
+The `crop` parameter sets the cropping mode. Available modes are:
 
-With the `mime` parameter you can change the format of the image. Supported types are:
-  * image/jpeg
-  * image/png
-  * image/gif
+* `centered`
+* `aoi_coverage`
+* `aoi_emphasis`
+* `aoi_auto`
 
-###Quality
+Details about the cropping modes can be found [here in the wiki](https://github.com/berlinonline/converjon/wiki/Cropping-Modes). For examples, see the [demo page](http://berlinonline.github.io/converjon/demo/demo.html).
 
-The `quality` parameter sets the JPEG quality value. It ranges from 1 to 100 (integer).
+If an AOI is set, cropping will ensure, that the area is always preserved.
 
-This parameter is ignored, if the requested mime type is not `image/jpeg`.
+### Image Format
 
-###Color Palette
+With the `format` parameter you can change the format of the image. Supported formats are:
+
+* `jpg` or `jpeg`
+* `png`
+* `gif`
+
+If no specific format is requested, the format of the source image will be used.
+
+### Quality
+
+The `quality` parameter sets the JPEG quality value. It ranges from `1` to `100`.
+
+This parameter is ignored, if the requested format is not JPG.
+
+### Color Palette
 
 The `colors` parameter sets the number of colors for GIF compression. It ranges from 2 to 256 (integer).
 
-Status Page
--
+### Interlaced Images
 
-The URL /status leads to a summary of Converjons current state. Example output:
+The `interlace` parameter allows the creation of interlaced images. Supported types of interlacing scheme are:
 
-    {
-      "alive": true,
-      "instanceName": "scrawny-example",
-      "hostname": "Ganymede.local",
-      "version": "1.7.0",
-      "environment": "development",
-      "stats": {
-        "requests": {
-          "successful": 0,
-          "failed": 0
-        },
-        "downloads": {
-          "successful": 0,
-          "failed": 0
-        },
-        "analyzers": {
-          "successful": 0,
-          "failed": 0
-        },
-        "converters": {
-          "successful": 0,
-          "failed": 0
-        },
-        "processes": {
-          "waiting": 0,
-          "running": 0,
-          "lastEnd": null
-        }
-      },
-      "uptime": 4,
-      "logTail": []
-    }
+* `plane`(try this for JPEGs)
+* `line`
+* `none`
 
-The `alive` value will be `false`, if there are processes waiting and the last process finished more than `config.process.maxWaitingTime` milliseconds ago.
+A well-known example of interlaced images are progressive JPEGs. You can use this option with PNGs and GIFs as well.
 
-Testing
--
-  * Execute tests with `npm test`
+### Status Page
 
-Copyright notes
--
+The URL `/status` leads to a summary of Converjon's current state and some statistics.
+
+The status page is available as content type `application/json` via `/status.json`.
+
+## Configuration
+
+When launching converjon, you can specify one or more configuration files with the `--config` option which can be set
+multiple times to load multiple config files.
+
+You can use the [default.yml](https://github.com/berlinonline/converjon/blob/master/config/default.yml) or [development.yml](https://github.com/berlinonline/converjon/blob/master/config/development.yml) file as an example for writing your own.
+
+The default configuration format is YAML but you can also use JSON files.
+
+Every configuration file can be matched only to certain  image source URLs. If a config file contains a `urls` setting, that configuration will only apply to URLs that match at least one of the patterns from that list:
+
+```YAML
+# this config will only apply to source URLs from localhost or flickr
+urls:
+  - "http://localhost*" #this will match URLs on localhost, this is the dev/testing default
+  - "http://www.flickr.com*"
+```
+
+Converjon uses [calmcard](https://github.com/lnwdr/calmcard) for string pattern matching. Documentation on how these patterns work can be found there.
+
+This way you can define different setting depending on the source of the requested images.
+
+### Server
+
+ * `server.port`: port for the server to listen on
+ * `server.instance_name`: the name of this server that will be displayed on the status page
+ * `server.timout`: global timeout for incoming requests
+    
+    If not set, a random name will be generated.
+ * `server.access_log_format`: the formatting of access logs:
+    * `combined`: Apache Combined Log Format (the default)
+    * `short`: leaves out the date/time information. Use this, if you use other software for log handling that adds timestamps.
+
+### Downloads
+
+**URL whitelists**
+`download.url_whitelist` sets list of URL patterns that allowed to be requested as image sources.
+
+For example, if you host your source images on `http://myimages.com/images/...` you should set the whitelist pattern to `http://myimages.com/images/` to make sure other sources are not allowed.
+
+```YAML
+# this will only allow requests for images from URLs that match these patterns
+download:
+  url_whitelist:
+    - "http://localhost*"
+    - "http://example.org/*
+```
+[Calmcard](https://github.com/lnwdr/calmcard) patterns are used for matching by default.
+
+You can also prefix the pattern with ``~ `` (like ``~ ^http://(foo|bar)\.example.org\/.*``) to use regular expressions. For most cases, this should not be necessary and is discouraged.
+
+**Timeout**
+`download.timeout` sets a timeout after which requests are cancelled, if the source server doesn't respond in time.
+
+### Cache
+
+` cache.basepath` sets the base directory for the local file cache.
+
+```YAML
+cache:
+  base_path: "/tmp/converjon/cache"
+```
+
+The cache directory is not automatically cleaned up and may grow over time.
+
+### Processes
+
+`process.limit` sets the maximum number of child processes that converjon will spawn for converting and analyzing images.
+
+### Converter
+
+`converter.padding_color` sets the background color that is used, if an image needs padding to fit the requested aspect ratio.
+
+### Cropping
+
+`cropping.default_mode` sets the default mode for cropping images. Possible options are: `centered`, `aoi_coverage`, `aoi_emphasis` and `aoi_auto`.
+
+[Wiki: Cropping Modes](https://github.com/berlinonline/converjon/wiki/Cropping-Modes)
+
+### Constraints
+
+Constraints can be used to limit the possible request parameters, like width and height of images. Every constraint has a `min` and a `max` value:
+
+```YAML
+constraints:
+  quality:
+    min: 1
+    max: 100
+  colors:
+    min: 1
+    max: 256
+  width:
+    min: 1
+    max: 10000
+  height:
+    min: 1
+    max: 10000
+```
+
+### Logging
+
+There are three logging levels: `access`, `error` and `debug`. Each of them can be directed to either STDOUT, STDERR or into a log file.
+
+```YAML
+logging:
+  error: "stderr" # will log errors to STDERR
+  debug: "stdout" # will log debug logs to STDOUT
+  access: "/var/log/access.log" # will log requests into a log file
+```
+
+To disable a log level, set it to `false`.
+
+Logs are not automatically rotated. Use of a tool like `logrotate` is recommended.
+
+# Testing
+
+Execute tests with `npm test`. Please note, that you need to have all [dependencies](#dependencies) installed and must have run `npm install` first.
+
+# Contributing
+
+Please contribute by [forking](http://help.github.com/forking/) and sending a [pull request](http://help.github.com/pull-requests/). More information can be found in the [`CONTRIBUTING.md`](CONTRIBUTING.md) file.
+
+# Changelog
+
+See [`CHANGELOG.md`](CHANGELOG.md) for more information about changes.
+
+# Copyright Notes
+
+Converjon is [licensed under the MIT license](LICENSE).
+
 The "sparrow" testing image is © Leon Weidauer, permission to use it for testing is granted.
