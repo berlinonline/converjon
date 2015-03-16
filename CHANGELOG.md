@@ -1,3 +1,7 @@
+# 2.2.0 (not released yet)
+
+* Added logging level "info" in configs
+
 # 2.1.0 (2015-01-05)
 
 * Added support for interlaced images via `interlace` parameter (think progressive JPGs, #65)
