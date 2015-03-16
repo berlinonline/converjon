@@ -1,6 +1,8 @@
 /* jshint globalstrict: true */
 /* global require */
 /* global module */
+/* global process */
+/* global console */
 /* global Buffer */
 /* global __dirname */
 "use strict";
@@ -42,7 +44,8 @@ var valid_file_paths = [
     "/test_image_sparrow.jpg",
     "/test_image_sparrow_2.jpg",
     "/test_image_sparrow_smaller.jpg",
-    "/broken_file.jpg"
+    "/broken_file.jpg",
+    "/zero_length.jpg"
 ];
 
 function deliver(req,res) {

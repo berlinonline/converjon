@@ -3,6 +3,7 @@
 * Added logging level "info" in configs
 * introduced `download.rejectInvalidSSL` option (#76)
 * Added `strip_metadata` parameter (#67)
+* Fixed timeout on sources with 0 bytes length (#73)
 
 # 2.1.0 (2015-01-05)
 

@@ -182,6 +182,7 @@ module.exports = {
 
         var url1 = "http://localhost:10000/non_existing.jpg";
         var conf1 = config.get(url1);
+        var dir_path = conf1.cache.base_path;
         var locks;
 
         rsvp.hash({
@@ -193,10 +194,36 @@ module.exports = {
         }).then(
             function() {
                 test.equal("this should not happen", "ever!");
-
             },
             function(fail) {
+                console.log(fail);
                 test.strictEqual(fail.name, "SourceHttpError");
+                test.done();
+            }
+        );
+    },
+
+    testZeroLength: function(test) {
+        test.expect(1);
+
+        var url1 = "http://localhost:10000/zero_length.jpg";
+        var conf1 = config.get(url1);
+        var dir_path = conf1.cache.base_path;
+        var locks;
+
+        fsutils.mkdirp(dir_path).then(function() {
+            return rsvp.hash({
+                meta: lock(pathutils.join([dir_path, "zero_meta"])),
+                source: lock(pathutils.join([dir_path, "zero_source"]))
+            });
+        }).then(function(locks){
+            return get_source(url1, locks, conf1);
+        }).then(
+            function() {
+                test.equal("this should not happen", "ever!");
+            },
+            function(fail) {
+                test.strictEqual(fail.error.name, "FileSystemError");
                 test.done();
             }
         );
