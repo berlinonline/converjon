@@ -1,9 +1,12 @@
-# 2.2.0 (not released yet)
+# 2.2.0 (2015-03-16)
 
-* Added logging level "info" in configs
-* introduced `download.rejectInvalidSSL` option (#76)
+* Added error reporting when converting non existing files in CLI (#74)
+* Added logging level "info" in configs, defaults o STDOUT
+* Introduced `download.rejectInvalidSSL` option (#76)
 * Added `strip_metadata` parameter (#67)
 * Fixed timeout on sources with 0 bytes length (#73)
+* Added validation of AOI, is now rejected if it doesn't fit inside the source image (#72)
+
 
 # 2.1.0 (2015-01-05)
 
