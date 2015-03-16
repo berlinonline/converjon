@@ -185,6 +185,9 @@ You can also prefix the pattern with ``~ `` (like ``~ ^http://(foo|bar)\.example
 **Timeout**
 `download.timeout` sets a timeout after which requests are cancelled, if the source server doesn't respond in time.
 
+**Reject Invalid SSL Certificates**
+Setting `download.rejectInvalidSSL` to `true` will cause sources to be rejected, if their SSL certificates can nnot be validated.
+
 ### Cache
 
 ` cache.basepath` sets the base directory for the local file cache.

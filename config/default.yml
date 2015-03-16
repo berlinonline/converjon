@@ -18,6 +18,7 @@ download:
   url_whitelist:
     - "http://localhost/*"
   timeout: 5000
+  rejectInvalidSSL: true
 
 process:
   limit: 5
