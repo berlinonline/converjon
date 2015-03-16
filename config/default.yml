@@ -50,3 +50,4 @@ logging:
   error: "stderr"
   debug: "stderr"
   access: "stdout"
+  info: "stdout"

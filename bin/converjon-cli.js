@@ -112,7 +112,7 @@ rsvp.hash({
     return processing.create_target_file(item);
 }).then(function(){
     process.exit(0);
-}, function(item){
-    logging.error(item.error.message);
+}, function(error){
+    logging.error(error.message);
     process.exit(1);
 });

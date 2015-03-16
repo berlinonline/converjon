@@ -16,8 +16,8 @@ var process = require("../lib/process");
 module.exports = {
     testProcessSuccess: function(test) {
         test.expect(1);
-        process("echo", ["foo", "bar"]).then(function(output){
-            test.strictEqual(output, "foo bar\n");
+        process("echo", ["foo", "bar"]).then(function(result){
+            test.strictEqual(result.stdout, "foo bar\n");
             test.done();
         });
     },
@@ -25,8 +25,8 @@ module.exports = {
     testProcessFailure: function(test) {
         test.expect(1);
 
-        process("false").catch(function(output){
-            test.strictEqual(output, "");
+        process("false").catch(function(result){
+            test.strictEqual(result.stderr, "");
             test.done();
         });
     }
