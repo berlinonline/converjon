@@ -125,6 +125,10 @@ The `interlace` parameter allows the creation of interlaced images. Supported ty
 
 A well-known example of interlaced images are progressive JPEGs. You can use this option with PNGs and GIFs as well.
 
+### Removing Metadata
+
+The `strip_metadata` option removes all metadata (e.g. EXIF, IPTC) from the converted images. This option has no value, it just needs to be present in the URL query parameters.
+
 ### Status Page
 
 The URL `/status` leads to a summary of Converjon's current state and some statistics.
