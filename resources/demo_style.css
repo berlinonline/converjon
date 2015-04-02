@@ -27,13 +27,13 @@ body {
         width: 1100px;
     }
 
-    body > .columns > section {
+    .columns > section {
         width: 500px;
         display: inline-block;
         vertical-align: top;
     }
 
-    body > .columns > section:nth-child(odd) {
+    .columns > section:nth-child(odd) {
         margin-right: 3rem;
     }
 }
@@ -71,4 +71,12 @@ footer {
 footer {
     margin-top: 1rem;
     font-size: 0.7rem;
+}
+
+.image-live {
+    max-width: 100%;
+}
+
+.live-controls input {
+    vertical-align: middle;
 }

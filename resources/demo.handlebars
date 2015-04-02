@@ -24,6 +24,35 @@
             <li><a href="#auto_cropping">AOI Automatic Cropping</a></li>
         </ul>
 
+        <section>
+            <h2>Cropping (live)</h2>
+            <div class="columns">
+                <section class="live-controls">
+                    <div class="image">
+                        <div>
+                            <img id="image-live-source" class="image-live" src="{{url_original}}" alt="live"/>
+                        </div>
+                    </div>
+                    <div>
+                        <label>Crop Mode</label>
+                        <select id="cropmode">
+                            <option value="center">Center</option>
+                            <option value="aoi_coverage">AOI Coverage</option>
+                            <option value="aoi_emphasis">AOI Emphasis</option>
+                            <option value="aoi_auto" selected>AOI Auto</option>
+                        </select>
+                    </div>
+                </section>
+                <section>
+                    <div class="image">
+                        <div>
+                            <img id="image-live" class="image-live" src="{{base}}{{url3}}&width=300&height=300" alt="live"/>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
         <div class="columns">
             <section>
                 <h2 id="resize">Simple Resizing</h2>
@@ -104,5 +133,34 @@
         <footer>
             <a href="https://github.com/berlinonline/converjon">Converjon on Github</a>
         </footer>
+
+        <script src="http://lnwdr.github.io/selectrect/selectrect.js"></script>
+        <script>
+            var liveimage = document.getElementById("image-live");
+            var liveimage_source = document.getElementById("image-live-source");
+            var cropmode_input = document.getElementById("cropmode");
+            var aoi_str;
+
+            var select = selectrect(liveimage_source, {x: 20, y: 20, w: 100, h: 100});
+
+            function update() {
+                var cropmode = cropmode_input.value;
+                liveimage.src = "{{base}}{{url3}}&width=300&height=300&aoi="+aoi_str+"&crop="+cropmode;
+            }
+
+            select.onUpdate(function(aoi) {
+                aoi_str = [
+                    aoi.x,
+                    aoi.y,
+                    aoi.w,
+                    aoi.h
+                ].join(",");
+
+                update();
+            });
+
+            cropmode_input.onchange = update;
+
+        </script>
     </body>
 </html>
