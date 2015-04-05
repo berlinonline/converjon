@@ -75,6 +75,11 @@ footer {
 
 .image-live {
     max-width: 100%;
+    max-width: 468px;
+}
+
+.image-live-source {
+    width: 100%;
 }
 
 .live-controls input {

@@ -14,6 +14,7 @@
         </p>
 
         <ul class="toc">
+            <li><a href="#livecrop">Live Cropping Demo</a></li>
             <li><a href="#resize">Simple Resizing</a></li>
             <li><a href="#quality">Adjusting Quality</a></li>
             <li><a href="#dpi">Low and High DPI versions</a></li>
@@ -24,35 +25,43 @@
             <li><a href="#auto_cropping">AOI Automatic Cropping</a></li>
         </ul>
 
+
         <section>
-            <h2>Cropping (live)</h2>
+            <h2 id="livecrop">Cropping demo (live)</h2>
             <div class="columns">
                 <section class="live-controls">
                     <div class="image">
+                            <img id="image-live-source" class="image-live-source" src="{{url_original}}" alt="source image for live cropping" />
                         <div>
-                            <img id="image-live-source" class="image-live" src="{{url_original}}" alt="live"/>
                         </div>
                     </div>
                     <div>
-                        <label>Crop Mode</label>
+                        <label for="cropmode">Crop Mode</label>
                         <select id="cropmode">
                             <option value="center">Center</option>
                             <option value="aoi_coverage">AOI Coverage</option>
                             <option value="aoi_emphasis">AOI Emphasis</option>
                             <option value="aoi_auto" selected>AOI Auto</option>
                         </select>
+                        <div>Source image: <output id="image-live-source-info"></output></div>
                     </div>
                 </section>
                 <section>
                     <div class="image">
                         <div>
-                            <img id="image-live" class="image-live" src="{{base}}{{url3}}&width=300&height=300" alt="live"/>
+                            <img id="image-live" class="image-live" src="{{base}}{{url3}}&width=300&height=300" alt="resulting image of live cropping" />
                         </div>
+                    </div>
+                    <div>
+                        <label for="image-live-width-input">Width</label>
+                        <input type="number" step="10" min="20" max="3000" value="300" id="image-live-width-input" autocomplete="off" />
+                        <label for="image-live-height-input">Height</label>
+                        <input type="number" step="10" min="20" max="3000" value="300" id="image-live-height-input" autocomplete="off" />
+                        <div>Cropped image: <output id="image-live-info"></output></div>
                     </div>
                 </section>
             </div>
         </section>
-
         <div class="columns">
             <section>
                 <h2 id="resize">Simple Resizing</h2>
@@ -136,31 +145,49 @@
 
         <script src="http://lnwdr.github.io/selectrect/selectrect.js"></script>
         <script>
-            var liveimage = document.getElementById("image-live");
-            var liveimage_source = document.getElementById("image-live-source");
-            var cropmode_input = document.getElementById("cropmode");
-            var aoi_str;
+            function setup() {
+                var liveimage = document.getElementById("image-live");
+                var liveimage_source = document.getElementById("image-live-source");
+                var cropmode_input = document.getElementById("cropmode");
+                var liveimage_source_info_element = document.getElementById("image-live-source-info");
+                var liveimage_info_element = document.getElementById("image-live-info");
+                var liveimage_width_element = document.getElementById("image-live-width-input");
+                var liveimage_height_element = document.getElementById("image-live-height-input");
+                var aoi_str;
 
-            var select = selectrect(liveimage_source, {x: 20, y: 20, w: 100, h: 100});
+                liveimage_source_info_element.innerHTML = liveimage_source.naturalWidth + 'x' + liveimage_source.naturalHeight +
+                    ' displayed at ' + liveimage_source.width + 'x' + liveimage_source.height;
 
-            function update() {
-                var cropmode = cropmode_input.value;
-                liveimage.src = "{{base}}{{url3}}&width=300&height=300&aoi="+aoi_str+"&crop="+cropmode;
+                var select = selectrect(liveimage_source, {x: 20, y: 20, w: 100, h: 100});
+
+                function update() {
+                    var cropmode = cropmode_input.value;
+                    var height = +liveimage_height_element.value || 300;
+                    var width = +liveimage_width_element.value || 300;
+                    liveimage.src = "{{base}}{{url3}}&width="+width+"&height="+height+"&aoi="+aoi_str+"&crop="+cropmode;
+                    liveimage.onload = function() {
+                        liveimage_info_element.innerHTML = liveimage.naturalWidth + 'x' + liveimage.naturalHeight +
+                            ' displayed at ' + liveimage.width + 'x' + liveimage.height;
+                    }
+                }
+
+                select.onUpdate(function(aoi) {
+                    aoi_str = [
+                        aoi.x,
+                        aoi.y,
+                        aoi.w,
+                        aoi.h
+                    ].join(",");
+
+                    update();
+                });
+
+                cropmode_input.onchange = update;
+                liveimage_width_element.onchange = update;
+                liveimage_height_element.onchange = update;
             }
 
-            select.onUpdate(function(aoi) {
-                aoi_str = [
-                    aoi.x,
-                    aoi.y,
-                    aoi.w,
-                    aoi.h
-                ].join(",");
-
-                update();
-            });
-
-            cropmode_input.onchange = update;
-
+            window.onload = setup;
         </script>
     </body>
 </html>
