@@ -1,4 +1,4 @@
-# 2.2.0 (2015-03-16)
+# 2.2.1 (2015-03-16)
 
 * Fix counting too many requests. (#81)
 
