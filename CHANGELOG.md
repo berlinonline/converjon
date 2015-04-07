@@ -1,5 +1,9 @@
 # 2.2.0 (2015-03-16)
 
+* Fix counting too many requests. (#81)
+
+# 2.2.0 (2015-03-16)
+
 * Added error reporting when converting non existing files in CLI (#74)
 * Added logging level "info" in configs, defaults o STDOUT
 * Introduced `download.rejectInvalidSSL` option (#76)
