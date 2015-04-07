@@ -1,6 +1,8 @@
-# 2.2.1 (2015-03-16)
+# 2.2.1 (2015-04-07)
 
 * Fix counting too many requests. (#81)
+* Bring back debug logging (#82)
+* Fix accumulating locks for failing downloads (#83)
 
 # 2.2.0 (2015-03-16)
 
