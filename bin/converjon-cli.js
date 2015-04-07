@@ -102,6 +102,7 @@ rsvp.hash({
     return analyze(locks.source, conf);
 }).then(function(report) {
     var item = {
+        id: 0,
         locks: locks,
         meta_data: {
             analysis: report
