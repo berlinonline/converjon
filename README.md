@@ -22,6 +22,7 @@ An advanced image conversion server and command line tool.
 * [Configuration](#configuration)
 	* [Server](#server)
 	* [Downloads](#downloads)
+	* [Authentication](#authentication)
 	* [Cache](#cache)
 	* [Processes](#processes)
 	* [Converter](#converter)
@@ -191,6 +192,16 @@ You can also prefix the pattern with ``~ `` (like ``~ ^http://(foo|bar)\.example
 
 **Reject Invalid SSL Certificates**
 Setting `download.rejectInvalidSSL` to `true` will cause sources to be rejected, if their SSL certificates can nnot be validated.
+
+### Authentication
+
+Converjon supports HTTP basic authentication for image sources. If you include authentication credentials in a URL specific configuration file, they will be sent along with every request to URLs that match the URL pattern of that configuration file.
+
+```YAML
+authentication:
+  username: "testuser"
+  password: "testpass"
+```
 
 ### Cache
 
