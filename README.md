@@ -14,6 +14,8 @@ An advanced image conversion server and command line tool.
 	* [Changing Size](#changing-size)
 	* [Area of Interest](#area-of-interest)
 	* [Cropping Mode](#cropping-mode)
+	* [Padding Color](#padding-color)
+	* [Cropping Mode](#cropping-mode)
 	* [Image format](#image-format)
 	* [Quality](#quality)
 	* [Color Palette](#color-palette)
@@ -95,6 +97,15 @@ The `crop` parameter sets the cropping mode. Available modes are:
 Details about the cropping modes can be found [here in the wiki](https://github.com/berlinonline/converjon/wiki/Cropping-Modes). For examples, see the [demo page](http://berlinonline.github.io/converjon/demo/demo.html).
 
 If an AOI is set, cropping will ensure, that the area is always preserved.
+
+### Padding Color
+
+The `padding_color` parameter sets the background color of the padding.
+
+The color should be specified in an HTML URL Encoded format.
+
+If none specified, the default color set in the configuration will be used.
+[see also Converter config](#converter)
 
 ### Image Format
 
