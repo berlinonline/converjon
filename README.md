@@ -20,6 +20,7 @@ An advanced image conversion server and command line tool.
 	* [Quality](#quality)
 	* [Color Palette](#color-palette)
 	* [Interlaced Images](#interlaced-images)
+	* [Presets](#presets)
 	* [Status Page](#status-page)
 * [Configuration](#configuration)
 	* [Server](#server)
@@ -137,6 +138,20 @@ The `interlace` parameter allows the creation of interlaced images. Supported ty
 
 A well-known example of interlaced images are progressive JPEGs. You can use this option with PNGs and GIFs as well.
 
+### Presets
+
+The `preset` parameter allows the automatic usage of a preset of parameters.
+
+New presets may be added in the configuration files as follows:
+
+```YAML
+presets:
+  thumbnail:
+      format: "jpg"
+      quality: 50
+      width: 100
+      hight: 100
+```
 ### Removing Metadata
 
 The `strip_metadata` option removes all metadata (e.g. EXIF, IPTC) from the converted images. This option has no value, it just needs to be present in the URL query parameters.
@@ -174,7 +189,7 @@ This way you can define different setting depending on the source of the request
  * `server.port`: port for the server to listen on
  * `server.instance_name`: the name of this server that will be displayed on the status page
  * `server.timout`: global timeout for incoming requests
-    
+
     If not set, a random name will be generated.
  * `server.access_log_format`: the formatting of access logs:
     * `combined`: Apache Combined Log Format (the default)
