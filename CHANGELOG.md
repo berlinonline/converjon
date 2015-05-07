@@ -1,3 +1,9 @@
+# 2.3.0 (2015-05-07)
+
+* Add parameter presets (#70)
+* Interactive cropping on `/demo` page (#79)
+* Padding color is now changable via URL parameter (#80)
+
 # 2.2.1 (2015-04-07)
 
 * Fix counting too many requests. (#81)
