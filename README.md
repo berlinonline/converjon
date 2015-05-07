@@ -56,6 +56,8 @@ An advanced image conversion server and command line tool.
 
 Use NPM: `npm install [-g] converjon`
 
+Conversion follows [Semantic Versioning](http://semver.org/).
+
 ## Usage
 
 Start the server with `converjon [--config your_config_file]` or use the command line utility `converjon-cli` to work on local files.

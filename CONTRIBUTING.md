@@ -14,6 +14,8 @@ If you want to contribute source code, add documentation or fix spelling mistake
 
 Please try to adhere to the coding style that is used throughout the other source files.
 
+Conversion follows [Semantic Versioning](http://semver.org/).
+
 There is no Contributor License Agreement (CLA) to sign, but you have to accept and agree to the [license](LICENSE) and the Contributor Code of Conduct (CoC) to get your patches included.
 
 ## Contributor Code of Conduct
