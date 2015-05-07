@@ -24,3 +24,10 @@ logging:
   error: "stderr"
   debug: "stderr"
   access: "stdout"
+
+presets:
+  thumbnail:
+      format: "jpg"
+      quality: 50
+      width: 100
+      hight: 100
