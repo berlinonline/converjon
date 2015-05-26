@@ -7,6 +7,7 @@ server:
   instance_name: null
   timeout: 20000
   access_log_format: "combined"
+  base_url_path: "/"
 
 test_server:
   enabled: false
