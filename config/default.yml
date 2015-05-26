@@ -46,6 +46,9 @@ constraints:
   height:
     min: 1
     max: 10000
+  blur:
+    min: 0
+    max: 100
 
 logging:
   error: "stderr"
