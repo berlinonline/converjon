@@ -1,8 +1,11 @@
 {
     "urls": [
-        "http://localhost:8001*"
+        "http://example.org/*"
     ],
     "server": {
         "port": 8000
+    },
+    "foo": {
+        "bar": 5
     }
 }

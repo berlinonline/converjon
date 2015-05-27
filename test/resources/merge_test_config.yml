@@ -2,5 +2,8 @@ urls:
   - "http://localhost:8001*" #this will match URLs on localhost, this is the dev/testing default
 
 server:
-  port: 8000
+  port: 9000
 
+foo:
+  bar:
+    7
