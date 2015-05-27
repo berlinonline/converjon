@@ -66,6 +66,13 @@ Let's say you have an image at `http://example.org/image.jpg`. To get the image 
 
     http://localhost/?url=%20http%3A%2F%2Fexample.org%2Fimage.jpg
 
+Another alternative is to specify a file from the server's file system as the source. Instead of `url`, you can add the
+`file` parameter for this:
+
+    http://localhost/?file=foobar:some%2Fdirectory%2Fimage.jpg
+
+Here, `foobar` is the name of a filesystem alias followed by a colon and a relative path. See [Configuration: Aliases](#aliases) for more details.
+
 More options are available as GET parameters. All parameters need to be URL encoded.
 
 Several examples are available on the `/demo` page which is enabled when starting Converjon with the [development config file](https://github.com/berlinonline/converjon/blob/master/config/development.yml) via ```converjon --dev```.
@@ -220,6 +227,26 @@ You can also prefix the pattern with ``~ `` (like ``~ ^http://(foo|bar)\.example
 
 **Reject Invalid SSL Certificates**
 Setting `download.rejectInvalidSSL` to `true` will cause sources to be rejected, if their SSL certificates can nnot be validated.
+
+###Aliases
+
+To access the server's local filesystem for source images, you can specify "aliases":
+
+```YAML
+#example from the development configuration files:
+alias: dev
+
+base_file_path: "test/resources/images"
+
+headers:
+  max-age: 5
+```
+
+When an image is requested with a `file` parameter (`<alias>:<path>`) insetad of `url`, the `alias` part of that parameter is matched against the configuration files, just like with URLs but only the configs that have that **exact** alias will be used for that request.
+
+In a config file with an alias you can set a `base_file_path`. This is the directory where your yource images are located. It is concatenated with the `path` part of the `file` parameter to point to the actual file.
+
+In addition, you can set HTTP headers that will be sent along with the converted images.
 
 ### Authentication
 
