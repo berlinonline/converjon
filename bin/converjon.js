@@ -40,6 +40,12 @@ if (args.dev) {
         "config",
         "development.yml"
     ]));
+    config_files.push(pathutils.join([
+        __dirname,
+        "..",
+        "config",
+        "development_alias.yml"
+    ]));
 }
 
 if (args.config) {

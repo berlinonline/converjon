@@ -33,10 +33,13 @@ module.exports = {
     testSingleDownload: function(test) {
         test.expect(2);
 
-        var url1 = "http://localhost:10000/test_image_sparrow.jpg";
-        var conf1 = config.get(url1);
+        var item1 = {
+            source_type: "url",
+            source: "http://localhost:10000/test_image_sparrow.jpg",
+        };
+        item1.conf = config.get(item1.source);
 
-        var dir_path = conf1.cache.base_path;
+        var dir_path = item1.conf.cache.base_path;
 
         fsutils.mkdirp(dir_path).then(function() {
             return rsvp.hash({
@@ -44,7 +47,8 @@ module.exports = {
                 source: lock(pathutils.join([dir_path, "source"]))
             });
         }).then(function(locks){
-            return get_source(url1, locks, conf1);
+            item1.locks = locks;
+            return get_source(item1);
         }).then(function(result) {
             result.locks.meta();
             result.locks.source();
@@ -71,10 +75,13 @@ module.exports = {
     testAuthenticatedDownload: function(test) {
         test.expect(2);
 
-        var url1 = "http://localhost:10000/authenticated_url";
-        var conf1 = config.get(url1);
+        var item1 = {
+            source_type: "url",
+            source: "http://localhost:10000/authenticated_url"
+        };
+        item1.conf = config.get(item1.source);
 
-        var dir_path = conf1.cache.base_path;
+        var dir_path = item1.conf.cache.base_path;
 
         fsutils.mkdirp(dir_path).then(function() {
             return rsvp.hash({
@@ -82,7 +89,8 @@ module.exports = {
                 source: lock(pathutils.join([dir_path, "source"]))
             });
         }).then(function(locks){
-            return get_source(url1, locks, conf1);
+            item1.locks = locks;
+            return get_source(item1);
         }).then(function(result) {
             result.locks.meta();
             result.locks.source();
@@ -110,10 +118,13 @@ module.exports = {
     testParallelDownloads: function(test) {
         test.expect(4);
 
-        var url1 = "http://localhost:10000/test_image_sparrow.jpg";
-        var conf1 = config.get(url1);
+        var item1 = {
+            source_type: "url",
+            source: "http://localhost:10000/test_image_sparrow.jpg"
+        };
+        item1.conf = config.get(item1.source);
 
-        var dir_path = conf1.cache.base_path;
+        var dir_path = item1.conf.cache.base_path;
 
         var d1 = fsutils.mkdirp(dir_path).then(function() {
             return rsvp.hash({
@@ -121,7 +132,8 @@ module.exports = {
                 source: lock(pathutils.join([dir_path, "source1"]))
             });
         }).then(function(locks){
-            return get_source(url1, locks, conf1);
+            item1.locks = locks;
+            return get_source(item1);
         }).then(function(result) {
             result.locks.meta();
             result.locks.source();
@@ -142,8 +154,11 @@ module.exports = {
             });
         });
 
-        var url2 = "http://localhost:10000/test_image_sparrow_2.jpg";
-        var conf2 = config.get(url1);
+        var item2 = {
+            source_type: "url",
+            source: "http://localhost:10000/test_image_sparrow_2.jpg"
+        };
+        item2.conf = config.get(item2.source);
 
         var d2 = fsutils.mkdirp(dir_path).then(function() {
             return rsvp.hash({
@@ -151,7 +166,8 @@ module.exports = {
                 source: lock(pathutils.join([dir_path, "source2"]))
             });
         }).then(function(locks){
-            return get_source(url2, locks, conf2);
+            item2.locks = locks;
+            return get_source(item2);
         }).then(function(result) {
             result.locks.meta();
             result.locks.source();
@@ -180,23 +196,25 @@ module.exports = {
     test404: function(test) {
         test.expect(1);
 
-        var url1 = "http://localhost:10000/non_existing.jpg";
-        var conf1 = config.get(url1);
-        var dir_path = conf1.cache.base_path;
+        var item1 = {
+            source_type: "url",
+            source: "http://localhost:10000/non_existing.jpg"
+        };
+        item1.conf = config.get(item1.source);
+        var dir_path = item1.conf.cache.base_path;
         var locks;
 
         rsvp.hash({
             meta: lock("404_meta"),
             source: lock("404_source"),
         }).then(function(locks) {
-            locks = locks;
-            return get_source(url1, locks, conf1);
+            item1.locks = locks;
+            return get_source(item1);
         }).then(
             function() {
                 test.equal("this should not happen", "ever!");
             },
             function(fail) {
-                console.log(fail);
                 test.strictEqual(fail.name, "SourceHttpError");
                 test.done();
             }
@@ -206,9 +224,12 @@ module.exports = {
     testZeroLength: function(test) {
         test.expect(1);
 
-        var url1 = "http://localhost:10000/zero_length.jpg";
-        var conf1 = config.get(url1);
-        var dir_path = conf1.cache.base_path;
+        var item1 = {
+            source_type: "url",
+            source: "http://localhost:10000/zero_length.jpg"
+        };
+        item1.conf = config.get(item1.source);
+        var dir_path = item1.conf.cache.base_path;
         var locks;
 
         fsutils.mkdirp(dir_path).then(function() {
@@ -217,34 +238,14 @@ module.exports = {
                 source: lock(pathutils.join([dir_path, "zero_source"]))
             });
         }).then(function(locks){
-            return get_source(url1, locks, conf1);
+            item1.locks = locks;
+            return get_source(item1);
         }).then(
             function() {
                 test.equal("this should not happen", "ever!");
             },
             function(fail) {
-                test.strictEqual(fail.error.name, "FileSystemError");
-                test.done();
-            }
-        );
-    },
-
-    testWhitelistError: function(test) {
-        test.expect(1);
-
-        var url1 = "http://foobar/";
-        var conf1 = config.get(url1);
-        rsvp.hash({
-            meta: lock("whitelist_meta"),
-            source: lock("whitelist_source"),
-        }).then(function(locks) {
-            return get_source(url1, locks, conf1);
-        }).then(
-            function(foo) {
-                test.equal("this should not happen", "ever!");
-            },
-            function(fail) {
-                test.strictEqual(fail.name, "UrlWhitelistError");
+                test.strictEqual(fail.name, "FileSystemError");
                 test.done();
             }
         );

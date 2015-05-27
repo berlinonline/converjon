@@ -1,0 +1,12 @@
+# Development configuration file.
+#
+# Start a server with this configuration merged over default.yml via:
+#
+# converjon --dev
+#
+alias: dev
+
+base_file_path: "test/resources/images"
+
+headers:
+  max-age: 5
