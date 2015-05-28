@@ -69,7 +69,9 @@ Let's say you have an image at `http://example.org/image.jpg`. To get the image 
 Another alternative is to specify a file from the server's file system as the source. Instead of `url`, you can add the
 `file` parameter for this:
 
-    http://localhost/?file=foobar:some%2Fdirectory%2Fimage.jpg
+    http://localhost/?file=foobar%3Asome%2Fdirectory%2Fimage.jpg
+
+The `file` parameter is URL-encoded. In plain text it is `foobar:some/directory/image.jpg`.
 
 Here, `foobar` is the name of a filesystem alias followed by a colon and a relative path. See [Configuration: Aliases](#aliases) for more details.
 
@@ -239,12 +241,12 @@ alias: dev
 base_file_path: "test/resources/images"
 
 headers:
-  max-age: 5
+  Cache-Control: "max-age=5"
 ```
 
-When an image is requested with a `file` parameter (`<alias>:<path>`) insetad of `url`, the `alias` part of that parameter is matched against the configuration files, just like with URLs but only the configs that have that **exact** alias will be used for that request.
+When an image is requested with a `file` parameter (`<alias>:<path>`) instead of `url`, the `alias` part of that parameter is matched against the configuration files, just like with URLs but only the configs that have that **exact** alias will be used for that request.
 
-In a config file with an alias you can set a `base_file_path`. This is the directory where your yource images are located. It is concatenated with the `path` part of the `file` parameter to point to the actual file.
+In a config file with an alias you can set a `base_file_path`. This is the directory where your source images are located. It is concatenated with the `path` part of the `file` parameter to point to the actual file. The `base_file_path` can be an absolute path or relative to the working directory of the server.
 
 In addition, you can set HTTP headers that will be sent along with the converted images.
 
