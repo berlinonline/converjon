@@ -56,3 +56,6 @@ logging:
   debug: "stderr"
   access: "stdout"
   info: "stdout"
+
+source_url_header: false
+

@@ -31,3 +31,5 @@ presets:
       quality: 50
       width: 100
       hight: 100
+
+source_url_header: true
