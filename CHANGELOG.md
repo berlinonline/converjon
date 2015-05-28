@@ -1,3 +1,10 @@
+# 2.4.0 (2015-05-28)
+
+* Bugfix: matching of configs against keys (#92)
+* Added support getting source files from filesystem instead of URLs (#91)
+* Added config option to disable source URL header (#78)
+* Improved error logging (#93)
+
 # 2.3.0 (2015-05-07)
 
 * Add parameter presets (#70)
