@@ -33,17 +33,17 @@
   "dependencies": {
     "calmcard": "^0.1.1",
     "cjson": "^0.3.0",
-    "js-yaml": "^3.0.2",
+    "cli-color": "^0.3.3",
+    "clone": "^0.1.19",
     "handlebars": "^2.0.0",
-    "clone": "^0.1.18",
+    "js-yaml": "^3.0.2",
+    "minimist": "^1.1.0",
     "mkdirp": "^0.5.0",
     "moniker": "^0.1.2",
     "nodeunit": "^0.9.0",
     "request": "^2.42.0",
     "rsvp": "^3.0.13",
-    "send": "^0.9.2",
-    "minimist": "^1.1.0",
-    "cli-color": "^0.3.0"
+    "send": "^0.9.3"
   },
   "devDependencies": {},
   "optionalDependencies": {},
