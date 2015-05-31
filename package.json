@@ -2,29 +2,34 @@
   "name": "converjon",
   "description": "An advanced image conversion server and command line tool.",
   "version": "2.4.0",
+  "license": "MIT",
+  "author": "Leon Weidauer",
   "maintainers": [
-    {
-      "name": "Leon Weidauer",
-      "email": "leon@lnwdr.de",
-      "web": "http://lnwdr.de"
-    }
+    "Leon Weidauer <leon@lnwdr.de> (http://lnwdr.de)"
   ],
   "contributors": [
-    {
-      "name": "Leon Weidauer",
-      "email": "leon@lnwdr.de",
-      "web": "http://lnwdr.de"
-    },
-    {
-      "name": "Steffen Gransow",
-      "email": "converjon@mivesto.de",
-      "web": "https://github.com/graste"
-    }
+    "Leon Weidauer <leon@lnwdr.de> (http://lnwdr.de)",
+    "Steffen Gransow <converjon@mivesto.de> (https://github.com/graste)"
   ],
+  "homepage": "https://github.com/berlinonline/converjon",
+  "bugs": "https://github.com/berlinonline/converjon/issues",
   "repository": {
     "type": "git",
     "url": "git://github.com/berlinonline/converjon.git"
   },
+  "keywords": [
+    "image",
+    "images",
+    "crop",
+    "convert",
+    "resize",
+    "aoi",
+    "cropping",
+    "conversion",
+    "server",
+    "web",
+    "cli"
+  ],
   "dependencies": {
     "calmcard": "^0.1.1",
     "cjson": "^0.3.0",
@@ -46,10 +51,16 @@
     "node": ">=0.10.7 <0.11.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/nodeunit ./test/*"
+    "test": "nodeunit ./test/*"
   },
   "bin": {
     "converjon": "./bin/converjon.js",
     "converjon-cli": "./bin/converjon-cli.js"
+  },
+  "main": "index.js",
+  "directories": {
+    "bin": "./bin",
+    "lib": "./lib",
+    "test": "test"
   }
 }
