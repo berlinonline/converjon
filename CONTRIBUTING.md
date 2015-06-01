@@ -31,3 +31,41 @@ Project maintainers have the right and responsibility to remove, edit, or reject
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by opening an issue or contacting one or more of the project maintainers.
 
 This Code of Conduct is adapted from the [Contributor Covenant](http://contributor-covenant.org), version 1.0.0, available at [http://contributor-covenant.org/version/1/0/0/](http://contributor-covenant.org/version/1/0/0/).
+
+## Release Procedure
+
+**Before releasing, make sure that:**
+
+1. all changes are merged into a single branch, named like the new version (e.g. `2.4.1`)
+1. all Github issues associated with this release are closed
+1. all Github issues associated with this release are attached to a milestone with the same name as the branch.
+
+**To prepare the release, follow these steps:**
+
+1. Add a new version to [CHANGELOG.md](CHANGELOG.md) in the following format:
+
+    ```
+    # 2.4.1 (2015-06-01)
+
+    * Docs: added release procedure (#97)
+    * Updated dependencies (#96)
+    ```
+
+    Make sure to include the correct date of the release and the issue number for each change. If there's a change with
+    no existing issue, write an issue that explains what the change is and why it was made and then add the number.
+
+1. Change the package version in [package.json](package.json).
+
+**After that, finally release:**
+
+1. Merge the release branch into `master`
+1. `git push` to github
+1. Go to the [relases page](https://github.com/berlinonline/converjon/releases) and draft a new release.
+
+    The relase name is the version number, with no prefix, only "2.4.1". The same for the tag version.
+
+    For the description, copy the change list from the updated [CHANGELOG.md](CHANGELOG.md). Only the changes, not the
+    headline.
+1. Publish the release. Github will automatically create a git tag.
+1. On the master branch, run `npm publish`.
+1. Close the Milestone.
