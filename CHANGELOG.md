@@ -4,6 +4,8 @@
 * Added support getting source files from filesystem instead of URLs (#91)
 * Added config option to disable source URL header (#78)
 * Improved error logging (#93)
+* Added blur effect (#89)
+* Added configurable URL base path (#90)
 
 # 2.3.0 (2015-05-07)
 
