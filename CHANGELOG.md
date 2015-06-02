@@ -1,3 +1,11 @@
+# 2.4.1 (2015-06-02)
+
+* Security: more strict validation of numeric parameters (#94)
+* Security: "nosniff" HTTP header (#98)
+* NPM shrinkwrap (#96)
+* Release documentation (#97)
+* added missing package.json infos (#95)
+
 # 2.4.0 (2015-05-28)
 
 * Bugfix: matching of configs against keys (#92)
