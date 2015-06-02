@@ -55,6 +55,7 @@ This Code of Conduct is adapted from the [Contributor Covenant](http://contribut
     no existing issue, write an issue that explains what the change is and why it was made and then add the number.
 
 1. Run `npm update --save` to update dependencies
+1. Check, if the test still run with `npm test`
 1. Run `npm shrinkwrap`
 1. Change the package version in [package.json](package.json).
 1. Commit the updated `package.json` and `npm-shrinkwrap.json`
