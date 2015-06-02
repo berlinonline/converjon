@@ -54,7 +54,10 @@ This Code of Conduct is adapted from the [Contributor Covenant](http://contribut
     Make sure to include the correct date of the release and the issue number for each change. If there's a change with
     no existing issue, write an issue that explains what the change is and why it was made and then add the number.
 
+1. Run `npm update --save` to update dependencies
+1. Run `npm shrinkwrap`
 1. Change the package version in [package.json](package.json).
+1. Commit the updated `package.json` and `npm-shrinkwrap.json`
 
 **After that, finally release:**
 
