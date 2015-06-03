@@ -1,7 +1,7 @@
 {
   "name": "converjon",
   "description": "An advanced image conversion server and command line tool.",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "license": "MIT",
   "author": "Leon Weidauer",
   "maintainers": [

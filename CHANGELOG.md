@@ -1,3 +1,7 @@
+# 2.4.2 (2015-06-03)
+
+* fixed a critical bug in error handling (#99)
+
 # 2.4.1 (2015-06-02)
 
 * Security: more strict validation of numeric parameters (#94)
