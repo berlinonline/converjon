@@ -199,9 +199,14 @@ This way you can define different setting depending on the source of the request
 
  * `server.port`: port for the server to listen on
  * `server.instance_name`: the name of this server that will be displayed on the status page
- * `server.timout`: global timeout for incoming requests
 
     If not set, a random name will be generated.
+
+ * `server.timout`: global timeout for incoming requests
+ * `server.base_url_path`: Normally, Converjon's image URL paths just start with `/`, like in `http://www.example.org/?url=...`
+    
+    You can set a base path to have better control over the URLs that Converjon uses. If you want the image URLs too like `http://www.example.org/photos/?url=...` set the `base_url_path` to "photos/".
+
  * `server.access_log_format`: the formatting of access logs:
     * `combined`: Apache Combined Log Format (the default)
     * `short`: leaves out the date/time information. Use this, if you use other software for log handling that adds timestamps.
