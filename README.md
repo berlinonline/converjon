@@ -246,6 +246,8 @@ headers:
 
 When an image is requested with a `file` parameter (`<alias>:<path>`) instead of `url`, the `alias` part of that parameter is matched against the configuration files, just like with URLs but only the configs that have that **exact** alias will be used for that request.
 
+There can only be one alias per config file. If you need multiple aliases, you need to have one config file for each of them. See [here](#configuration) on how to load multiple config files.
+
 In a config file with an alias you can set a `base_file_path`. This is the directory where your source images are located. It is concatenated with the `path` part of the `file` parameter to point to the actual file. The `base_file_path` can be an absolute path or relative to the working directory of the server.
 
 In addition, you can set HTTP headers that will be sent along with the converted images.
