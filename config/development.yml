@@ -6,7 +6,7 @@
 #
 server:
   port: 8001
-  enable_load_test: true
+  enable_load_test: false
 
 download:
   url_whitelist:
