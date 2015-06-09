@@ -6,6 +6,7 @@ server:
   port: 8000
   instance_name: null
   timeout: 20000
+  send_timeout: 2000 #time that sending the repsonse data may take.
   access_log_format: "combined"
   base_url_path: "/"
 
