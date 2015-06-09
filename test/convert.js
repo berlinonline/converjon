@@ -12,7 +12,7 @@ config.load([
     pathutils.join([__dirname, "resources", "test_config.yml"])
 ]);
 var convert = require("../lib/convert");
-var lock = require("../lib/lock");
+var lock = require("../lib/lock").lock;
 
 var source_lock;
 var source_lock_broken;

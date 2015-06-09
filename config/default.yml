@@ -65,3 +65,8 @@ logging:
 
 source_url_header: false
 
+garbage_collector:
+  enabled: false
+  source: "cache"
+  target: "immediate"
+  interval: 10000

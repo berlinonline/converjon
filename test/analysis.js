@@ -12,7 +12,7 @@ config.load([
     pathutils.join([__dirname, "resources", "test_config.yml"])
 ]);
 var analyze = require("../lib/analyze");
-var lock = require("../lib/lock");
+var lock = require("../lib/lock").lock;
 
 module.exports = {
 

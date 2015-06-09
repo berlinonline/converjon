@@ -12,7 +12,7 @@ var Promise = rsvp.Promise;
 
 var pathutils = require("../lib/pathutils");
 var fsutils = require("../lib/fsutils");
-var lock = require("../lib/lock");
+var lock = require("../lib/lock").lock;
 var config = require("../lib/config");
 config.load([
     pathutils.join([__dirname, "resources", "test_config.yml"])

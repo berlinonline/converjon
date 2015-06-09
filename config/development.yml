@@ -33,3 +33,9 @@ presets:
       hight: 100
 
 source_url_header: true
+
+garbage_collector:
+  enabled: true
+  source: "cache"
+  target: "immediate"
+  interval: 5000

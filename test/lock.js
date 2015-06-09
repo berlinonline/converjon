@@ -3,7 +3,7 @@
 /* global module */
 "use strict";
 
-var lock = require("../lib/lock");
+var lock = require("../lib/lock").lock;
 
 module.exports = {
 
