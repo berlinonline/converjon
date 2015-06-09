@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=600">
+        <style type="text/css">
+            {{{style}}}
+        </style>
+    </head>
+    <body>
+        <h1>Converjon – Load Test</h1>
+    <section>
+        <div class="buttons">
+            <button onclick="start()">Start Test</button>
+            <button onclick="stop()">Stop Test</button>
+        </div>
+    </section>
+    <section>
+        <ul class="imagelist" id="imagelist">
+            <li>
+                <img class="image" />
+            </li>
+            <li>
+                <img class="image" />
+            </li>
+            <li>
+                <img class="image" />
+            </li>
+        </ul>
+    </section>
+    <section class="iframe">
+        <iframe id="iframe" src="/status" scrolling="no" width="500" height="550">Status</iframe>
+
+    </section>
+
+        <script>
+            var image_urls = {{{images}}};
+
+            var images = document.querySelectorAll('.image');
+            var iframe_interval; 
+            console.log(images);
+
+            function random_source(image) {
+                var rand_width = Math.floor(Math.random() * 99) + 1;
+                var rand_height = Math.floor(Math.random() * 99) + 1;
+                var width = 500 + rand_width;
+                var height = 610 + rand_height;
+                var random_index = Math.floor(Math.random() * image_urls.length);
+;
+                image.src = "{{base}}"+image_urls[random_index]+"&width="+width+"&height="+height;
+            }
+
+            function on_load(ev) {
+                console.log("onload");
+                var image = ev.target
+                if (typeof ev.path !== "undefined" && ev.path.length > 0) {
+                    image = ev.path[0];
+                }
+
+                var t = setTimeout(function() {
+                    clearTimeout(t);
+                    random_source(image);
+                }, 200);
+            }
+
+            function start() {
+                console.log("start");
+                for (var i = 0; i < images.length; i++ ) {
+                    images[i].addEventListener("load", on_load, false);
+                    images[i].addEventListener("error", on_load, false);
+                    random_source(images[i]);
+                }
+                iframe_interval = setInterval(reloadIframe, 5000);
+            }
+
+            function reloadIframe () {
+                var iframe = document.getElementById('iframe');
+                iframe.src = "/status";
+            }
+
+            function stop() {
+                console.log("stop");
+                for (var i = 0; i < images.length; i++ ) {
+                    images[i].removeEventListener("load", on_load, false);
+                    images[i].removeEventListener("error", on_load, false);
+                }
+                clearInterval(iframe_interval);
+            }
+
+        </script>
+    </body>
+</html>
