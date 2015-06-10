@@ -28,6 +28,7 @@ An advanced image conversion server and command line tool.
 	* [Downloads](#downloads)
 	* [Authentication](#authentication)
 	* [Cache](#cache)
+	* [Garbage Collector](#garbage-collector)
 	* [Processes](#processes)
 	* [Converter](#converter)
 	* [Cropping](#cropping)
@@ -185,6 +186,11 @@ The default configuration format is YAML but you can also use JSON files.
 
 Every configuration file can be matched only to certain  image source URLs. If a config file contains a `urls` setting, that configuration will only apply to URLs that match at least one of the patterns from that list:
 
+Some configuration are automatically converted:
+
+* "true" (string) is treated as `true`(bool)
+* "false" (string) is treated as `false`(bool)
+
 ```YAML
 # this config will only apply to source URLs from localhost or flickr
 urls:
@@ -246,6 +252,10 @@ alias: dev
 
 base_file_path: "test/resources/images"
 
+fallback_base_file_paths:
+  - "test/resources/photos"
+  - "test/resources/misc"
+
 headers:
   Cache-Control: "max-age=5"
 ```
@@ -256,7 +266,10 @@ There can only be one alias per config file. If you need multiple aliases, you n
 
 In a config file with an alias you can set a `base_file_path`. This is the directory where your source images are located. It is concatenated with the `path` part of the `file` parameter to point to the actual file. The `base_file_path` can be an absolute path or relative to the working directory of the server.
 
-In addition, you can set HTTP headers that will be sent along with the converted images.
+Additionally there can be multiple `fallback_base_file_paths`. If the requested file can't be found in the
+`base_file_path`, Converjon will try to find it in the first fallback path, then the second, and so on.
+
+In addition, you can set HTTP headers that will be sent along with the converted image as if they had come from a source server.
 
 ### Authentication
 
@@ -277,11 +290,34 @@ cache:
   base_path: "/tmp/converjon/cache"
 ```
 
-`cache.copy_source_file` deterimines, if a source file should be copied, when you're using a local file as source. By
+`cache.copy_source_file` determines, if a source file should be copied, when you're using a local file as source. By
 default, files are copied into Converjon's cache directory. Set this to `false` to use the original file's location.
 **You will have to make sure that these files are not changed while Converjon is suing them. This could result in corrupted images or failing requests.**
 
 The cache directory is not automatically cleaned up and may grow over time.
+
+### Garbage Collector
+
+Converjon can clean up the cache directory automatically. By default this is disabled. It can be enabled with the
+`garbage_collector` config directives:
+
+```YAML
+garbage_collector:
+  enabled: true
+  source: "cache"
+  target: "immediate"
+  interval: 5000
+```
+
+* `enabled`: turns the gargabe colelctor on or off
+* `source`: determined when source files should be cleaned up. Possible values are:
+  * `cache`: The file will be removed when it's cache lifetime has expired
+  * `immediate`: The file will be removed as soon as it's no longer in use by any pending request.
+  * any other value will disable the cleanup for source files
+* `target`: same as `source` but for the converted target image files
+* `interval`: time between garbage collector runs, in milliseconds.
+
+**Local source files that were not copied into  the cache directory will not be removed by the garbage collector.**
 
 ### Processes
 
