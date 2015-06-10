@@ -9,6 +9,7 @@ server:
   send_timeout: 2000 #time that sending the repsonse data may take.
   access_log_format: "combined"
   base_url_path: "/"
+  enable_load_test: false
 
 test_server:
   enabled: false
