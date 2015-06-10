@@ -83,6 +83,8 @@ Several examples are available on the `/demo` page which is enabled when startin
 
 It's recommended to set the server port to `80` in [configuration](#server) and to run Converjon on a separate subdomain of your site or behind a reverse proxy like Nginx or Varnish.
 
+For information on how to use the command line tool, run `conversion-cli --help`.
+
 ### Changing size
 
 You can either supply a `width`, `height` or both. If you only specify one dimension, the other one will be derived from the original image's aspect ratio.
@@ -135,7 +137,7 @@ If no specific format is requested, the format of the source image will be used.
 
 The `quality` parameter sets the JPEG quality value. It ranges from `1` to `100`.
 
-This parameter is ignored, if the requested format is not JPG.
+This parameter is ignored, if the requested format is not JPEG.
 
 ### Color Palette
 
@@ -143,7 +145,7 @@ The `colors` parameter sets the number of colors for GIF compression. It ranges 
 
 ### Interlaced Images
 
-The `interlace` parameter allows the creation of interlaced images. Supported types of interlacing scheme are:
+The `interlace` parameter allows the creation of [interlaced images](http://en.wikipedia.org/wiki/Interlacing_(bitmaps)). Supported types of interlacing scheme are:
 
 * `plane`(try this for JPEGs)
 * `line`
@@ -165,6 +167,18 @@ presets:
       width: 100
       hight: 100
 ```
+
+So instead of specifying all the parameters in the URL:
+
+```
+?url=...&width=100&height=100&format=jpg&quality=50
+```
+you can use the preset:
+
+```
+?url=...&preset=thumbnail
+```
+
 ### Removing Metadata
 
 The `strip_metadata` option removes all metadata (e.g. EXIF, IPTC) from the converted images. This option has no value, it just needs to be present in the URL query parameters.
@@ -177,14 +191,17 @@ The status page is available as content type `application/json` via `/status.jso
 
 ## Configuration
 
-When launching converjon, you can specify one or more configuration files with the `--config` option which can be set
-multiple times to load multiple config files.
+When launching converjon, you can specify one or more configuration files with the `--config` option which can be set multiple times to load multiple config files:
+
+```
+converjon --config conf_file1.yml --config conf_file2.json
+```
 
 You can use the [default.yml](https://github.com/berlinonline/converjon/blob/master/config/default.yml) or [development.yml](https://github.com/berlinonline/converjon/blob/master/config/development.yml) file as an example for writing your own.
 
 The default configuration format is YAML but you can also use JSON files.
 
-Every configuration file can be matched only to certain  image source URLs. If a config file contains a `urls` setting, that configuration will only apply to URLs that match at least one of the patterns from that list:
+Every configuration file matches certain image source URLs. If a config file contains a `urls` setting, that configuration will only apply to URLs that match at least one of the patterns from that list. Config files without the `url` setting apply to all images.
 
 Some configuration are automatically converted:
 
@@ -204,12 +221,24 @@ This way you can define different setting depending on the source of the request
 
 ### Server
 
+```
+server:
+  port: 8000
+  instance_name: null
+  timeout: 20000
+  send_timeout: 2000 #time that sending the repsonse data may take.
+  access_log_format: "combined"
+  base_url_path: "/"
+  enable_load_test: false
+```
+
  * `server.port`: port for the server to listen on
  * `server.instance_name`: the name of this server that will be displayed on the status page
 
     If not set, a random name will be generated.
 
  * `server.timout`: global timeout for incoming requests
+ * `server.send_timeout`: the time streaming a finished image file into the HTTP response may take. This usually shouldn't need to be changed, except when the servers file system is expected to be exceptionally slow.
  * `server.base_url_path`: Normally, Converjon's image URL paths just start with `/`, like in `http://www.example.org/?url=...`
     
     You can set a base path to have better control over the URLs that Converjon uses. If you want the image URLs too like `http://www.example.org/photos/?url=...` set the `base_url_path` to "photos/".
@@ -323,6 +352,8 @@ garbage_collector:
 
 `process.limit` sets the maximum number of child processes that converjon will spawn for converting and analyzing images.
 
+Increasing this will likely increase memory consumption while providing better usage of multiple CPU cores.
+
 ### Converter
 
 `converter.padding_color` sets the background color that is used, if an image needs padding to fit the requested aspect ratio.
@@ -364,13 +395,20 @@ logging:
   access: "/var/log/access.log" # will log requests into a log file
 ```
 
-To disable a log level, set it to `false`.
+To disable a log level, set it to `false`:
+
+```YAML
+logging:
+  error: "stderr"
+  debug: false # "false" as a string will also work
+  access: "/var/log/access.log"
+```
 
 Logs are not automatically rotated. Use of a tool like `logrotate` is recommended.
 
 # Testing
 
-Execute tests with `npm test`. Please note, that you need to have all [dependencies](#dependencies) installed and must have run `npm install` first.
+Execute tests with `npm test`. Please note, that you need to have all [dependencies](#dependencies) installed.
 
 # Contributing
 
