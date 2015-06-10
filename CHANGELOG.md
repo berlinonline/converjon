@@ -1,3 +1,13 @@
+# 2.5.0 (2015-06-10)
+
+* Garbage collector for cache items (#19)
+* Fixed a long standing bug that caused locks to accumulate (#107)
+* Fixed a bug in cache that caused item to always invalidate immediately (#104)
+* Boolean config values can now also be written as strings (#104)
+* Added fallback local file paths (#102)
+* Local source files can be used without copying (#100)
+* Additional test page to run server under continuous load (#18)
+
 # 2.4.2 (2015-06-03)
 
 * fixed a critical bug in error handling (#99)
