@@ -58,6 +58,8 @@ An advanced image conversion server and command line tool.
 
 Use NPM: `npm install [-g] converjon`
 
+If you want to prevent the fixed dependency versions of the ```npm-shrinkwrap.json``` file to be used on install use ```--no-shrinkwrap``` as a command line argument. See [shrinkwrap docs](https://docs.npmjs.com/cli/shrinkwrap) and [install docs](https://docs.npmjs.com/cli/install) for more information on this.
+
 Conversion follows [Semantic Versioning](http://semver.org/).
 
 ## Usage
