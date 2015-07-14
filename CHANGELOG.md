@@ -1,6 +1,14 @@
-# 2.5.1 (2015-07-14)
+# 2.5.3 (2015-07-14)
 
 * Fixes accumulating file descriptors (#111)
+
+# 2.5.2 (2015-07-14)
+
+* invalid release (replaced by 2.5.3)
+
+# 2.5.1 (2015-07-14)
+
+* invalid release (replaced by 2.5.3)
 
 # 2.5.0 (2015-06-10)
 
