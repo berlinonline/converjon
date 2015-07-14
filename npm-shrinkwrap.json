@@ -1,6 +1,6 @@
 {
   "name": "converjon",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "dependencies": {
     "calmcard": {
       "version": "0.1.1",
