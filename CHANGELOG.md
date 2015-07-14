@@ -1,3 +1,7 @@
+# 2.5.1 ( ??? )
+
+* Fixes accumulating file descriptors (#111)
+
 # 2.5.0 (2015-06-10)
 
 * Garbage collector for cache items (#19)
