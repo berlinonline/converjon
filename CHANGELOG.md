@@ -1,4 +1,4 @@
-# 2.5.1 ( ??? )
+# 2.5.1 (2015-07-14)
 
 * Fixes accumulating file descriptors (#111)
 
