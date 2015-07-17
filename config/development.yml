@@ -12,6 +12,7 @@ download:
   url_whitelist:
     - "http://localhost:8002/*"
     - "https://upload.wikimedia.org/*"
+    - "http://www.berlin.de/*"
 
 # start a test server to automatically deliver test images
 test_server:
