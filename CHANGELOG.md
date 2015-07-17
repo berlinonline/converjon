@@ -1,3 +1,9 @@
+# 2.5.4 (2025-07-17)
+
+* Fixes analysis errors that were lost (#116 , #114)
+* Fixes overly verbose GC error logs (#119)
+* Fixed some typos in log messages
+
 # 2.5.3 (2015-07-14)
 
 * Fixes accumulating file descriptors (#111)
