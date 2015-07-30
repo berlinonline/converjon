@@ -271,7 +271,7 @@ You can also prefix the pattern with ``~ `` (like ``~ ^http://(foo|bar)\.example
 `download.timeout` sets a timeout after which requests are cancelled, if the source server doesn't respond in time.
 
 **Reject Invalid SSL Certificates**
-Setting `download.rejectInvalidSSL` to `true` will cause sources to be rejected, if their SSL certificates can nnot be validated.
+Setting `download.rejectInvalidSSL` to `true` (default) will cause sources to be rejected, if their SSL certificates can nnot be validated.
 
 ###Aliases
 
