@@ -1,4 +1,4 @@
-# 2.5.5 (2015-07-30)
+# 2.5.5 (2015-07-31)
 
 * `rejectInvalidSSL` option couldn't be used to set `strictSSL` option of request to `false`.
   This lead to problems requesting images from hosts with self-signed certificates. A debug
