@@ -4,8 +4,7 @@
 
 An advanced image conversion server and command line tool.
 
-**IMPORTANT: Converjon 2.0.0 has been released. For documentation on the previous version 1.8.x see
-[here](https://github.com/berlinonline/converjon/tree/148ab8a6c01c6ffae6e2f40d25ec35d8c0cfb57d).**
+**IMPORTANT: For documentation on the old 1.8.x version see [here](https://github.com/berlinonline/converjon/tree/148ab8a6c01c6ffae6e2f40d25ec35d8c0cfb57d).**
 
 * [Features](#features)
 * [Dependencies](#dependencies)
@@ -219,7 +218,7 @@ urls:
 
 Converjon uses [calmcard](https://github.com/lnwdr/calmcard) for string pattern matching. Documentation on how these patterns work can be found there.
 
-This way you can define different setting depending on the source of the requested images.
+This way you can define different settings depending on the source of the requested images.
 
 ### Server
 
@@ -252,7 +251,7 @@ server:
 ### Downloads
 
 **URL whitelists**
-`download.url_whitelist` sets list of URL patterns that allowed to be requested as image sources.
+`download.url_whitelist` sets list of URL patterns that are allowed to be requested as image sources.
 
 For example, if you host your source images on `http://myimages.com/images/...` you should set the whitelist pattern to `http://myimages.com/images/` to make sure other sources are not allowed.
 
@@ -271,7 +270,7 @@ You can also prefix the pattern with ``~ `` (like ``~ ^http://(foo|bar)\.example
 `download.timeout` sets a timeout after which requests are cancelled, if the source server doesn't respond in time.
 
 **Reject Invalid SSL Certificates**
-Setting `download.rejectInvalidSSL` to `true` will cause sources to be rejected, if their SSL certificates can nnot be validated.
+Setting `download.rejectInvalidSSL` to `true` (default) will cause sources to be rejected, if their SSL certificates cannot be validated.
 
 ###Aliases
 
@@ -340,15 +339,15 @@ garbage_collector:
   interval: 5000
 ```
 
-* `enabled`: turns the gargabe colelctor on or off
-* `source`: determined when source files should be cleaned up. Possible values are:
+* `enabled`: turns the garbage collector on or off
+* `source`: determines when source files should be cleaned up. Possible values are:
   * `cache`: The file will be removed when it's cache lifetime has expired
   * `immediate`: The file will be removed as soon as it's no longer in use by any pending request.
   * any other value will disable the cleanup for source files
 * `target`: same as `source` but for the converted target image files
 * `interval`: time between garbage collector runs, in milliseconds.
 
-**Local source files that were not copied into  the cache directory will not be removed by the garbage collector.**
+**Local source files that were not copied into the cache directory will not be removed by the garbage collector.**
 
 ### Processes
 
