@@ -1,3 +1,7 @@
+# 2.5.6 (2015-08-28)
+
+* fixed error reporting  bug that caused local file requests to fail. #109
+
 # 2.5.5 (2015-07-31)
 
 * `rejectInvalidSSL` option couldn't be used to set `strictSSL` option of request to `false`.
