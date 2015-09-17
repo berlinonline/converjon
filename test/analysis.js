@@ -17,7 +17,7 @@ var lock = require("../lib/lock").lock;
 module.exports = {
 
     testAnalysisSuccess: function(test) {
-        test.expect(7);
+        test.expect(4);
 
         var conf = config.get();
         lock(pathutils.join([
@@ -29,10 +29,7 @@ module.exports = {
             analyze(l, conf).then(function(analysis){
                 test.strictEqual(analysis.width, 4126);
                 test.strictEqual(analysis.height, 2551);
-                test.strictEqual(analysis.aoi.x, 760);
-                test.strictEqual(analysis.aoi.y, 365);
-                test.strictEqual(analysis.aoi.w, 1100);
-                test.strictEqual(analysis.aoi.h, 850);
+                test.strictEqual(analysis.aoi, "760,365,1100,850");
                 test.strictEqual(analysis.format, "jpeg");
                 l();
                 test.done();
