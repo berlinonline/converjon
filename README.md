@@ -198,6 +198,11 @@ When launching converjon, you can specify one or more configuration files with t
 converjon --config conf_file1.yml --config conf_file2.json
 ```
 
+To load a directory containing one or more config file, use the `--config-dir` option. Config files will be added in the order they appear in that directory.
+```
+converjon --config-dir /etc/converjon
+```
+
 You can use the [default.yml](https://github.com/berlinonline/converjon/blob/master/config/default.yml) or [development.yml](https://github.com/berlinonline/converjon/blob/master/config/development.yml) file as an example for writing your own.
 
 The default configuration format is YAML but you can also use JSON files.

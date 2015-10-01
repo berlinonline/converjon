@@ -48,6 +48,14 @@ if (args.dev) {
     ]));
 }
 
+if (args['config-dir']) {
+  fs.readdirSync(args['config-dir']).filter(function(f){
+    return /\.(json|yml)$/.test(f);
+  }).forEach(function(f){
+    config_files.push(pathutils.join([args['config-dir'], f]));
+  });
+}
+
 if (args.config) {
     config_files = config_files.concat(args.config);
 }
