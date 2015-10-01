@@ -1,3 +1,9 @@
+# 2.6.0 (2015-10-01)
+
+* added support for loading all config files from a directory (#121)
+* added support for percentage values in AOI (#119)
+* new crop mode "none", preserves the entire image (#118)
+
 # 2.5.6 (2015-08-28)
 
 * fixed error reporting  bug that caused local file requests to fail. #109
