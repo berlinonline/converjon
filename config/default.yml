@@ -36,6 +36,7 @@ converter:
 
 cropping:
   default_mode: "aoi_coverage"
+  prefer_embedded_aoi: false
 
 constraints:
   quality:
