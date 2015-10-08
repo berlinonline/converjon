@@ -1,3 +1,7 @@
+# 2.7.0 (2015-10-08)
+
+* added a switch for the preferred AOI source (#122)
+
 # 2.6.0 (2015-10-01)
 
 * added support for loading all config files from a directory (#121)
