@@ -102,7 +102,7 @@ By default images are cropped from the center of the original. You can specify a
 
 The AOI can also be embedded in the original image's metadata via EXIF or IPTC. The name of this metadata field can be configured and defaults to `aoi`. The request parameter overrides the AOI value from the image's metadata.
 
-By default, the AOI in the URL parameters has precedence over the one from the image's metadata. To prefer the embedded AOI from the metadata, set the `prefer_embedded_aoi` parameter to any non-emty value.
+By default, the AOI in the URL parameters has precedence over the one from the image's metadata. To prefer the embedded AOI from the metadata, set the `prefer_embedded_aoi` parameter to any non-empty value.
 
 ### Cropping mode
 
