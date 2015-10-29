@@ -1,3 +1,7 @@
+# 2.7.1 (2015-10-29)
+
+* fallback cropping in case of invalid embedded AOI (#124)
+
 # 2.7.0 (2015-10-08)
 
 * added a switch for the preferred AOI source (#122)
