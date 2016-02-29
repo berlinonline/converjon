@@ -1,3 +1,8 @@
+# 2.7.2 (2016-02-29)
+
+* Fixed: source HTTP header whitelist not working (#128)
+* Fixed: show concrete error when source downloading failed (#132)
+
 # 2.7.1 (2015-10-29)
 
 * fallback cropping in case of invalid embedded AOI (#124)

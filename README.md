@@ -329,7 +329,7 @@ cache:
 
 `cache.copy_source_file` determines, if a source file should be copied, when you're using a local file as source. By
 default, files are copied into Converjon's cache directory. Set this to `false` to use the original file's location.
-**You will have to make sure that these files are not changed while Converjon is suing them. This could result in corrupted images or failing requests.**
+**You will have to make sure that these files are not changed while Converjon is using them. This could result in corrupted images or failing requests.**
 
 The cache directory is not automatically cleaned up and may grow over time.
 

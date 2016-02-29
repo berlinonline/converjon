@@ -1,7 +1,7 @@
 {
   "name": "converjon",
   "description": "An advanced image conversion server and command line tool.",
-  "version": "2.7.1",
+  "version": "2.7.2",
   "license": "MIT",
   "author": "Leon Weidauer",
   "maintainers": [
@@ -9,7 +9,8 @@
   ],
   "contributors": [
     "Leon Weidauer <leon@lnwdr.de> (http://lnwdr.de)",
-    "Steffen Gransow <converjon@mivesto.de> (https://github.com/graste)"
+    "Steffen Gransow <converjon@mivesto.de> (https://github.com/graste)",
+    "https://github.com/berlinonline/converjon/graphs/contributors"
   ],
   "homepage": "https://github.com/berlinonline/converjon",
   "bugs": "https://github.com/berlinonline/converjon/issues",
@@ -32,17 +33,17 @@
   ],
   "dependencies": {
     "calmcard": "^0.1.1",
-    "cjson": "^0.3.0",
+    "cjson": "^0.3.3",
     "cli-color": "^0.3.3",
-    "clone": "^1.0.0",
-    "handlebars": "^3.0.0",
-    "js-yaml": "^3.0.2",
-    "minimist": "^1.1.2",
-    "mkdirp": "^0.5.0",
+    "clone": "^1.0.2",
+    "handlebars": "^3.0.3",
+    "js-yaml": "^3.5.3",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
     "moniker": "^0.1.2",
-    "nodeunit": "^0.9.0",
-    "request": "^2.60.0",
-    "rsvp": "^3.0.20",
+    "nodeunit": "^0.9.1",
+    "request": "^2.69.0",
+    "rsvp": "^3.2.1",
     "send": "^0.9.3"
   },
   "devDependencies": {},
