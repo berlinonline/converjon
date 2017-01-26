@@ -1,7 +1,9 @@
-;;; Directory Local Variables
-;;; For more information see (info "(emacs) Directory Variables")
-
-((js-mode
-  (js-indent-level . 4)
-  (tab-width . 4)))
-
+((nil . ((standard-indent . 4)
+         (tab-width . 4)
+         (web-mode-markup-indent-offset . 4)
+         (web-mode-css-indent-offset . 4)
+         (web-mode-code-indent-offset . 4)
+         (web-mode-attr-indent-offset . 4)
+         (web-mode-attr-value-indent-offset . 4)
+         (web-mode-indent-style . 4)
+         )))
