@@ -84,7 +84,7 @@ if (args._.length < 2) {
 }
 
 var logging = require("../lib/logging");
-var lock = require("../lib/lock");
+var lock = require("../lib/lock").lock;
 var analyze = require("../lib/analyze");
 
 var infile = args._[0];
