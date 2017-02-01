@@ -1,67 +1,67 @@
 {
-  "name": "converjon",
-  "description": "An advanced image conversion server and command line tool.",
-  "version": "2.7.2",
-  "license": "MIT",
-  "author": "Leon Weidauer",
-  "maintainers": [
-    "Leon Weidauer <leon@lnwdr.de> (http://lnwdr.de)"
-  ],
-  "contributors": [
-    "Leon Weidauer <leon@lnwdr.de> (http://lnwdr.de)",
-    "Steffen Gransow <converjon@mivesto.de> (https://github.com/graste)",
-    "https://github.com/berlinonline/converjon/graphs/contributors"
-  ],
-  "homepage": "https://github.com/berlinonline/converjon",
-  "bugs": "https://github.com/berlinonline/converjon/issues",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/berlinonline/converjon.git"
-  },
-  "keywords": [
-    "image",
-    "images",
-    "crop",
-    "convert",
-    "resize",
-    "aoi",
-    "cropping",
-    "conversion",
-    "server",
-    "web",
-    "cli"
-  ],
-  "dependencies": {
-    "calmcard": "^0.1.1",
-    "cjson": "^0.3.3",
-    "cli-color": "^0.3.3",
-    "clone": "^1.0.2",
-    "handlebars": "^3.0.3",
-    "js-yaml": "^3.5.3",
-    "minimist": "^1.2.0",
-    "mkdirp": "^0.5.1",
-    "moniker": "^0.1.2",
-    "nodeunit": "^0.9.1",
-    "request": "^2.69.0",
-    "rsvp": "^3.2.1",
-    "send": "^0.9.3"
-  },
-  "devDependencies": {},
-  "optionalDependencies": {},
-  "engines": {
-    "node": ">=0.10.7 <0.13.0"
-  },
-  "scripts": {
-    "test": "nodeunit ./test/*"
-  },
-  "bin": {
-    "converjon": "./bin/converjon.js",
-    "converjon-cli": "./bin/converjon-cli.js"
-  },
-  "main": "index.js",
-  "directories": {
-    "bin": "./bin",
-    "lib": "./lib",
-    "test": "test"
-  }
+    "name": "converjon",
+    "description": "An advanced image conversion server and command line tool.",
+    "version": "2.7.3",
+    "license": "MIT",
+    "author": "Leon Weidauer",
+    "maintainers": [
+        "Leon Weidauer <leon@lnwdr.de> (http://lnwdr.de)"
+    ],
+    "contributors": [
+        "Leon Weidauer <leon@lnwdr.de> (http://lnwdr.de)",
+        "Steffen Gransow <converjon@mivesto.de> (https://github.com/graste)",
+        "https://github.com/berlinonline/converjon/graphs/contributors"
+    ],
+    "homepage": "https://github.com/berlinonline/converjon",
+    "bugs": "https://github.com/berlinonline/converjon/issues",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/berlinonline/converjon.git"
+    },
+    "keywords": [
+        "image",
+        "images",
+        "crop",
+        "convert",
+        "resize",
+        "aoi",
+        "cropping",
+        "conversion",
+        "server",
+        "web",
+        "cli"
+    ],
+    "dependencies": {
+        "calmcard": "^0.1.1",
+        "cjson": "^0.3.3",
+        "cli-color": "^0.3.3",
+        "clone": "^1.0.2",
+        "handlebars": "^3.0.3",
+        "js-yaml": "^3.7.0",
+        "minimist": "^1.2.0",
+        "mkdirp": "^0.5.1",
+        "moniker": "^0.1.2",
+        "nodeunit": "^0.9.5",
+        "request": "^2.79.0",
+        "rsvp": "^3.3.3",
+        "send": "^0.9.3"
+    },
+    "devDependencies": {},
+    "optionalDependencies": {},
+    "engines": {
+        "node": ">=0.10.7 <0.13.0"
+    },
+    "scripts": {
+        "test": "nodeunit ./test/*"
+    },
+    "bin": {
+        "converjon": "./bin/converjon.js",
+        "converjon-cli": "./bin/converjon-cli.js"
+    },
+    "main": "index.js",
+    "directories": {
+        "bin": "./bin",
+        "lib": "./lib",
+        "test": "test"
+    }
 }
