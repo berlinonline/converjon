@@ -1,3 +1,9 @@
+# 2.7.3 (2017-02-01)
+
+* Fixed CLI tool (#126)
+* Fixed mtime of local file sources (#135)
+* Fixed compatibility with node.js 6.x.x (#133)
+
 # 2.7.2 (2016-02-29)
 
 * Fixed: source HTTP header whitelist not working (#128)
