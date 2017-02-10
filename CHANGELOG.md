@@ -1,3 +1,7 @@
+# 2.7.4 (2017-02-10)
+
+* fixed: regression in chache item timestamps (#136)
+
 # 2.7.3 (2017-02-01)
 
 * Fixed CLI tool (#126)
