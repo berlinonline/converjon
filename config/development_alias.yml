@@ -13,5 +13,7 @@ fallback_base_file_paths:
   - "test/resources/images" # this one actually works, it should fall back to this one
 
 headers:
-  max-age: 3600
-  Cache-Control: "max-age=3600"
+  Cache-Control: "max-age=120" # 2 minutes
+
+garbage_collector:
+  target: 'cache'
