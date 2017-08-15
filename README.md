@@ -61,11 +61,18 @@ If you want to prevent the fixed dependency versions of the ```npm-shrinkwrap.js
 
 Conversion follows [Semantic Versioning](http://semver.org/).
 
-Use Docker: `docker run -t -p 8000:8000 -v $(pwd)/config/default.yml:/etc/converjon/config.yml berlinonline/converjon:latest`
 
 ## Usage
 
+#### Manually 
 Start the server with `converjon [--config your_config_file]` or use the command line utility `converjon-cli` to work on local files.
+
+#### Docker
+
+`docker run -t -p 8000:8000 -v $(pwd)/config/default.yml:/etc/converjon/config.yml berlinonline/converjon:latest` 
+or
+`docker run -e USE_CONFIG_DIR=true -t -p 8000:8000 -v $(pwd)/config/:/etc/converjon/config berlinonline/converjon:latest` 
+
 
 Let's say you have an image at `http://example.org/image.jpg`. To get the image through Converjon, put the original URL into the request as a URL encoded parameter:
 

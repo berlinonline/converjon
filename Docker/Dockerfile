@@ -14,4 +14,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN npm install -g converjon
 EXPOSE 8000
-CMD [ "converjon", "--config /etc/converjon/config.yml" ]
+ENV USE_CONFIG_DIR=false
+COPY start.sh /start.sh
+RUN chmod 755 /start.sh
+CMD ["/bin/bash", "/start.sh"]
