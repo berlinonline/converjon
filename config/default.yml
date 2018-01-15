@@ -32,7 +32,9 @@ analysis:
   aoi_name: "AOI"
 
 converter:
+  filter: false
   padding_color: "#fefe00"
+  quality: false
 
 cropping:
   default_mode: "aoi_coverage"
