@@ -36,7 +36,7 @@
     "cjson": "^0.3.3",
     "cli-color": "^0.3.3",
     "clone": "^1.0.2",
-    "handlebars": "^3.0.3",
+    "handlebars": "^4.0.11",
     "js-yaml": "^3.8.1",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
@@ -44,7 +44,7 @@
     "nodeunit": "^0.9.5",
     "request": "^2.79.0",
     "rsvp": "^3.3.3",
-    "send": "^0.9.3"
+    "send": "^0.16.2"
   },
   "devDependencies": {},
   "optionalDependencies": {},
