@@ -1,3 +1,9 @@
+# 2.7.7 (2018-08-02)
+# 2.7.6 (2018-08-02) (error pushing branch)
+# 2.7.5 (2018-08-02) (error pushing branch)
+
+* added "filter" and "quality" attributes to converter config
+
 # 2.7.4 (2017-02-10)
 
 * fixed: regression in chache item timestamps (#136)
