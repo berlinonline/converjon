@@ -373,7 +373,9 @@ Increasing this will likely increase memory consumption while providing better u
 
 ### Converter
 
-`converter.padding_color` sets the background color that is used, if an image needs padding to fit the requested aspect ratio.
+* `converter.padding_color` sets the background color that is used, if an image needs padding to fit the requested aspect ratio.
+* `converter.filter` sets the filter, e.g. "Sinc"
+* `converter.quality` sets the quality of the resulting resized image (number, e.g. 85)
 
 ### Cropping
 
