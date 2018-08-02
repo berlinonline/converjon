@@ -1,6 +1,6 @@
 {
   "name": "converjon",
-  "version": "2.7.7",
+  "version": "2.7.8",
   "dependencies": {
     "ansi-regex": {
       "version": "2.1.1",
