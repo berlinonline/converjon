@@ -60,8 +60,6 @@ If you want to prevent the fixed dependency versions of the ``npm-shrinkwrap.jso
 
 Converjon follows [Semantic Versioning](http://semver.org/).
 
-## Usage
-
 ### Manually
 
 Start the server with `converjon [--config your_config_file]` or use the command line utility `converjon-cli` to work on local files.
@@ -77,6 +75,8 @@ or
 ```sh
 docker run -e USE_CONFIG_DIR=true -t -p 8000:8000 -v $(pwd)/config/:/etc/converjon/config berlinonline/converjon:latest
 ```
+
+## Usage
 
 Let's say you have an image at `http://example.org/image.jpg`. To get the image through Converjon, put the original URL into the request as a URL encoded parameter:
 
