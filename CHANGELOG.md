@@ -1,67 +1,80 @@
-# 2.7.7 (2018-08-02)
-# 2.7.6 (2018-08-02) (error pushing branch)
-# 2.7.5 (2018-08-02) (error pushing branch)
+# Changelog
+
+## 2.7.9 (2019-03-xx)
+
+* fixed: too many folder levels for docker to cope with (see [Issue 138](https://github.com/berlinonline/converjon/issues/138))
+
+## 2.7.8 (2018-08-02)
+
+* fixed: security fix – updated dependencies for `handlebars` and `send`
+* added: new config options `converter.filter` and `converter.quality`
+
+## 2.7.7 (2018-08-02)
+
+## 2.7.6 (2018-08-02) (error pushing branch)
+
+## 2.7.5 (2018-08-02) (error pushing branch)
 
 * added "filter" and "quality" attributes to converter config
 
-# 2.7.4 (2017-02-10)
+## 2.7.4 (2017-02-10)
 
-* fixed: regression in chache item timestamps (#136)
+* fixed: regression in cache item timestamps (#136)
 
-# 2.7.3 (2017-02-01)
+## 2.7.3 (2017-02-01)
 
 * Fixed CLI tool (#126)
 * Fixed mtime of local file sources (#135)
 * Fixed compatibility with node.js 6.x.x (#133)
 
-# 2.7.2 (2016-02-29)
+## 2.7.2 (2016-02-29)
 
 * Fixed: source HTTP header whitelist not working (#128)
 * Fixed: show concrete error when source downloading failed (#132)
 
-# 2.7.1 (2015-10-29)
+## 2.7.1 (2015-10-29)
 
 * fallback cropping in case of invalid embedded AOI (#124)
 
-# 2.7.0 (2015-10-08)
+## 2.7.0 (2015-10-08)
 
 * added a switch for the preferred AOI source (#122)
 
-# 2.6.0 (2015-10-01)
+## 2.6.0 (2015-10-01)
 
 * added support for loading all config files from a directory (#121)
 * added support for percentage values in AOI (#119)
 * new crop mode "none", preserves the entire image (#118)
 
-# 2.5.6 (2015-08-28)
+## 2.5.6 (2015-08-28)
 
 * fixed error reporting  bug that caused local file requests to fail. #109
 
-# 2.5.5 (2015-07-31)
+## 2.5.5 (2015-07-31)
 
 * `rejectInvalidSSL` option couldn't be used to set `strictSSL` option of request to `false`.
   This lead to problems requesting images from hosts with self-signed certificates. A debug
   message with the original request response error message was added in the process (#117).
 
-# 2.5.4 (2015-07-17)
+## 2.5.4 (2015-07-17)
 
 * Fixes analysis errors that were lost (#116 , #114)
 * Fixes overly verbose GC error logs (#119)
 * Fixed some typos in log messages
 
-# 2.5.3 (2015-07-14)
+## 2.5.3 (2015-07-14)
 
 * Fixes accumulating file descriptors (#111)
 
-# 2.5.2 (2015-07-14)
+## 2.5.2 (2015-07-14)
 
 * invalid release (replaced by 2.5.3)
 
-# 2.5.1 (2015-07-14)
+## 2.5.1 (2015-07-14)
 
 * invalid release (replaced by 2.5.3)
 
-# 2.5.0 (2015-06-10)
+## 2.5.0 (2015-06-10)
 
 * Garbage collector for cache items (#19)
 * Fixed a long standing bug that caused locks to accumulate (#107)
@@ -71,11 +84,11 @@
 * Local source files can be used without copying (#100)
 * Additional test page to run server under continuous load (#18)
 
-# 2.4.2 (2015-06-03)
+## 2.4.2 (2015-06-03)
 
 * fixed a critical bug in error handling (#99)
 
-# 2.4.1 (2015-06-02)
+## 2.4.1 (2015-06-02)
 
 * Security: more strict validation of numeric parameters (#94)
 * Security: "nosniff" HTTP header (#98)
@@ -83,7 +96,7 @@
 * Release documentation (#97)
 * added missing package.json infos (#95)
 
-# 2.4.0 (2015-05-28)
+## 2.4.0 (2015-05-28)
 
 * Bugfix: matching of configs against keys (#92)
 * Added support getting source files from filesystem instead of URLs (#91)
@@ -92,19 +105,19 @@
 * Added blur effect (#89)
 * Added configurable URL base path (#90)
 
-# 2.3.0 (2015-05-07)
+## 2.3.0 (2015-05-07)
 
 * Add parameter presets (#70)
 * Interactive cropping on `/demo` page (#79)
 * Padding color is now changable via URL parameter (#80)
 
-# 2.2.1 (2015-04-07)
+## 2.2.1 (2015-04-07)
 
 * Fix counting too many requests. (#81)
 * Bring back debug logging (#82)
 * Fix accumulating locks for failing downloads (#83)
 
-# 2.2.0 (2015-03-16)
+## 2.2.0 (2015-03-16)
 
 * Added error reporting when converting non existing files in CLI (#74)
 * Added logging level "info" in configs, defaults o STDOUT
@@ -113,8 +126,7 @@
 * Fixed timeout on sources with 0 bytes length (#73)
 * Added validation of AOI, is now rejected if it doesn't fit inside the source image (#72)
 
-
-# 2.1.0 (2015-01-05)
+## 2.1.0 (2015-01-05)
 
 * Added support for interlaced images via `interlace` parameter (think progressive JPGs, #65)
 * Added support for status page as `application/json` via `/status.json` (#64)
@@ -124,14 +136,15 @@
 * Fixed typo in error message (#60)
 * Made scripts in `bin/` executable and modified README a bit (#65 and #66)
 
-# 2.0.1
+## 2.0.1
 
 * Updated dependencies to fix security issues #61
 * Updated package.json description
 
-# 2.0.0
+## 2.0.0
 
-**Braking changes:**
+Breaking changes:
+
 * installation via NPM
 * no more environment configuration
 * config format has changed
@@ -139,7 +152,8 @@
 * status page no longer delivers JSON data
 * HTTP response codes for errors have changed
 
-**Features/Bugfixes**
+Features/Bugfixes:
+
 * major rewrite and refactoring
 * new cache system #44
 * custom configurations per URL #48
@@ -153,74 +167,73 @@
 * improved reponse code handling #43
 * new status page #51
 
-1.8.0
-=
+## 1.8.0
+
 * Added config `downloader.rejectUnauthorized` #41
 
-1.7.1
-=
- * Filled in missing documentation
+## 1.7.1
 
-1.7.0
-=
- * added hostname to status info. #26
- * added random/configurable intance name to status info. #33
- * environment can now be set via textfile. #35
- * fixed a memory leak cause by unfinished download requests. #36
- * configurable HTTP basic auth for source URLs. #37
- * improved debug logging to enable easier tracing of requests. #39
- * better test coverage
- * fixed various typos
+* Filled in missing documentation
 
-1.6.4
-=
- * fixes a critical bug that caused the server to become unresponsive. #34
+## 1.7.0
 
-1.6.3
-=
- * fixes an issue where "NaN" values could be passed as the cropping reactagnle for imagemagick. #27
- * fixes download events accumulating in the central event emitter. #32
- * fixed a problem where node.js' http client connection limit would prevent some tests from running.
+* added hostname to status info. #26
+* added random/configurable intance name to status info. #33
+* environment can now be set via textfile. #35
+* fixed a memory leak cause by unfinished download requests. #36
+* configurable HTTP basic auth for source URLs. #37
+* improved debug logging to enable easier tracing of requests. #39
+* better test coverage
+* fixed various typos
 
-1.6.2
-=
- * fixed some missing error handlers
- * added node 0.10.x to "engine" dependency
+## 1.6.4
 
-1.6.1
-=
- * added no-cache header to /status page
+* fixes a critical bug that caused the server to become unresponsive. #34
 
-1.6.0
-=
- * Fixed a bug that caused the process waiting counter to be incremented too soon which prevented processes from being started.
- * added process stats to /status page
- * added actual "alive" value to /status page (see README.md)
- * /status page will now return HTTP 503 if alive value is not true
- * added log tail readout to /status page
- * added option to write local status file (same content as /status page)
- * added option to reduce /status page output to a minimum
+## 1.6.3
 
-1.5.1
-=
- * Fixed a bug that caused subsequent requests to once failed downloads to timeout
- * some code cleanup
+* fixes an issue where "NaN" values could be passed as the cropping reactagnle for imagemagick. #27
+* fixes download events accumulating in the central event emitter. #32
+* fixed a problem where node.js' http client connection limit would prevent some tests from running.
 
-1.5.0
-=
- * added fetching images from HTTPS sources
- * added configurable constraints
- * added Etag support
- * added stats to status page
+## 1.6.2
 
-1.4.2
-=
- * fix incomplete/corrupt stdout data from exiftool that resulted in "Error during image analysis" failures.
- * improved analyzer error logging
- * fix temp cache directory not being cleared at server launch
+* fixed some missing error handlers
+* added node 0.10.x to "engine" dependency
 
-1.4.1
-=
+## 1.6.1
 
- * fix AoiCropping algorithm, no more skewed images
- * fix order of "process ended" events to free up resources sooner
+* added no-cache header to /status page
+
+## 1.6.0
+
+* Fixed a bug that caused the process waiting counter to be incremented too soon which prevented processes from being started.
+* added process stats to /status page
+* added actual "alive" value to /status page (see README.md)
+* /status page will now return HTTP 503 if alive value is not true
+* added log tail readout to /status page
+* added option to write local status file (same content as /status page)
+* added option to reduce /status page output to a minimum
+
+## 1.5.1
+
+* Fixed a bug that caused subsequent requests to once failed downloads to timeout
+* some code cleanup
+
+## 1.5.0
+
+* added fetching images from HTTPS sources
+* added configurable constraints
+* added Etag support
+* added stats to status page
+
+## 1.4.2
+
+* fix incomplete/corrupt stdout data from exiftool that resulted in "Error during image analysis" failures.
+* improved analyzer error logging
+* fix temp cache directory not being cleared at server launch
+
+## 1.4.1
+
+* fix AoiCropping algorithm, no more skewed images
+* fix order of "process ended" events to free up resources sooner

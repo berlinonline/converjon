@@ -4,35 +4,33 @@
 
 An advanced image conversion server and command line tool.
 
-**IMPORTANT: For documentation on the old 1.8.x version see [here](https://github.com/berlinonline/converjon/tree/148ab8a6c01c6ffae6e2f40d25ec35d8c0cfb57d).**
-
 * [Features](#features)
 * [Dependencies](#dependencies)
 * [Installation](#installation)
 * [Usage](#usage)
-	* [Changing Size](#changing-size)
-	* [Area of Interest](#area-of-interest)
-	* [Cropping Mode](#cropping-mode)
-	* [Padding Color](#padding-color)
-	* [Cropping Mode](#cropping-mode)
-	* [Image format](#image-format)
-	* [Quality](#quality)
-	* [Color Palette](#color-palette)
-	* [Interlaced Images](#interlaced-images)
-	* [Presets](#presets)
-	* [Status Page](#status-page)
+    * [Changing Size](#changing-size)
+    * [Area of Interest](#area-of-interest)
+    * [Cropping Mode](#cropping-mode)
+    * [Padding Color](#padding-color)
+    * [Cropping Mode](#cropping-mode)
+    * [Image format](#image-format)
+    * [Quality](#quality)
+    * [Color Palette](#color-palette)
+    * [Interlaced Images](#interlaced-images)
+    * [Presets](#presets)
+    * [Status Page](#status-page)
 * [Configuration](#configuration)
-	* [Server](#server)
-	* [Aliases](#aliases)
-	* [Downloads](#downloads)
-	* [Authentication](#authentication)
-	* [Cache](#cache)
-	* [Garbage Collector](#garbage-collector)
-	* [Processes](#processes)
-	* [Converter](#converter)
-	* [Cropping](#cropping)
-	* [Constraints](#constraints)
-	* [Logging](#logging)
+    * [Server](#server)
+    * [Aliases](#aliases)
+    * [Downloads](#downloads)
+    * [Authentication](#authentication)
+    * [Cache](#cache)
+    * [Garbage Collector](#garbage-collector)
+    * [Processes](#processes)
+    * [Converter](#converter)
+    * [Cropping](#cropping)
+    * [Constraints](#constraints)
+    * [Logging](#logging)
 * [Testing](#testing)
 * [Contributing](#contributing)
 * [Changelog](#changelog)
@@ -49,30 +47,36 @@ An advanced image conversion server and command line tool.
 
 ## Dependencies
 
-  * [ImageMagick](http://www.imagemagick.org/script/binary-releases.php)
-  * [ExifTool](http://www.sno.phy.queensu.ca/%7Ephil/exiftool/install.html) (at least version 9)
-  * [node.js and NPM](http://nodejs.org/download/)
+* [ImageMagick](http://www.imagemagick.org/script/binary-releases.php)
+* [ExifTool](http://www.sno.phy.queensu.ca/%7Ephil/exiftool/install.html) (at least version 9)
+* [node.js and NPM](http://nodejs.org/download/)
+    * The [crypto module](https://nodejs.org/api/crypto.html) must be supported/included in the nodejs build
 
 ## Installation
 
-Use NPM: `npm install [-g] converjon`
+Use NPM: ``npm install [-g] converjon``
 
-If you want to prevent the fixed dependency versions of the ```npm-shrinkwrap.json``` file to be used on install use ```--no-shrinkwrap``` as a command line argument. See [shrinkwrap docs](https://docs.npmjs.com/cli/shrinkwrap) and [install docs](https://docs.npmjs.com/cli/install) for more information on this.
+If you want to prevent the fixed dependency versions of the ``npm-shrinkwrap.json`` file to be used on install use ``--no-shrinkwrap`` as a command line argument. See [shrinkwrap docs](https://docs.npmjs.com/cli/shrinkwrap) and [install docs](https://docs.npmjs.com/cli/install) for more information on this.
 
-Conversion follows [Semantic Versioning](http://semver.org/).
-
+Converjon follows [Semantic Versioning](http://semver.org/).
 
 ## Usage
 
-#### Manually 
+### Manually
+
 Start the server with `converjon [--config your_config_file]` or use the command line utility `converjon-cli` to work on local files.
 
-#### Docker
+### Docker
 
-`docker run -t -p 8000:8000 -v $(pwd)/config/default.yml:/etc/converjon/config.yml berlinonline/converjon:latest` 
+```sh
+docker run -t -p 8000:8000 -v $(pwd)/config/default.yml:/etc/converjon/config.yml berlinonline/converjon:latest
+```
+
 or
-`docker run -e USE_CONFIG_DIR=true -t -p 8000:8000 -v $(pwd)/config/:/etc/converjon/config berlinonline/converjon:latest` 
 
+```sh
+docker run -e USE_CONFIG_DIR=true -t -p 8000:8000 -v $(pwd)/config/:/etc/converjon/config berlinonline/converjon:latest
+```
 
 Let's say you have an image at `http://example.org/image.jpg`. To get the image through Converjon, put the original URL into the request as a URL encoded parameter:
 
@@ -89,7 +93,7 @@ Here, `foobar` is the name of a filesystem alias followed by a colon and a relat
 
 More options are available as GET parameters. All parameters need to be URL encoded.
 
-Several examples are available on the `/demo` page which is enabled when starting Converjon with the [development config file](https://github.com/berlinonline/converjon/blob/master/config/development.yml) via ```converjon --dev```.
+Several examples are available on the `/demo` page which is enabled when starting Converjon with the [development config file](https://github.com/berlinonline/converjon/blob/master/config/development.yml) via ``converjon --dev``.
 
 It's recommended to set the server port to `80` in [configuration](#server) and to run Converjon on a separate subdomain of your site or behind a reverse proxy like Nginx or Varnish.
 
@@ -182,14 +186,11 @@ presets:
 
 So instead of specifying all the parameters in the URL:
 
-```
-?url=...&width=100&height=100&format=jpg&quality=50
-```
+``?url=...&width=100&height=100&format=jpg&quality=50``
+
 you can use the preset:
 
-```
-?url=...&preset=thumbnail
-```
+``?url=...&preset=thumbnail``
 
 ### Removing Metadata
 
@@ -205,12 +206,13 @@ The status page is available as content type `application/json` via `/status.jso
 
 When launching converjon, you can specify one or more configuration files with the `--config` option which can be set multiple times to load multiple config files:
 
-```
+```sh
 converjon --config conf_file1.yml --config conf_file2.json
 ```
 
 To load a directory containing one or more config file, use the `--config-dir` option. Config files will be added in the order they appear in that directory.
-```
+
+```sh
 converjon --config-dir /etc/converjon
 ```
 
@@ -225,7 +227,7 @@ Some configuration are automatically converted:
 * "true" (string) is treated as `true`(bool)
 * "false" (string) is treated as `false`(bool)
 
-```YAML
+```yaml
 # this config will only apply to source URLs from localhost or flickr
 urls:
   - "http://localhost*" #this will match URLs on localhost, this is the dev/testing default
@@ -238,7 +240,7 @@ This way you can define different settings depending on the source of the reques
 
 ### Server
 
-```
+```yaml
 server:
   port: 8000
   instance_name: null
@@ -249,18 +251,18 @@ server:
   enable_load_test: false
 ```
 
- * `server.port`: port for the server to listen on
- * `server.instance_name`: the name of this server that will be displayed on the status page
+* `server.port`: port for the server to listen on
+* `server.instance_name`: the name of this server that will be displayed on the status page
 
-    If not set, a random name will be generated.
+If not set, a random name will be generated.
 
- * `server.timout`: global timeout for incoming requests
- * `server.send_timeout`: the time streaming a finished image file into the HTTP response may take. This usually shouldn't need to be changed, except when the servers file system is expected to be exceptionally slow.
- * `server.base_url_path`: Normally, Converjon's image URL paths just start with `/`, like in `http://www.example.org/?url=...`
-    
-    You can set a base path to have better control over the URLs that Converjon uses. If you want the image URLs too like `http://www.example.org/photos/?url=...` set the `base_url_path` to "photos/".
+* `server.timout`: global timeout for incoming requests
+* `server.send_timeout`: the time streaming a finished image file into the HTTP response may take. This usually shouldn't need to be changed, except when the servers file system is expected to be exceptionally slow.
+* `server.base_url_path`: Normally, Converjon's image URL paths just start with `/`, like in `http://www.example.org/?url=...`
 
- * `server.access_log_format`: the formatting of access logs:
+You can set a base path to have better control over the URLs that Converjon uses. If you want the image URLs too like `http://www.example.org/photos/?url=...` set the `base_url_path` to "photos/".
+
+* `server.access_log_format`: the formatting of access logs:
     * `combined`: Apache Combined Log Format (the default)
     * `short`: leaves out the date/time information. Use this, if you use other software for log handling that adds timestamps.
 
@@ -271,16 +273,17 @@ server:
 
 For example, if you host your source images on `http://myimages.com/images/...` you should set the whitelist pattern to `http://myimages.com/images/` to make sure other sources are not allowed.
 
-```YAML
+```yaml
 # this will only allow requests for images from URLs that match these patterns
 download:
   url_whitelist:
     - "http://localhost*"
     - "http://example.org/*
 ```
+
 [Calmcard](https://github.com/lnwdr/calmcard) patterns are used for matching by default.
 
-You can also prefix the pattern with ``~ `` (like ``~ ^http://(foo|bar)\.example.org\/.*``) to use regular expressions. For most cases, this should not be necessary and is discouraged.
+You can also prefix the pattern with ``~`` (like ``~ ^http://(foo|bar)\.example.org\/.*``) to use regular expressions. For most cases, this should not be necessary and is discouraged.
 
 **Timeout**
 `download.timeout` sets a timeout after which requests are cancelled, if the source server doesn't respond in time.
@@ -288,11 +291,11 @@ You can also prefix the pattern with ``~ `` (like ``~ ^http://(foo|bar)\.example
 **Reject Invalid SSL Certificates**
 Setting `download.rejectInvalidSSL` to `true` (default) will cause sources to be rejected, if their SSL certificates cannot be validated.
 
-###Aliases
+### Aliases
 
 To access the server's local filesystem for source images, you can specify "aliases":
 
-```YAML
+```yaml
 #example from the development configuration files:
 alias: dev
 
@@ -329,7 +332,7 @@ authentication:
 
 ### Cache
 
-` cache.basepath` sets the base directory for the local file cache.
+`cache.basepath` sets the base directory for the local file cache.
 
 ```YAML
 cache:
@@ -338,7 +341,7 @@ cache:
 
 `cache.copy_source_file` determines, if a source file should be copied, when you're using a local file as source. By
 default, files are copied into Converjon's cache directory. Set this to `false` to use the original file's location.
-**You will have to make sure that these files are not changed while Converjon is using them. This could result in corrupted images or failing requests.**
+*You will have to make sure that these files are not changed while Converjon is using them. This could result in corrupted images or failing requests.*
 
 The cache directory is not automatically cleaned up and may grow over time.
 
@@ -357,13 +360,13 @@ garbage_collector:
 
 * `enabled`: turns the garbage collector on or off
 * `source`: determines when source files should be cleaned up. Possible values are:
-  * `cache`: The file will be removed when it's cache lifetime has expired
-  * `immediate`: The file will be removed as soon as it's no longer in use by any pending request.
-  * any other value will disable the cleanup for source files
+    * `cache`: The file will be removed when it's cache lifetime has expired
+    * `immediate`: The file will be removed as soon as it's no longer in use by any pending request.
+    * any other value will disable the cleanup for source files
 * `target`: same as `source` but for the converted target image files
 * `interval`: time between garbage collector runs, in milliseconds.
 
-**Local source files that were not copied into the cache directory will not be removed by the garbage collector.**
+Local source files that were not copied into the cache directory will not be removed by the garbage collector.
 
 ### Processes
 
@@ -425,19 +428,19 @@ logging:
 
 Logs are not automatically rotated. Use of a tool like `logrotate` is recommended.
 
-# Testing
+## Testing
 
 Execute tests with `npm test`. Please note, that you need to have all [dependencies](#dependencies) installed.
 
-# Contributing
+## Contributing
 
 Please contribute by [forking](http://help.github.com/forking/) and sending a [pull request](http://help.github.com/pull-requests/). More information can be found in the [`CONTRIBUTING.md`](CONTRIBUTING.md) file.
 
-# Changelog
+## Changelog
 
 See [`CHANGELOG.md`](CHANGELOG.md) for more information about changes.
 
-# Copyright Notes
+## Copyright Notes
 
 Converjon is [licensed under the MIT license](LICENSE).
 
