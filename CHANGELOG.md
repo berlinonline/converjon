@@ -3,8 +3,12 @@
 ## 2.7.9 (2019-03-25)
 
 * fixed: too many folder levels for docker to cope with (see [Issue 138](https://github.com/berlinonline/converjon/issues/138))
+* fixed: Usages of ``new Buffer(…)`` have been changed to ``Buffer.from(…)`` – see [DEP0005](https://nodejs.org/en/docs/guides/buffer-constructor-deprecation/) for more info
+* bumped node engine version in `package.json` to support more versions – `npm test` succeed for v4.x up to edge v12 atm
+* bumped dependencies
+* moved `nodeunit` dep into `devDependencies` - it's deprecated and using a specific `sshpk` lib version was necessary to reach `npm audit` result of 0 known vulnerabilities
 
-*Beware*: The change of the internal `cache` folder structure means, that your cache is invalidated upon deployment of this version. This shouldn't affect your apps too much as long as you took the hint of running converjon behind a caching reverse proxy. Keep it in mind though when switching to this version as you cache folder size may double.
+*Beware*: The change of the internal `cache` folder structure means, that your cache is invalidated upon deployment of this version. This shouldn't affect your apps too much as long as you took the hint of running converjon behind a caching reverse proxy. Keep it in mind though when switching to this version as your cache folder size may double.
 
 ## 2.7.8 (2018-08-02)
 

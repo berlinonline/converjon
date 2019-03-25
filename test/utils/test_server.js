@@ -26,7 +26,7 @@ var checkAuth = function(req) {
     if ('authorization' in req.headers) {
         var matches = auth_regex.exec(req.headers.authorization);
         if (matches) {
-            var auth = new Buffer(matches[1], 'base64').toString('ascii').split(':');
+            var auth = Buffer.from(matches[1], 'base64').toString('ascii').split(':');
             if (auth.length === 2) {
                 username = auth[0];
                 password = auth[1];

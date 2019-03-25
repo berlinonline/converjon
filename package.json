@@ -41,15 +41,17 @@
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "moniker": "^0.1.2",
-    "nodeunit": "^0.9.5",
     "request": "^2.79.0",
     "rsvp": "^3.3.3",
     "send": "^0.16.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodeunit": "^0.11.3",
+    "sshpk": "^1.13.2"
+  },
   "optionalDependencies": {},
   "engines": {
-    "node": ">=4.0.0 <6.14.3"
+    "node": ">=4.0.0 <12.1.0"
   },
   "scripts": {
     "test": "nodeunit ./test/*"
