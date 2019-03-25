@@ -11,7 +11,7 @@ module.exports = {
         test.expect(1);
 
         var url = "http://example.org";
-        var expected = "971a565c8ac770ff0b288d98a507bb832b8002214411ed8244d0b981a506dd3e";
+        var expected = "97/971a565c8ac770ff0b288d98a507bb832b8002214411ed8244d0b981a506dd3e";
 
         test.strictEqual(pathutils.getHashPath(url), expected.replace('/', path_sep));
         test.done();
@@ -22,7 +22,7 @@ module.exports = {
 
         var url = "https://some-example-long-s3-bucketname.aws.example.org/with-uuids/as-identifiers/a5d3b8ec-63a0-4e13-a0d1-d9f9e7389ccd/for/some/a5d3b8ec-63a0-4e13-a0d1-d9f9e7389ccd/a5d3b8ec-63a0-4e13-a0d1-d9f9e7389ccdsa5d3b8ec-63a0-4e13-a0d1-d9f9e7389ccda5d3b8ec-63a0-4e13-a0d1-d9f9e7389ccd/script/to/deliver/assets?and=with&parameters[]=that&are=probably,not,needed,but,who,cares,about,necessities&these=days#fragmentid-nobody-wants";
 
-        var expected = "561def15fd34e2194f9ce5d30e042f7a6c21711b5eb03a5c7a5541df5e80400d";
+        var expected = "56/561def15fd34e2194f9ce5d30e042f7a6c21711b5eb03a5c7a5541df5e80400d";
 
         test.strictEqual(pathutils.getHashPath(url), expected.replace('/', path_sep));
         test.done();

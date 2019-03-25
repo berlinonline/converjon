@@ -1,8 +1,10 @@
 # Changelog
 
-## 2.7.9 (2019-03-xx)
+## 2.7.9 (2019-03-25)
 
 * fixed: too many folder levels for docker to cope with (see [Issue 138](https://github.com/berlinonline/converjon/issues/138))
+
+*Beware*: The change of the internal `cache` folder structure means, that your cache is invalidated upon deployment of this version. This shouldn't affect your apps too much as long as you took the hint of running converjon behind a caching reverse proxy. Keep it in mind though when switching to this version as you cache folder size may double.
 
 ## 2.7.8 (2018-08-02)
 
