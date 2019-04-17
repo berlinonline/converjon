@@ -29,5 +29,18 @@ module.exports = {
             test.strictEqual(result.stderr, "");
             test.done();
         });
+    },
+
+    testProcessTimeout: function(test) {
+        test.expect(1);
+
+        // alternative for timeout something like: "wget" w/ ["10.255.255.1"]
+        process("nc", ['-l', '9876']).then(function(stdout) {
+            test.ok(false, 'should not have succeeded as a timeout is expected');
+            test.done;
+        }).catch(function(result) {
+            test.strictEqual(result.stderr, "Process timeout: nc -l 9876");
+            test.done();
+        });
     }
 };
