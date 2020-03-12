@@ -39,7 +39,7 @@
     "handlebars": "^4.0.11",
     "js-yaml": "^3.8.1",
     "minimist": "^1.2.0",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^1.0.0",
     "moniker": "^0.1.2",
     "request": "^2.79.0",
     "rsvp": "^3.3.3",
