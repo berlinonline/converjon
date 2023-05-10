@@ -1,5 +1,7 @@
 # Converjon
 
+**BEWARE: This repository is no longer maintained. It is archived. Big thank you to all contributors.** 
+
 <http://berlinonline.github.io/converjon>
 
 An advanced image conversion server and command line tool.
